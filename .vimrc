@@ -17,7 +17,9 @@ set ruler                       " display cursor position on status bar
 
 " highlight cursor line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=236 guibg=#3c3836
+hi CursorLineNr cterm=NONE ctermfg=white
+hi clear CursorLine
+hi CursorLine ctermbg=236
 
 " enable thin cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
