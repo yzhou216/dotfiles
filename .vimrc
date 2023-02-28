@@ -15,7 +15,9 @@ set colorcolumn=80		" mark 80th column
 set laststatus=2		" display status bar
 set ruler                       " display cursor position on status bar
 
-set cursorline                  " display cursor line
+" highlight cursor line
+set cursorline
+hi CursorLine cterm=NONE ctermbg=236 guibg=#3c3836
 
 " enable thin cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
