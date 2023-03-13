@@ -1,4 +1,4 @@
-set nocompatible		" Use VIM settings rather than Vi settings
+set nocompatible		" use VIM settings rather than Vi settings
 
 set number			" show current line number
 set relativenumber		" show relative line numbers
