@@ -54,6 +54,14 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" enhancement for netrw
+let g:netrw_banner=0		" disable banner
+let g:netrw_browse_split=4	" open in prior window
+let g:netrw_altv=1		" open vertical splits to the right
+let g:netrw_liststyle=3		" enable tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
 " disable arrow keys insert mode
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
