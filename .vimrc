@@ -15,7 +15,7 @@ set formatoptions+=t
 set colorcolumn=80		" mark 80th column
 
 set laststatus=2		" display status bar
-set ruler                       " display cursor position on status bar
+set statusline=%<%f\ \|\ %{&enc}\[\%{&ff}\]\ %h%m%r%=%-8.(%l,%c%V%)\ %P
 
 " highlight cursor line
 set cursorline
