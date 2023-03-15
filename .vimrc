@@ -62,6 +62,10 @@ let g:netrw_liststyle=3		" enable tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
+" enhancement for termdebug
+packadd termdebug		" enable termdebug
+let g:termdebug_wide=1		" split vertically
+
 " disable arrow keys insert mode
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
