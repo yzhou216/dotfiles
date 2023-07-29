@@ -6,7 +6,26 @@ set relativenumber		" show relative line numbers
 syntax on			" enable syntax highlighting
 
 set cindent			" enable automatic indentation
-set shiftwidth=8		" set indentation to 8 spaces
+
+" set default indentation to 8 characters tabs
+set tabstop=8
+set shiftwidth=8
+
+filetype plugin indent on	" enable filetype detection and plugins
+
+" define indentation settings for specific file types
+augroup custom_indent
+  au!
+
+  " C: set indent to 8 spaces
+  au FileType c set tabstop=8 shiftwidth=8
+
+  " Java, Python and R: set indent to 4 spaces, convert tabs to spaces
+  au FileType java,python,r set tabstop=4 shiftwidth=4 expandtab
+
+  " HTML, CSS and JavaScript: set indent to 2 spaces, convert tabs to spaces
+  au FileType html,css,javascript set tabstop=2 shiftwidth=2 expandtab
+augroup END
 
 " autowrap line at 80 columns
 set textwidth=80
