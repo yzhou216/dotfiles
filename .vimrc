@@ -90,6 +90,7 @@ vnoremap <Up> <Nop>
 
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp' " language server protocol
+Plug 'mattn/vim-lsp-settings' " LSP server installer
 Plug 'prabirshrestha/asyncomplete.vim' " asynchronous completion framework
 Plug 'prabirshrestha/asyncomplete-lsp.vim' " asynchronous completion framework for LSP
 
@@ -97,32 +98,6 @@ Plug 'github/copilot.vim' " GitHub Copilot
 
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
 call plug#end()
-
-" set LSP server comunications for Java (Eclipse JDTLS)
-au User lsp_setup call lsp#register_server({
-        \   'name': 'eclipse-jdt-ls',
-        \   'cmd': {server_info->[
-        \     'java',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Xmx1G',
-        \     '-jar',
-        \       expand('~/lsp-servers/jdt-server/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar'),
-        \     '-configuration',
-        \       expand('~/lsp-servers/jdt-server/config_linux'),
-        \     '-data',
-        \       expand('~/lsp-servers/jdt-server/data'),
-        \     '--add-modules=ALL-SYSTEM',
-        \     '--add-opens',
-        \       expand('~/lsp-servers/jdt-server/java.base/java.util=ALL-UNNAMED'),
-        \     '--add-opens',
-        \       expand('~/lsp-servers/jdt-server/java.base/java.lang=ALL-UNNAMED')
-        \   ]},
-        \   'allowlist': ['java'],
-        \ })
 
 " set key binding for goto definition
 nmap gd :LspDefinition<CR>
