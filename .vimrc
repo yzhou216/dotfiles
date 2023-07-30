@@ -99,6 +99,9 @@ Plug 'github/copilot.vim' " GitHub Copilot
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
 call plug#end()
 
+" disable auto popup by default
+let g:asyncomplete_auto_popup = 0
+
 " set key binding for goto definition
 nmap gd :LspDefinition<CR>
 
