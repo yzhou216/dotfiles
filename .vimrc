@@ -141,3 +141,6 @@ au User lsp_setup call lsp#register_server({
 
 " set key binding for goto definition
 nmap gd :LspDefinition<CR>
+
+colorscheme evening		" set colorscheme
+hi Normal ctermbg=none		" set background to transparent
