@@ -42,21 +42,6 @@ hi CursorLineNr cterm=NONE ctermfg=white
 hi clear CursorLine
 hi CursorLine ctermbg=236
 
-" auto highlight current word when idle
-" highlight the word under cursor (CursorMoved is inperformant)
-highlight WordUnderCursor cterm=underline gui=underline
-autocmd CursorHold * call HighlightCursorWord()
-function! HighlightCursorWord()
-	" disable overwrite when hlsearch is active
-	let search = getreg('/')
-	let cword = expand('<cword>')
-	if match(cword, search) == -1
-		exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-	endif
-endfunction
-" modify autosave delay, cursorhold trigger, default: 4000ms
-setl updatetime=0
-
 " enable thin cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
