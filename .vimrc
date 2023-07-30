@@ -105,5 +105,8 @@ let g:asyncomplete_auto_popup = 0
 " set key binding for goto definition
 nmap gd :LspDefinition<CR>
 
+" disable GitHub Copilot by default on startup
+autocmd VimEnter * Copilot disable
+
 colorscheme evening		" set colorscheme
 hi Normal ctermbg=none		" set background to transparent
