@@ -5,6 +5,8 @@ set relativenumber		" show relative line numbers
 
 syntax on			" enable syntax highlighting
 
+set updatetime=100		" set updatetime to 100 milliseconds (0.1 s)
+
 set cindent			" enable automatic indentation
 
 " set default indentation to 8 characters tabs
