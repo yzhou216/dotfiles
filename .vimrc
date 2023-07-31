@@ -102,6 +102,9 @@ call plug#end()
 " disable auto popup by default
 let g:asyncomplete_auto_popup = 0
 
+" set diagnostic virtual text alignment to right
+let g:lsp_diagnostics_virtual_text_align = "right"
+
 " set key binding for goto definition
 nmap gd :LspDefinition<CR>
 
