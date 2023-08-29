@@ -3,6 +3,7 @@ local legacy_vimrc = vim.fn.stdpath("config") .. "/legacy.vim"
 vim.cmd.source(legacy_vimrc)
 
 vim.opt.mouse = "" -- disable mouse support
+vim.cmd("autocmd TermOpen * startinsert") -- start terminal emulator in insert mode
 
 local Plug = vim.fn['plug#'] -- use vim.fn and vim.call to use vim-plug
 vim.call('plug#begin', '~/.config/nvim/plugged')
