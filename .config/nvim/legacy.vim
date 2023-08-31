@@ -90,6 +90,27 @@ vnoremap <Left> <Nop>
 vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
+" map global leader key to space
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+" terminal emulator
+nnoremap <leader>sh :terminal<CR>
+nnoremap <Leader>shs :split<CR>:wincmd j<CR>:term<CR>
+nnoremap <Leader>sht :tabnew<CR>:term<CR>
+
+" GNU Debugger
+nnoremap <Leader>gdb :Termdebug<CR>shell ls<CR>
+
+" format using preset indentation
+nnoremap <Leader>fmt maggvG=`a
+
+" wrap using preset textwidth
+nnoremap <Leader>wrap maggvGgq`a
+
+"reset highlight
+nnoremap <leader>nh :noh<CR>
+
 call plug#begin()
 Plug 'github/copilot.vim'	" GitHub Copilot
 Plug 'airblade/vim-gitgutter'	" show git diff in gutter
