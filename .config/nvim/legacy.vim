@@ -111,10 +111,3 @@ nnoremap <Leader>wrap maggvGgq`a
 "reset highlight
 nnoremap <leader>nh :noh<CR>
 
-call plug#begin()
-Plug 'github/copilot.vim'	" GitHub Copilot
-Plug 'airblade/vim-gitgutter'	" show git diff in gutter
-call plug#end()
-
-" disable GitHub Copilot by default on startup
-let g:copilot_enabled = v:false
