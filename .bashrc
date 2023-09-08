@@ -15,9 +15,6 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
-alias emacs='emacs -nw'
-
 if [ -d ~/.bashrc.d ]; then
 	for rc in ~/.bashrc.d/*; do
 		if [ -f "$rc" ]; then
@@ -27,6 +24,9 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
+
+# User specific aliases and functions
+alias emacs='emacs -nw'
 
 # set VIM as default editor
 export VISUAL=vim
