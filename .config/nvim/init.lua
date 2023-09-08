@@ -5,23 +5,36 @@ vim.cmd.source(legacy_vimrc)
 vim.opt.mouse = "" -- disable mouse support
 vim.cmd("autocmd TermOpen * startinsert") -- start terminal emulator in insert mode
 
-local Plug = vim.fn['plug#'] -- use vim.fn and vim.call to use vim-plug
-vim.call('plug#begin', '~/.config/nvim/plugged')
--- START: Dependencies for lsp-zero.nvim
--- LSP Support
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+-- bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'L3MON4D3/LuaSnip'
--- END: Dependencies for lsp-zero.nvim
+-- plugins
+require("lazy").setup({
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  dependencies = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 
--- LSP Zero
-Plug 'VonHeikemen/lsp-zero.nvim'
-vim.call('plug#end')
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
+  }
+})
 
 local lsp = require('lsp-zero').preset({})
 
