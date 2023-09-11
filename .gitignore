@@ -2,3 +2,8 @@
 **/plugged
 lazy-lock.json
 .netrwhist
+
+# emacs
+custom.el
+eln-cache/
+elpa/
