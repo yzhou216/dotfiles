@@ -101,6 +101,7 @@ nnoremap <Leader>sht :tabnew<CR>:term<CR>
 
 " GNU Debugger
 nnoremap <Leader>gdb :Termdebug<CR>shell ls<CR>
+nnoremap <Leader>asm :Termdebug<CR>shell ls<CR><C-w>l:Asm<CR><C-w>h
 
 " format using preset indentation
 nnoremap <Leader>fmt maggvG=`a
