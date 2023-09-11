@@ -121,6 +121,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim' " asynchronous completion framework f
 Plug 'github/copilot.vim' " GitHub Copilot
 
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " disable auto popup by default
