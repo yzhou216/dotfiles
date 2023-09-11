@@ -35,7 +35,7 @@
 
 ;; set path for customise system
 (setq custom-file "~/.config/emacs/custom.el")
-(load custom-file)
+(ignore-errors (load custom-file)) ;; It may not yet exist.
 
 ;; use-package
 (require 'package)
