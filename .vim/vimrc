@@ -121,6 +121,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim' " asynchronous completion framework f
 Plug 'github/copilot.vim' " GitHub Copilot
 
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " disable auto popup by default
@@ -134,6 +137,9 @@ nmap gd :LspDefinition<CR>
 
 " disable GitHub Copilot by default on startup
 let g:copilot_enabled = v:false
+
+" fuzzy search files: fzf
+nnoremap <Leader>ff :Files!<CR>
 
 colorscheme evening		" set colorscheme
 hi Normal ctermbg=none		" set background to transparent

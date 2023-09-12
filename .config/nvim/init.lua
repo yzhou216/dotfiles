@@ -37,7 +37,14 @@ require("lazy").setup({
       {'hrsh7th/cmp-nvim-lsp'},
       {'L3MON4D3/LuaSnip'},
     }
-  }
+  },
+  {
+    -- fuzzy finder: fzf
+    'junegunn/fzf',
+    on = {'FZF', 'Files', 'Rg'},
+    run = function() vim.cmd('call fzf#install()') end
+  },
+  'junegunn/fzf.vim'
 })
 
 local lsp = require('lsp-zero').preset({})
@@ -84,3 +91,6 @@ cmp.setup({
 
 -- disable GitHub Copilot by default on startup
 vim.g.copilot_enabled = false
+
+-- fuzzy search files: fzf
+vim.api.nvim_set_keymap('n', '<Leader>ff', ':Files!<CR>', {noremap = true, silent = true})
