@@ -138,5 +138,8 @@ nmap gd :LspDefinition<CR>
 " disable GitHub Copilot by default on startup
 let g:copilot_enabled = v:false
 
+" fuzzy search files: fzf
+nnoremap <Leader>ff :Files!<CR>
+
 colorscheme evening		" set colorscheme
 hi Normal ctermbg=none		" set background to transparent
