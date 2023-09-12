@@ -91,3 +91,6 @@ cmp.setup({
 
 -- disable GitHub Copilot by default on startup
 vim.g.copilot_enabled = false
+
+-- fuzzy search files: fzf
+vim.api.nvim_set_keymap('n', '<Leader>ff', ':Files!<CR>', {noremap = true, silent = true})
