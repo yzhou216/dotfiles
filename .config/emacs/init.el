@@ -45,10 +45,3 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
-
-;; evil mode
-(use-package evil
-  :ensure t
-  :config
-  (evil-mode)
-  (evil-set-undo-system 'undo-redo))
