@@ -8,3 +8,4 @@ custom.el
 eln-cache/
 elpa/
 auto-save-list/
+url
