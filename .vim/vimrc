@@ -124,6 +124,9 @@ Plug 'airblade/vim-gitgutter' " show git diff in gutter
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'lervag/vimtex' " VimTeX
+
 call plug#end()
 
 " disable auto popup by default
@@ -140,6 +143,9 @@ let g:copilot_enabled = v:false
 
 " fuzzy search files: fzf
 nnoremap <Leader>ff :Files!<CR>
+
+let g:vimtex_view_general_viewer = 'evince'
+let g:vimtex_compiler_method = 'latexmk'
 
 colorscheme evening		" set colorscheme
 hi Normal ctermbg=none		" set background to transparent
