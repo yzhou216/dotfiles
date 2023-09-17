@@ -111,3 +111,6 @@ nnoremap <Leader>wrap maggvGgq`a
 
 "reset highlight
 nnoremap <leader>nh :noh<CR>
+
+" file explore
+nnoremap <Leader>fe :Explore<CR>
