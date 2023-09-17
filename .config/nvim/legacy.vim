@@ -1,5 +1,7 @@
 set nocompatible		" use VIM settings rather than Vi settings
 
+set hidden			" allow buffer switching with unsaved changes
+
 set number			" show current line number
 set relativenumber		" show relative line numbers
 
