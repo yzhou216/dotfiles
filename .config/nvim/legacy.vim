@@ -112,3 +112,4 @@ nnoremap <Leader>nh :nohlsearch<CR>
 
 " file explore
 nnoremap <Leader>fe :Explore<CR>
+nnoremap <Leader>vfe :Vexplore<CR>
