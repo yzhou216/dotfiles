@@ -62,30 +62,10 @@ autocmd BufWinLeave * call clearmatches()
 
 " enhancement for netrw
 let g:netrw_banner=0		" disable banner
-let g:netrw_browse_split=4	" open in prior window
 let g:netrw_altv=1		" open vertical splits to the right
 let g:netrw_liststyle=3		" enable tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
-" close Netrw after opening a file (which gets opened in another window):
-let g:netrw_fastbrowse = 0
-autocmd FileType netrw setl bufhidden=wipe
-function! CloseNetrw() abort
-  for bufn in range(1, bufnr('$'))
-    if bufexists(bufn) && getbufvar(bufn, '&filetype') ==# 'netrw'
-      silent! execute 'bwipeout ' . bufn
-      if getline(2) =~# '^" Netrw '
-        silent! bwipeout
-      endif
-      return
-    endif
-  endfor
-endfunction
-augroup closeOnOpen
-  autocmd!
-  autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), "&filetype") != "netrw"|call CloseNetrw()|endif
-aug END
 
 " enhancement for termdebug
 packadd termdebug		" enable termdebug
