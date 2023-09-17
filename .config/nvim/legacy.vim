@@ -119,3 +119,4 @@ nnoremap <Leader>vfe :Vexplore<CR>
 " buffer switching
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>buf :buffers<CR>:buffer<Space>
