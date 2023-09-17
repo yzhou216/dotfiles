@@ -114,6 +114,10 @@ nnoremap <Leader>nh :nohlsearch<CR>
 nnoremap <Leader>fe :Explore<CR>
 nnoremap <Leader>vfe :Vexplore<CR>
 
+" buffer switching
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp' " language server protocol
 Plug 'mattn/vim-lsp-settings' " LSP server installer

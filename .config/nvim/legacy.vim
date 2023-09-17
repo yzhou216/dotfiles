@@ -113,3 +113,7 @@ nnoremap <Leader>nh :nohlsearch<CR>
 " file explore
 nnoremap <Leader>fe :Explore<CR>
 nnoremap <Leader>vfe :Vexplore<CR>
+
+" buffer switching
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
