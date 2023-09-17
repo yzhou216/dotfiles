@@ -109,8 +109,8 @@ nnoremap <Leader>fmt maggvG=`a
 " wrap using preset textwidth
 nnoremap <Leader>wrap maggvGgq`a
 
-"reset highlight
-nnoremap <leader>nh :noh<CR>
+" reset highlight
+nnoremap <Leader>nh :nohlsearch<CR>
 
 " file explore
 nnoremap <Leader>fe :Explore<CR>
