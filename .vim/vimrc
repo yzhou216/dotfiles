@@ -151,7 +151,7 @@ nmap gd :LspDefinition<CR>
 let g:copilot_enabled = v:false
 
 " fuzzy search files: fzf
-nnoremap <Leader>ff :Files!<CR>
+nnoremap <Leader>sf :Files!<CR>
 
 let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_compiler_method = 'latexmk'

@@ -93,4 +93,4 @@ cmp.setup({
 vim.g.copilot_enabled = false
 
 -- fuzzy search files: fzf
-vim.api.nvim_set_keymap('n', '<Leader>ff', ':Files!<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>sf', ':Files!<CR>', {noremap = true, silent = true})
