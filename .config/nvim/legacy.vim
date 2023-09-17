@@ -95,7 +95,7 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " terminal emulator
-nnoremap <leader>sh :terminal<CR>
+nnoremap <Leader>sh :terminal<CR>
 nnoremap <Leader>shs :split<CR>:wincmd j<CR>:term<CR>
 nnoremap <Leader>sht :tabnew<CR>:term<CR>
 
