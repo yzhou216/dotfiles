@@ -112,6 +112,7 @@ nnoremap <Leader>nh :nohlsearch<CR>
 
 " file explore
 nnoremap <Leader>fe :Explore<CR>
+nnoremap <Leader>vfe :Vexplore<CR>
 
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp' " language server protocol
