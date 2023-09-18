@@ -135,7 +135,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'lervag/vimtex' " VimTeX
-
 call plug#end()
 
 " disable auto popup by default
