@@ -45,6 +45,7 @@ require("lazy").setup({
     run = function() vim.cmd('call fzf#install()') end
   },
   'junegunn/fzf.vim'
+  'kylelaker/riscv.vim' -- RISC-V assembly syntax highlighting
 })
 
 local lsp = require('lsp-zero').preset({})
