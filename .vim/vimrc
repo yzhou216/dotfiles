@@ -135,6 +135,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'lervag/vimtex' " VimTeX
+
+Plug 'kylelaker/riscv.vim' " RISC-V assembly syntax highlighting
 call plug#end()
 
 " disable auto popup by default
