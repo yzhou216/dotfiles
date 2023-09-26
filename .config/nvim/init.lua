@@ -44,7 +44,7 @@ require("lazy").setup({
     on = {'FZF', 'Files', 'Rg'},
     run = function() vim.cmd('call fzf#install()') end
   },
-  'junegunn/fzf.vim'
+  'junegunn/fzf.vim',
   'kylelaker/riscv.vim' -- RISC-V assembly syntax highlighting
 })
 
