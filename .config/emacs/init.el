@@ -45,3 +45,6 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
+
+;; ensure packages are automatically installed when using use-package
+(setq use-package-always-ensure t)
