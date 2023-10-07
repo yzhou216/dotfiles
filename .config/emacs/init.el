@@ -48,3 +48,13 @@
 
 ;; ensure packages are automatically installed when using use-package
 (setq use-package-always-ensure t)
+
+;; Evil
+(use-package evil
+  :demand t
+  :bind (("<escape>" . keyboard-escape-quit))
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+  (setq evil-disable-insert-state-bindings t)
