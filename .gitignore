@@ -1,7 +1,11 @@
-**/autoload
-**/plugged
-lazy-lock.json
-.netrwhist
+# Vim
+.vim/*
+!.vim/vimrc
+
+# Neovim
+.config/nvim/*
+!.config/nvim/init.lua
+!.config/nvim/legacy.vim
 
 # emacs
 .config/emacs/*
