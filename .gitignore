@@ -12,7 +12,8 @@
 !.config/emacs/init.el
 
 # Nyxt
-auto-config.3.lisp
+.config/nyxt/*
+!.config/nyxt/config.lisp
 
 # Emacs temp files
 \#*\#
