@@ -4,11 +4,8 @@ lazy-lock.json
 .netrwhist
 
 # emacs
-custom.el
-eln-cache/
-elpa/
-auto-save-list/
-url
+.config/emacs/*
+!.config/emacs/init.el
 
 # Nyxt
 auto-config.3.lisp
