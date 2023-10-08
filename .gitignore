@@ -7,7 +7,7 @@
 !.config/nvim/init.lua
 !.config/nvim/legacy.vim
 
-# emacs
+# Emacs
 .config/emacs/*
 !.config/emacs/init.el
 
