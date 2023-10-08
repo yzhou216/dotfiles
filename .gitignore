@@ -9,3 +9,6 @@ eln-cache/
 elpa/
 auto-save-list/
 url
+
+# Nyxt
+auto-config.3.lisp
