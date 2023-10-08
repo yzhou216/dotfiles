@@ -13,3 +13,9 @@
 
 # Nyxt
 auto-config.3.lisp
+
+# Emacs temp files
+\#*\#
+*~
+.#*
+tramp
