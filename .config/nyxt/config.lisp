@@ -1,3 +1,7 @@
+;; dark-mode
+(define-configuration buffer
+  ((default-modes (append '(dark-mode) %slot-value%))))
+
 ;; emacs-mode
 (define-configuration (web-buffer prompt-buffer panel-buffer
                        nyxt/mode/editor:editor-buffer)
