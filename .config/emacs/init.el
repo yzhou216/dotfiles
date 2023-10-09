@@ -22,11 +22,6 @@
 (setq-default c-default-style "linux"
 	      indent-tabs-mode t)
 
-;; set indentation for Java
-(add-hook 'java-mode-hook
-          (lambda ()
-            (setq-local c-basic-offset 4)))
-
 ;; set dark mode
 (when (display-graphic-p)
   (invert-face 'default)
