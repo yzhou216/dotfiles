@@ -63,3 +63,22 @@
 (use-package which-key
   :config
   (which-key-mode))
+
+;; lsp-mode
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap
+  (setq lsp-keymap-prefix "C-c l")
+  :hook
+  ((java-mode . lsp)
+   ;; which-key integration
+   (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; lsp-ui
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
+;; lsp-java
+(use-package lsp-java
+  :config (add-hook 'java-mode-hook 'lsp))
