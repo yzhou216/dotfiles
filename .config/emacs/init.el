@@ -91,3 +91,6 @@
 (use-package helm
   :config (helm-mode))
 (use-package helm-lsp)
+
+;; flycheck
+(use-package flycheck)
