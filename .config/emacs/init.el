@@ -86,3 +86,8 @@
 ;; company-mode
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; helm-mode
+(use-package helm
+  :config (helm-mode))
+(use-package helm-lsp)
