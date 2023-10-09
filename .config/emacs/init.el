@@ -82,3 +82,7 @@
 ;; lsp-java
 (use-package lsp-java
   :config (add-hook 'java-mode-hook 'lsp))
+
+;; company-mode
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
