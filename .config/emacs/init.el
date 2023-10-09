@@ -58,3 +58,8 @@
   :config
   (evil-mode 1))
   (setq evil-disable-insert-state-bindings t)
+
+;; which-key
+(use-package which-key
+  :config
+  (which-key-mode))
