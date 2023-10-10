@@ -32,6 +32,9 @@
 (setq custom-file "~/.config/emacs/custom.el")
 (ignore-errors (load custom-file)) ;; It may not yet exist.
 
+;; update buffers when files on the disk changes
+(add-hook 'after-init-hook 'global-auto-revert-mode)
+
 ;; use-package
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
