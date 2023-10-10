@@ -7,25 +7,24 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
-;; set gray line highlight
-(global-hl-line-mode t) ; Enable hl-line-mode
-(custom-set-faces ; Customize the hl-line face to be gray
- '(hl-line ((t (:background "gray20")))))
+;; enable line number
+(global-display-line-numbers-mode 1)
 
 ;; set non blinking cursor
 (blink-cursor-mode 0)
 
-;; line number
-(global-display-line-numbers-mode 1)
+;; enable hl-line-mode to highlight the current line
+(global-hl-line-mode t)
 
-;; set indentation for C
-(setq-default c-default-style "linux"
-	      indent-tabs-mode t)
+;; customize the hl-line face to be gray
+(custom-set-faces
+ '(hl-line ((t (:background "gray20")))))
 
-;; set dark mode
+;; swap default foreground and background colors of the current display
 (when (display-graphic-p)
-  (invert-face 'default)
-)
+  (invert-face 'default))
+
+;; set frame background to dark
 (set-variable 'frame-background-mode 'dark)
 
 ;; set path for customise system
@@ -38,6 +37,10 @@
 ;; fido-vertical-mdoe (icomplete-mode with flex match)
 (fido-vertical-mode 1)
 (setq completions-detailed t)
+
+;; set indentation style for C
+(setq-default c-default-style "linux"
+	      indent-tabs-mode t)
 
 ;; use-package
 (require 'package)
