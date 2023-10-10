@@ -51,7 +51,13 @@
   :init
   (setq evil-want-keybinding nil)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+
+  ;; set space key as global leader
+  (evil-set-leader 'normal " ")
+
+  ;; set backslash as local leader
+  (evil-set-leader 'normal "\\"))
   (setq evil-disable-insert-state-bindings t)
 
 ;; which-key
