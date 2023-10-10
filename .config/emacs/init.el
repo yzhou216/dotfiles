@@ -35,6 +35,10 @@
 ;; update buffers when files on the disk changes
 (add-hook 'after-init-hook 'global-auto-revert-mode)
 
+;; fido-vertical-mdoe (icomplete-mode with flex match)
+(fido-vertical-mode 1)
+(setq completions-detailed t)
+
 ;; use-package
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
@@ -106,11 +110,6 @@
 (use-package company
   :init
   (add-hook 'after-init-hook 'global-company-mode))
-
-;; helm-mode
-(use-package helm
-  :config (helm-mode))
-(use-package helm-lsp)
 
 ;; flycheck
 (use-package flycheck)
