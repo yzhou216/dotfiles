@@ -104,7 +104,15 @@
 (use-package dap-mode
   :after lsp-mode
   :config
-  (dap-auto-configure-mode))
+  (dap-auto-configure-mode)
+
+  ;; Evil local leader macros
+  (evil-define-key 'normal 'global (kbd "<localleader>b") 'dap-breakpoint-toggle)
+  (evil-define-key 'normal 'global (kbd "<localleader>d") 'dap-breakpoint-delete-all)
+  (evil-define-key 'normal 'global (kbd "<localleader>n") 'dap-next)
+  (evil-define-key 'normal 'global (kbd "<localleader>s") 'dap-step-in)
+  (evil-define-key 'normal 'global (kbd "<localleader>c") 'dap-continue)
+  (evil-define-key 'normal 'global (kbd "<localleader>q") 'dap-disconnect))
 
 ;; dap-java
 (use-package dap-java
