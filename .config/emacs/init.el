@@ -99,3 +99,13 @@
 
 ;; flycheck
 (use-package flycheck)
+
+;; dap-mode
+(use-package dap-mode
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode))
+
+;; dap-java
+(use-package dap-java
+  :ensure nil)
