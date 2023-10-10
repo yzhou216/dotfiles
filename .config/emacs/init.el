@@ -50,6 +50,10 @@
   :bind (("<escape>" . keyboard-escape-quit))
   :init
   (setq evil-want-keybinding nil)
+
+  ;; use Emacs bindings in insert mode
+  (setq evil-disable-insert-state-bindings t)
+
   :config
   (evil-mode 1)
 
@@ -58,7 +62,6 @@
 
   ;; set backslash as local leader
   (evil-set-leader 'normal "\\"))
-  (setq evil-disable-insert-state-bindings t)
 
 ;; which-key
 (use-package which-key
