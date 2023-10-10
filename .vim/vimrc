@@ -28,7 +28,7 @@ augroup custom_indent
   au FileType java,python,r,md,rmd set tabstop=4 shiftwidth=4 expandtab
 
   " HTML, CSS and JavaScript: set indent to 2 spaces, convert tabs to spaces
-  au FileType html,css,javascript set tabstop=2 shiftwidth=2 expandtab
+  au FileType lisp,el,html,css,javascript set tabstop=2 shiftwidth=2 expandtab
 augroup END
 
 " autowrap line at 80 columns
