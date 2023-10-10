@@ -61,7 +61,7 @@
   (evil-set-leader 'normal " ")
 
   ;; set backslash as local leader
-  (evil-set-leader 'normal "\\"))
+  (evil-set-leader 'normal "\\" t))
 
 ;; which-key
 (use-package which-key
