@@ -101,7 +101,8 @@
    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
-  (setq read-process-output-max (* 1024 1024))) ;; 1 mb
+  (setq read-process-output-max (* 1024 1024)) ;; 1 mb
+  (setq gc-cons-threshold 100000000))
 
 ;; lsp-ui
 (use-package lsp-ui
