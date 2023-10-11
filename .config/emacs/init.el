@@ -34,6 +34,12 @@
 ;; update buffers when files on the disk changes
 (add-hook 'after-init-hook 'global-auto-revert-mode)
 
+;; ensure smooth scrolling
+(setq scroll-conservatively 101)
+
+;; set a margin of 10 lines at the top and bottom for scrolling
+(setq scroll-margin 10)
+
 ;; fido-vertical-mdoe (icomplete-mode with flex match)
 (fido-vertical-mode 1)
 (setq completions-detailed t)
