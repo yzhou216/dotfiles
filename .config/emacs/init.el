@@ -99,7 +99,9 @@
   ((java-mode . lsp)
    ;; which-key integration
    (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :commands lsp
+  :config
+  (setq read-process-output-max (* 1024 1024))) ;; 1 mb
 
 ;; lsp-ui
 (use-package lsp-ui
