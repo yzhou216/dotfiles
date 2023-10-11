@@ -118,7 +118,10 @@
 ;; company-mode
 (use-package company
   :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+	company-idle-delay 0.0)) ;; default: 0.2
 
 ;; flycheck
 (use-package flycheck)
