@@ -101,8 +101,11 @@
    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
+  ;; increase the amount of data which Emacs reads from the process
   (setq read-process-output-max (* 1024 1024)) ;; 1 mb
-  (setq gc-cons-threshold 100000000))
+
+  ;; adjust gc-cons-threshold
+  (setq gc-cons-threshold 100000000)) ;; 100 mb
 
 ;; lsp-ui
 (use-package lsp-ui
