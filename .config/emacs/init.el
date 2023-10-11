@@ -149,3 +149,19 @@
 ;; dap-java
 (use-package dap-java
   :ensure nil)
+
+;; perspective.el
+(use-package perspective
+  :bind
+  ("C-x C-b" . persp-list-buffers)
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))
+  :init
+  (persp-mode)
+  :config
+  ;; key bindings
+  (define-key global-map (kbd "M-[") 'persp-prev)
+  (define-key global-map (kbd "M-]") 'persp-next)
+  (evil-define-key 'normal 'global (kbd "<leader>ps") 'persp-switch)
+  (evil-define-key 'normal 'global (kbd "<leader>pk") 'persp-kill)
+  (evil-define-key 'normal 'global (kbd "<leader>pmb") 'persp-set-buffer)) ;; move buffer to current perspective
