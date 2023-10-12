@@ -176,3 +176,21 @@
   (evil-define-key 'normal 'global (kbd "<leader>ps") 'persp-switch)
   (evil-define-key 'normal 'global (kbd "<leader>pk") 'persp-kill)
   (evil-define-key 'normal 'global (kbd "<leader>pmb") 'persp-set-buffer)) ;; move buffer to current perspective
+
+;; Emacs Application Framework (EAF)
+(use-package quelpa-use-package)
+;; external dependencies required, run M-x eaf-install to install
+(use-package eaf
+  :demand t
+  :quelpa (eaf :fetcher github
+              :repo  "manateelazycat/emacs-application-framework"
+              :files ("*"))
+  :load-path "~/.config/emacs/site-lisp/emacs-application-framework"
+  :init
+  (use-package epc      :defer t :ensure t)
+  (use-package ctable   :defer t :ensure t)
+  (use-package deferred :defer t :ensure t)
+  (use-package s        :defer t :ensure t)
+  (setq browse-url-browser-function 'eaf-open-browser)
+  :config
+  (require 'eaf-browser))
