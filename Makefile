@@ -1,4 +1,4 @@
-.PHONY: install
+.PHONY: default install clean sync
 
 default:
 	@# vim-plug
