@@ -48,6 +48,17 @@
 (setq-default c-default-style "linux"
 	      indent-tabs-mode t)
 
+(defun delete-other-windows-and-kill-buffers ()
+  "Make current window fill its frame and kill the buffers displayed in them."
+  (interactive)
+  (let ((current-buffer (current-buffer)))
+    (dolist (window (window-list))
+      (unless (eq (window-buffer window) current-buffer)
+        (kill-buffer (window-buffer window))
+        (delete-window window))))
+  (message "Other windows deleted and buffers killed."))
+(global-set-key (kbd "C-x C-1") 'delete-other-windows-and-kill-buffers)
+
 ;; use-package
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
