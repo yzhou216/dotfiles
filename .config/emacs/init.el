@@ -48,6 +48,10 @@
 (setq-default c-default-style "linux"
 	      indent-tabs-mode t)
 
+;; set the dictionary server for dictionary lookup to dict.org
+(setq dictionary-server "dict.org")
+(global-set-key (kbd "C-c l") #'dictionary-lookup-definition)
+
 (defun delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
   (interactive)
