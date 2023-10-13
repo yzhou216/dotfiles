@@ -209,8 +209,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (persp-mode)
   :config
   ;; key bindings
-  (define-key global-map (kbd "M-[") 'persp-prev)
-  (define-key global-map (kbd "M-]") 'persp-next)
+  (define-key global-map (kbd "M-p") 'persp-prev)
+  (define-key global-map (kbd "M-n") 'persp-next)
   (evil-define-key 'normal 'global (kbd "<leader>ps") 'persp-switch)
   (evil-define-key 'normal 'global (kbd "<leader>pk") 'persp-kill)
   (evil-define-key 'normal 'global (kbd "<leader>pmb") 'persp-set-buffer)) ;; move buffer to current perspective
