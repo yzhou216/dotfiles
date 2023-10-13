@@ -52,6 +52,40 @@
 (setq dictionary-server "dict.org")
 (global-set-key (kbd "C-c l") #'dictionary-lookup-definition)
 
+(defun flyspell-on-for-buffer-type ()
+  "Enable Flyspell appropriately for the major mode of the current buffer.  Uses
+`flyspell-prog-mode' for modes derived from `prog-mode', so only strings and
+comments get checked.  All other buffers get `flyspell-mode' to check all text.
+If flyspell is already enabled, does nothing.
+
+source: https://www.emacswiki.org/emacs/FlySpell "
+  (interactive)
+  (if (not (symbol-value flyspell-mode)) ; if not already on
+    (progn
+      (if (derived-mode-p 'prog-mode)
+        (progn
+          (message "Flyspell on (code)")
+          (flyspell-prog-mode))
+        ; else
+        (progn
+          (message "Flyspell on (text)")
+          (flyspell-mode 1))))))
+
+(defun flyspell-toggle ()
+  "Turn Flyspell on if it is off, or off if it is on.  When turning on, it uses
+`flyspell-on-for-buffer-type' so code-vs-text is handled appropriately.
+
+source: https://www.emacswiki.org/emacs/FlySpell "
+  (interactive)
+    (if (symbol-value flyspell-mode)
+      (progn ; flyspell is on, turn it off
+        (message "Flyspell off")
+        (flyspell-mode -1))
+      ; else - flyspell is off, turn it on
+      (flyspell-on-for-buffer-type)))
+
+(global-set-key (kbd "C-c f") 'flyspell-toggle)
+
 (defun delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
   (interactive)
