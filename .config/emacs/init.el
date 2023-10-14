@@ -125,7 +125,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (let ((buf-name (car name.buf)))
     (or (string= "*scratch*" buf-name) ; exception: *scratch* buffer
         (not (string-match "^\\*.*\\*$" buf-name)))))))))
-  (switch-to-buffer buffer buffer-or-name norecord force-same-window))
+  (switch-to-buffer buffer-or-name norecord force-same-window))
 
 (global-set-key (kbd "C-x b") 'switch-to-non-file-buffer) ; non-file buffer (except *scratch*)
 (global-set-key (kbd "C-x B") 'switch-to-buffer) ; all buffer
