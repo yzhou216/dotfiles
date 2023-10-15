@@ -122,9 +122,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
                         (other-buffer (current-buffer))
                         (confirm-nonexistent-file-or-buffer)
                         (lambda (name.buf)
-  (let ((buf-name (car name.buf)))
-    (or (string= "*scratch*" buf-name) ; exception: *scratch* buffer
-        (not (string-match "^\\*.*\\*$" buf-name)))))))))
+  (let ((buf-name (car name.buf))
+        (buf (cdr name.buf)))
+    (and (not (string= "*scratch*" buf-name)) ; exception: *scratch* buffer
+         (not (string-match "^\\*.*\\*$" buf-name)) ; exclude buffers with names surrounded by asterisks
+         (not (eq 'dired-mode (buffer-local-value 'major-mode buf)))))))))) ; exclude dired buffers
   (switch-to-buffer buffer-or-name norecord force-same-window))
 
 (global-set-key (kbd "C-x b") 'switch-to-non-file-buffer) ; non-file buffer (except *scratch*)
