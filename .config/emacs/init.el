@@ -97,8 +97,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (message "Other windows deleted and buffers killed."))
 (global-set-key (kbd "C-x C-1") 'delete-other-windows-and-kill-buffers)
 
-(defun switch-to-non-file-buffer (buffer-or-name &optional norecord force-same-window)
-  "Switch to non-file buffer, with the exception of '*scratch*'."
+(defun switch-to-only-file-buffer (buffer-or-name &optional norecord force-same-window)
+  "Switch to only file buffer, with the exception of '*scratch*'."
   (interactive
    (let ((force-same-window
           (cond
@@ -129,7 +129,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
          (not (eq 'dired-mode (buffer-local-value 'major-mode buf)))))))))) ; exclude dired buffers
   (switch-to-buffer buffer-or-name norecord force-same-window))
 
-(global-set-key (kbd "C-x b") 'switch-to-non-file-buffer) ; non-file buffer (except *scratch*)
+(global-set-key (kbd "C-x b") 'switch-to-only-file-buffer) ; only file buffer (except *scratch*)
 (global-set-key (kbd "C-x B") 'switch-to-buffer) ; all buffer
 
 ;; use-package
