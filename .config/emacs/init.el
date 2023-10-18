@@ -211,7 +211,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-minimum-prefix-length 1
-	company-idle-delay 0.0)) ;; default: 0.2
+        company-idle-delay 0.0) ;; default: 0.2
+  (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))) ; disable company in eshell
 
 ;; flycheck
 (use-package flycheck)
