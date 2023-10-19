@@ -132,6 +132,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (global-set-key (kbd "C-x b") 'switch-to-only-file-buffer) ; only file buffer (except *scratch*)
 (global-set-key (kbd "C-x B") 'switch-to-buffer) ; all buffer
 
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (eshell/alias "clear" "clear 1")))
+
 ;; use-package
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
