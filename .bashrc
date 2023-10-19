@@ -25,6 +25,9 @@ fi
 
 unset rc
 
+# Use emacs key bindings
+set -o emacs
+
 # User specific aliases and functions
 alias emacs='emacs -nw'
 
