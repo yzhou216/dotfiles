@@ -184,6 +184,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   (which-key-mode))
 
+;; yasnippet
+(use-package yasnippet
+  :config (yas-global-mode))
+
+;; yasnippet-snippets
+(use-package yasnippet-snippets)
+
 ;; lsp-mode
 (use-package lsp-mode
   :init
