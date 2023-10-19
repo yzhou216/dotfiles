@@ -255,6 +255,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package dap-java
   :ensure nil)
 
+;; libvterm
+(use-package vterm)
+
 ;; perspective.el
 (use-package perspective
   :bind
