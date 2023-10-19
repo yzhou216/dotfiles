@@ -155,6 +155,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :init
   (setq evil-want-keybinding nil)
 
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+
   ;; use Emacs bindings in insert mode
   (setq evil-disable-insert-state-bindings t)
 
@@ -166,6 +169,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   ;; set backslash as local leader
   (evil-set-leader 'normal "\\" t))
+
+;; Evil Collection
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 ;; git-gutter
 (use-package git-gutter
