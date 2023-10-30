@@ -255,6 +255,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package dap-java
   :ensure nil)
 
+;; Racket Mode
+(use-package racket-mode)
+
 ;; libvterm
 (use-package vterm)
 
