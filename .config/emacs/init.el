@@ -44,6 +44,10 @@
 (fido-vertical-mode 1)
 (setq completions-detailed t)
 
+;; midnight.el
+(require 'midnight)
+(midnight-delay-set 'midnight-delay 16200) ; (eq (* 4.5 60 60) "4:30am")
+
 ;; set indentation style for C
 (setq-default c-default-style "linux"
 	      indent-tabs-mode t)
