@@ -7,6 +7,9 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
+;; hide native comp warnings
+(setq native-comp-async-report-warnings-errors nil)
+
 ;; enable line number
 (global-display-line-numbers-mode 1)
 
