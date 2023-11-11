@@ -207,30 +207,17 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; yasnippet-snippets
 (use-package yasnippet-snippets)
 
-;; lsp-mode
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap
-  (setq lsp-keymap-prefix "C-c l")
-  :hook
-  ((java-mode . lsp)
-   ;; which-key integration
-   (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
-  :config
-  ;; increase the amount of data which Emacs reads from the process
-  (setq read-process-output-max (* 1024 1024)) ;; 1 mb
-
-  ;; adjust gc-cons-threshold
-  (setq gc-cons-threshold 100000000)) ;; 100 mb
-
-;; lsp-ui
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-
-;; lsp-java
-(use-package lsp-java
-  :config (add-hook 'java-mode-hook 'lsp))
+;; Eglot
+(require 'eglot)
+(add-hook 'java-mode-hook 'eglot-ensure) ; Eclipse JDT LS
+(with-eval-after-load 'evil
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e r") 'eglot-rename)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e i") 'eglot-code-action-organize-imports)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e h") 'eldoc)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e fmt") 'eglot-format)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e n") 'flymake-goto-next-error)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e p") 'flymake-goto-prev-error)
+  (evil-define-key 'normal eglot-mode-map (kbd "C-e gd") 'xref-find-definitions))
 
 ;; company-mode
 (use-package company
@@ -243,24 +230,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; flycheck
 (use-package flycheck)
-
-;; dap-mode
-(use-package dap-mode
-  :after lsp-mode
-  :config
-  (dap-auto-configure-mode)
-
-  ;; Evil leader macros
-  (evil-define-key 'normal 'global (kbd "<leader>b") 'dap-breakpoint-toggle)
-  (evil-define-key 'normal 'global (kbd "<leader>d") 'dap-breakpoint-delete-all)
-  (evil-define-key 'normal 'global (kbd "<leader>n") 'dap-next)
-  (evil-define-key 'normal 'global (kbd "<leader>s") 'dap-step-in)
-  (evil-define-key 'normal 'global (kbd "<leader>c") 'dap-continue)
-  (evil-define-key 'normal 'global (kbd "<leader>q") 'dap-disconnect))
-
-;; dap-java
-(use-package dap-java
-  :ensure nil)
 
 ;; Racket Mode
 (use-package racket-mode)
