@@ -13,6 +13,10 @@
 ;; enable line number
 (global-display-line-numbers-mode 1)
 
+;; relative line numbers
+(display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
 ;; set non blinking cursor
 (blink-cursor-mode 0)
 
