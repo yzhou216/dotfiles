@@ -179,7 +179,15 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-set-leader 'normal " ")
 
   ;; set backslash as local leader
-  (evil-set-leader 'normal "\\" t))
+  (evil-set-leader 'normal "\\" t)
+
+  ;; buffer operation
+  (evil-define-key 'normal 'global (kbd "<leader>bs") 'switch-to-only-file-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>bS") 'switch-to-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-buffer)
+
+  ;; file operation
+  (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file))
 
 ;; Evil Collection
 (use-package evil-collection
