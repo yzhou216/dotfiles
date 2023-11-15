@@ -209,6 +209,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   (which-key-mode))
 
+;; treesit-auto
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install t)
+  (global-treesit-auto-mode))
+
 ;; yasnippet
 (use-package yasnippet
   :config (yas-global-mode))
