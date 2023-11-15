@@ -27,12 +27,9 @@
 (custom-set-faces
  '(hl-line ((t (:background "gray20")))))
 
-;; check for graphical display and adjust visuals accordingly
-(when (display-graphic-p)
-  ;; invert only if the background color is the original one (e.g., "white")
-  (when (equal (face-background 'default) "white")
-    (invert-face 'default)) ; swap foreground and background colors
-  (setq frame-background-mode 'dark)) ; set frame background to dark
+;; light on dark
+(set-background-color "black")
+(set-foreground-color "white")
 
 ;; set path for customise system
 (setq custom-file "~/.config/emacs/custom.el")
