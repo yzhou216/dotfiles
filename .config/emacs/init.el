@@ -161,8 +161,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
   :init
-  (setq evil-want-keybinding nil)
-
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
 
