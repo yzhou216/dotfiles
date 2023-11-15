@@ -144,11 +144,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
           (lambda ()
             (eshell/alias "clear" "clear 1")))
 
-;; use-package
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
+;; use-package
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
