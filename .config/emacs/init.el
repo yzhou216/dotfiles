@@ -192,7 +192,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :config
-  (setq git-gutter:update-interval 0.02))
+  (setq git-gutter:update-interval 0.02)
+  (evil-define-key 'normal 'global (kbd "<leader>gj") 'git-gutter:next-hunk)
+  (evil-define-key 'normal 'global (kbd "<leader>gk") 'git-gutter:previous-hunk))
 
 ;; git-gutter-fringe.el (disable in tty frame)
 (if (display-graphic-p)
