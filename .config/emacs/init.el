@@ -252,6 +252,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; flycheck
 (use-package flycheck)
 
+;; Magit
+(use-package magit
+  :config
+  (evil-define-key 'normal 'global (kbd "<leader>gs") 'magit-status))
+
 ;; Racket Mode
 (use-package racket-mode)
 
