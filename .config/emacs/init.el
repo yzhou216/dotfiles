@@ -265,6 +265,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; Racket Mode
 (use-package racket-mode)
 
+;; markdown-mode (major mode for Markdown)
+(use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
 ;; libvterm
 (use-package vterm)
 
