@@ -234,7 +234,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
-  :hook (java-mode . eglot-java-mode)
+  :hook
+  (java-mode    . eglot-java-mode)
+  (java-ts-mode . eglot-java-mode)
   :config
   (evil-define-key 'normal 'global (kbd "<leader>ln") 'eglot-java-file-new)
   (evil-define-key 'normal 'global (kbd "<leader>lx") 'eglot-java-run-main)
