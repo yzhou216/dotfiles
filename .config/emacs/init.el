@@ -225,24 +225,23 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; Eglot
 (require 'eglot)
 (with-eval-after-load 'evil
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e r") 'eglot-rename)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e i") 'eglot-code-action-organize-imports)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e h") 'eldoc)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e fmt") 'eglot-format)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e n") 'flymake-goto-next-error)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e p") 'flymake-goto-prev-error)
-  (evil-define-key 'normal eglot-mode-map (kbd "C-e gd") 'xref-find-definitions))
+  (evil-define-key 'normal 'global (kbd "<leader>lr") 'eglot-rename)
+  (evil-define-key 'normal 'global (kbd "<leader>li") 'eglot-code-action-organize-imports)
+  (evil-define-key 'normal 'global (kbd "<leader>lh") 'eldoc)
+  (evil-define-key 'normal 'global (kbd "<leader>lf") 'eglot-format)
+  (evil-define-key 'normal 'global (kbd "<leader>lj") 'flymake-goto-next-error)
+  (evil-define-key 'normal 'global (kbd "<leader>lk") 'flymake-goto-prev-error))
 
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
   :hook (java-mode . eglot-java-mode)
   :config
-  (define-key java-mode-map (kbd "C-c l n") #'eglot-java-file-new)
-  (define-key java-mode-map (kbd "C-c l x") #'eglot-java-run-main)
-  (define-key java-mode-map (kbd "C-c l t") #'eglot-java-run-test)
-  (define-key java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
-  (define-key java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
-  (define-key java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh))
+  (evil-define-key 'normal 'global (kbd "<leader>ln") 'eglot-java-file-new)
+  (evil-define-key 'normal 'global (kbd "<leader>lx") 'eglot-java-run-main)
+  (evil-define-key 'normal 'global (kbd "<leader>lt") 'eglot-java-run-test)
+  (evil-define-key 'normal 'global (kbd "<leader>lN") 'eglot-java-project-new)
+  (evil-define-key 'normal 'global (kbd "<leader>lT") 'eglot-java-project-build-task)
+  (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
 
 ;; company-mode
 (use-package company
