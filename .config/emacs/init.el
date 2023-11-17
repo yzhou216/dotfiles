@@ -56,6 +56,14 @@
 (setq-default c-default-style "linux"
 	      indent-tabs-mode t)
 
+;; set indentation for Java
+(defun java-mode-indentation()
+  (setq tab-width 4)
+  (setq indent-tabs-mode t)
+  (setq c-basic-offset 4))
+(add-hook 'java-mode-hook 'java-mode-indentation)
+(add-hook 'java-ts-mode-hook 'java-mode-indentation)
+
 ;; set the dictionary server for dictionary lookup to dict.org
 (setq dictionary-server "dict.org")
 (global-set-key (kbd "C-c l") #'dictionary-lookup-definition)
