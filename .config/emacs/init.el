@@ -140,6 +140,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (global-set-key (kbd "C-x b") 'switch-to-only-file-buffer) ; only file buffer (except *scratch*)
 (global-set-key (kbd "C-x B") 'switch-to-buffer) ; all buffer
 
+;; open Emacs config file
+(defun open-init-file ()
+  "Open the init file."
+  (interactive)
+  (find-file user-init-file))
+
 (add-hook 'eshell-mode-hook
           (lambda ()
             (eshell/alias "clear" "clear 1")))
@@ -180,7 +186,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-buffer)
 
   ;; file operation
-  (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file))
+  (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file)
+
+  ;; emacs config
+  (evil-define-key 'normal 'global (kbd "<leader>ec") 'open-init-file))
 
 ;; Evil Collection
 (use-package evil-collection
