@@ -246,6 +246,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>li") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal 'global (kbd "<leader>lh") 'eldoc)
   (evil-define-key 'normal 'global (kbd "<leader>lf") 'eglot-format)
+  (evil-define-key 'normal 'global (kbd "<leader>la") 'eglot-code-actions)
   (evil-define-key 'normal 'global (kbd "<leader>lj") 'flymake-goto-next-error)
   (evil-define-key 'normal 'global (kbd "<leader>lk") 'flymake-goto-prev-error))
 
