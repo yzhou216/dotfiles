@@ -249,6 +249,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>lj") 'flymake-goto-next-error)
   (evil-define-key 'normal 'global (kbd "<leader>lk") 'flymake-goto-prev-error))
 
+;; Eglot language specific hooks
+(add-hook 'python-base-mode-hook 'eglot-ensure)
+
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
   :hook
