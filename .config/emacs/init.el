@@ -286,6 +286,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; Racket Mode
 (use-package racket-mode)
 
+;; org-bullets
+(use-package org-bullets
+  :after org
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 ;; markdown-mode (major mode for Markdown)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
