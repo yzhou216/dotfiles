@@ -168,6 +168,16 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; ensure packages are automatically installed when using use-package
 (setq use-package-always-ensure t)
 
+;; auto-package-update
+(use-package auto-package-update
+  :custom
+  (auto-package-update-interval 7)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-hide-results t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "09:00"))
+
 ;; Evil
 (use-package evil
   :demand t
