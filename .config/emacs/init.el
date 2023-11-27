@@ -197,7 +197,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file)
 
   ;; emacs config
-  (evil-define-key 'normal 'global (kbd "<leader>ec") 'open-init-file))
+  (evil-define-key 'normal 'global (kbd "<leader>fc") 'open-init-file))
 
 ;; Evil Collection
 (use-package evil-collection
