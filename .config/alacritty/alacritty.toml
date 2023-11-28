@@ -2,12 +2,11 @@
 # 1. Green and bright green look like vomit.
 # 2. The background color is not black.
 
-colors:
-  primary:
-    background: '0x000000'
+[colors.bright]
+green = "0x00FF00"
 
-  normal:
-    green: '0x008000'
+[colors.normal]
+green = "0x008000"
 
-  bright:
-    green: '0x00FF00'
+[colors.primary]
+background = "0x000000"
