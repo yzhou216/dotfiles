@@ -276,6 +276,17 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>lT") 'eglot-java-project-build-task)
   (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
 
+;; dape
+(use-package dape
+  :config
+  (evil-define-key 'normal 'global (kbd "<leader>dl") 'dape)
+  (evil-define-key 'normal 'global (kbd "<leader>dq") 'dape-quit)
+  (evil-define-key 'normal 'global (kbd "<leader>db") 'dape-breakpoint-toggle)
+  (evil-define-key 'normal 'global (kbd "<leader>dc") 'dape-breakpoint-remove-all)
+  (evil-define-key 'normal 'global (kbd "<leader>dn") 'dape-next)
+  (evil-define-key 'normal 'global (kbd "<leader>ds") 'dape-step-in)
+  (evil-define-key 'normal 'global (kbd "<leader>do") 'dape-step-out))
+
 ;; company-mode
 (use-package company
   :init
