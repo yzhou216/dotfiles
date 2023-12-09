@@ -307,11 +307,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; Racket Mode
 (use-package racket-mode)
 
-;; org-bullets
-(use-package org-bullets
+;; org-superstar-mode
+(use-package org-superstar
   :after org
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
 ;; markdown-mode (major mode for Markdown)
 (use-package markdown-mode
