@@ -59,3 +59,8 @@ bar:
                 map:
                   <<: *river_base
                   deco: {underline: {size: 3, color: 404245ff}}
+
+  right:
+    - clock:
+        content:
+          - string: {text: "{time}", font: *hack}
