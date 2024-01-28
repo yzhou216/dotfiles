@@ -122,13 +122,6 @@ nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>buf :buffers<CR>:buffer<Space>
 
 call plug#begin()
-Plug 'prabirshrestha/vim-lsp' " language server protocol
-Plug 'mattn/vim-lsp-settings' " LSP server installer
-Plug 'prabirshrestha/asyncomplete.vim' " asynchronous completion framework
-Plug 'prabirshrestha/asyncomplete-lsp.vim' " asynchronous completion framework for LSP
-
-Plug 'github/copilot.vim' " GitHub Copilot
-
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -138,18 +131,6 @@ Plug 'lervag/vimtex' " VimTeX
 
 Plug 'kylelaker/riscv.vim' " RISC-V assembly syntax highlighting
 call plug#end()
-
-" disable auto popup by default
-let g:asyncomplete_auto_popup = 0
-
-" set diagnostic virtual text alignment to right
-let g:lsp_diagnostics_virtual_text_align = "right"
-
-" set key binding for goto definition
-nmap gd :LspDefinition<CR>
-
-" disable GitHub Copilot by default on startup
-let g:copilot_enabled = v:false
 
 " fuzzy search files: fzf
 nnoremap <Leader>sf :Files!<CR>
