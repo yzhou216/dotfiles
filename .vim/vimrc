@@ -137,6 +137,3 @@ nnoremap <Leader>sf :Files!<CR>
 
 let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_compiler_method = 'latexmk'
-
-colorscheme evening		" set colorscheme
-hi Normal ctermbg=none		" set background to transparent
