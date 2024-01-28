@@ -48,6 +48,13 @@ require("lazy").setup({
   'kylelaker/riscv.vim' -- RISC-V assembly syntax highlighting
 })
 
+-- improve vim-gitgutter colors
+vim.api.nvim_set_hl(0, 'SignColumn', {})
+vim.api.nvim_set_hl(0, 'GitGutterAdd', {ctermfg='green'})
+vim.api.nvim_set_hl(0, 'GitGutterChange', {ctermfg='yellow'})
+vim.api.nvim_set_hl(0, 'GitGutterDelete', {ctermfg='red'})
+vim.api.nvim_set_hl(0, 'GitGutterChangeDelete', {ctermfg='yellow'})
+
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
