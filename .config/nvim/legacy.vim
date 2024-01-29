@@ -117,6 +117,6 @@ nnoremap <Leader>fe :Explore<CR>
 nnoremap <Leader>vfe :Vexplore<CR>
 
 " buffer switching
+nnoremap <Leader>bs :buffers<CR>:b<Space>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
-nnoremap <Leader>buf :buffers<CR>:buffer<Space>
