@@ -1,0 +1,6 @@
+[user]
+	email = yiyuzhou19@gmail.com
+	name = Yiyu Zhou
+
+[core]
+	excludesfile = ~/.config/git/gitignore_global
