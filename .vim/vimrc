@@ -133,7 +133,7 @@ Plug 'kylelaker/riscv.vim' " RISC-V assembly syntax highlighting
 call plug#end()
 
 " fuzzy search files: fzf
-nnoremap <Leader>sf :Files!<CR>
+nnoremap <Leader>fs :Files!<CR>
 
 " improve vim-gitgutter colors
 highlight clear SignColumn
