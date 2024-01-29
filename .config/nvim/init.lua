@@ -55,6 +55,10 @@ vim.api.nvim_set_hl(0, 'GitGutterChange', {ctermfg='yellow'})
 vim.api.nvim_set_hl(0, 'GitGutterDelete', {ctermfg='red'})
 vim.api.nvim_set_hl(0, 'GitGutterChangeDelete', {ctermfg='yellow'})
 
+-- hunk jumping: gitgutter
+vim.api.nvim_set_keymap('n', '<Leader>gj', ':GitGutterNextHunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>gk', ':GitGutterPrevHunk<CR>', { noremap = true, silent = true })
+
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)

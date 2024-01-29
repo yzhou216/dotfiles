@@ -133,6 +133,10 @@ Plug 'lervag/vimtex' " VimTeX
 Plug 'kylelaker/riscv.vim' " RISC-V assembly syntax highlighting
 call plug#end()
 
+" hunk jumping: gitgutter
+nnoremap <Leader>gj :GitGutterNextHunk<CR>
+nnoremap <Leader>gk :GitGutterPrevHunk<CR>
+
 " fuzzy search files: fzf
 nnoremap <Leader>fs :Files!<CR>
 
