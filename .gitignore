@@ -20,3 +20,7 @@
 *~
 .#*
 tramp
+
+# tmux
+.config/tmux/*
+!.config/tmux/tmux.conf
