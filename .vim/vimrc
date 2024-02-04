@@ -131,6 +131,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex' " VimTeX
 
 Plug 'kylelaker/riscv.vim' " RISC-V assembly syntax highlighting
+
+Plug 'christoomey/vim-tmux-navigator' " vim tmux navigator
 call plug#end()
 
 " hunk jumping: gitgutter
@@ -149,3 +151,10 @@ highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
 let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_compiler_method = 'latexmk'
+
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> <C-h> :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
+nnoremap <silent> <C-\\> :<C-U>TmuxNavigatePrevious<cr>

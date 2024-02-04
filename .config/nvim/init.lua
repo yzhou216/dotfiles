@@ -45,7 +45,24 @@ require("lazy").setup({
     run = function() vim.cmd('call fzf#install()') end
   },
   'junegunn/fzf.vim',
-  'kylelaker/riscv.vim' -- RISC-V assembly syntax highlighting
+  'kylelaker/riscv.vim', -- RISC-V assembly syntax highlighting
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  }
 })
 
 -- improve vim-gitgutter colors
