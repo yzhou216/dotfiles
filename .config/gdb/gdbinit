@@ -2,3 +2,8 @@ tui enable
 tui new-layout s {-horizontal src 1 regs 1} 2 status 0 cmd 1
 
 set confirm off
+
+# Refresh when next is called
+define hook-next
+	refresh
+end
