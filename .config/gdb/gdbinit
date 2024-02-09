@@ -1,2 +1,2 @@
-layout src
-layout reg
+tui enable
+tui new-layout s {-horizontal src 1 regs 1} 2 status 0 cmd 1
