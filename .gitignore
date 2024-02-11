@@ -24,3 +24,7 @@ tramp
 # tmux
 .config/tmux/*
 !.config/tmux/tmux.conf
+
+# SSH
+.ssh/*
+!.ssh/rc
