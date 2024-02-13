@@ -186,9 +186,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
 
-  ;; use Emacs bindings in insert mode
-  (setq evil-disable-insert-state-bindings t)
-
   :config
   (evil-mode 1)
 
