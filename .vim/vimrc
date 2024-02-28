@@ -103,8 +103,8 @@ nnoremap <Leader>sht :tabnew<CR>:term<CR>
 nnoremap <Leader>gdb :Termdebug<CR>shell ls<CR>
 nnoremap <Leader>asm :Termdebug<CR>shell ls<CR><C-w>l:Asm<CR><C-w>h
 
-" format using preset indentation
-nnoremap <Leader>fmt magg=G`a
+" format buffer using preset indentation
+nnoremap <Leader>bf magg=G`a
 
 " wrap using preset textwidth
 nnoremap <Leader>wrap maggvGgq`a
