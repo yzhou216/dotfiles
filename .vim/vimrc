@@ -122,8 +122,13 @@ nnoremap <Leader>bk :buffers<CR>:bd<Space>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
 
+" goto definition
+nnoremap gd <C-]>
+
 call plug#begin()
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
+
+Plug 'ludovicchabant/vim-gutentags' " auto generate tags file
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -138,6 +143,9 @@ call plug#end()
 " hunk jumping: gitgutter
 nnoremap <Leader>gj :GitGutterNextHunk<CR>
 nnoremap <Leader>gk :GitGutterPrevHunk<CR>
+
+" set tags file name to '.tags'
+let g:gutentags_ctags_tagfile = '.tags'
 
 " fuzzy search files: fzf
 nnoremap <Leader>fs :Files!<CR>
