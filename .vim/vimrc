@@ -122,8 +122,9 @@ nnoremap <Leader>bk :buffers<CR>:bd<Space>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
 
-" goto definition
+" goto definition or reference
 nnoremap gd <C-]>
+nnoremap gr :execute "cscope find s " . expand("<cword>")<CR>
 
 call plug#begin()
 Plug 'airblade/vim-gitgutter' " show git diff in gutter
@@ -144,8 +145,9 @@ call plug#end()
 nnoremap <Leader>gj :GitGutterNextHunk<CR>
 nnoremap <Leader>gk :GitGutterPrevHunk<CR>
 
-" set tags file name to '.tags'
-let g:gutentags_ctags_tagfile = '.tags'
+" source code tagging systems: ctags, cscope
+let g:gutentags_modules = ['ctags', 'cscope']
+let g:gutentags_ctags_tagfile = '.tags' " set tags file name to '.tags'
 
 " fuzzy search files: fzf
 nnoremap <Leader>fs :Files!<CR>
