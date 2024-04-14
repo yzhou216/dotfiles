@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Control E exit
