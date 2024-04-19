@@ -36,3 +36,6 @@ if [[ $- == *i* ]]; then
 
   unset env
 fi
+
+# Fix for Java GUI
+export _JAVA_AWT_WM_NONREPARENTING=1
