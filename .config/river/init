@@ -170,4 +170,4 @@ riverctl map normal Super D spawn "wofi --show=drun"
 exec yambar
 
 # Notification daemon: fnott
-exec fnott
+exec nohup fnott </dev/null &>/dev/null &
