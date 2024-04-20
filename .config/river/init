@@ -171,3 +171,4 @@ exec yambar </dev/null &>/dev/null &
 
 # Notification daemon: fnott
 exec fnott </dev/null &>/dev/null &
+riverctl map normal Super C spawn 'fnottctl dismiss all'
