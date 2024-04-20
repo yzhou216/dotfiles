@@ -167,7 +167,7 @@ riverctl map normal Super Return spawn alacritty
 riverctl map normal Super D spawn "wofi --show=drun"
 
 # status panel: Yambar
-exec nohup yambar </dev/null &>/dev/null &
+exec yambar </dev/null &>/dev/null &
 
 # Notification daemon: fnott
-exec nohup fnott </dev/null &>/dev/null &
+exec fnott </dev/null &>/dev/null &
