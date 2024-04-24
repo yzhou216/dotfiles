@@ -172,3 +172,7 @@ exec yambar </dev/null &>/dev/null &
 # Notification daemon: fnott
 exec fnott </dev/null &>/dev/null &
 riverctl map normal Super C spawn 'fnottctl dismiss all'
+
+# Screenshots: wayshot
+riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png'
+riverctl map normal Super+Shift S spawn 'wayshot -s "$(slurp)" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png'
