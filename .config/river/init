@@ -174,5 +174,5 @@ exec fnott </dev/null &>/dev/null &
 riverctl map normal Super C spawn 'fnottctl dismiss all'
 
 # Screenshots: wayshot
-riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png'
-riverctl map normal Super+Shift S spawn 'wayshot -s "$(slurp)" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png'
+riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot --stdout | wl-copy -t image/png'
+riverctl map normal Super+Shift S spawn 'region=$(slurp) && wayshot -s "$region" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot -s "$region" --stdout | wl-copy -t image/png'
