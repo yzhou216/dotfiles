@@ -1,0 +1,10 @@
+profile {
+    output eDP-1 enable
+    exec pkill yambar; yambar
+}
+
+profile {
+    output eDP-1 disable
+    output DP-1 enable
+    exec pkill yambar; yambar
+}

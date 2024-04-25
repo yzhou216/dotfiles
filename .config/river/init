@@ -166,6 +166,9 @@ riverctl map normal Super Return spawn alacritty
 # launcher: wofi
 riverctl map normal Super D spawn "wofi --show=drun"
 
+# Dynamic display configuration: kanshi
+exec kanshi </dev/null &>/dev/null &
+
 # status panel: Yambar
 exec yambar </dev/null &>/dev/null &
 
