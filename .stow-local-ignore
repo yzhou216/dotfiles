@@ -1,5 +1,8 @@
 Makefile
 \.git
 .gitignore
+.tags
+cscope.out
+ncscope.out.temp
 ^etc-stow$
 LICENSE
