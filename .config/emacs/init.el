@@ -258,7 +258,14 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>lk") 'flymake-goto-prev-error))
 
 ;; Eglot language specific hooks
+(add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'rust-ts-mode-hook 'eglot-ensure)
 (add-hook 'python-base-mode-hook 'eglot-ensure)
+
+;; Eglot setup for rust-analyzer
+(add-to-list 'eglot-server-programs
+             '((rust-ts-mode rust-mode) .
+               ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
 
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
