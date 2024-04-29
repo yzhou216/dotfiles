@@ -310,6 +310,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
+;; rust-mode (major mode for Rust)
+(use-package rust-mode
+  :init
+  (setq rust-mode-treesitter-derive t))
+
 ;; markdown-mode (major mode for Markdown)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
