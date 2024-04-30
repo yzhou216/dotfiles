@@ -228,6 +228,25 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
     (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)))
 
+;; ERC
+(setq
+  erc-nick "yiyu"
+  erc-user-full-name "Yiyu Zhou"
+  erc-track-shorten-start 8
+  erc-kill-buffer-on-part t
+  erc-auto-query 'bury
+  erc-fill-column 120
+  erc-fill-function 'erc-fill-static
+  erc-fill-static-center 16)
+
+;; Libera Chat
+(defun libera-chat ()
+  (interactive)
+  (let ((password (read-passwd "Password: ")))
+    (erc-tls :server "irc.libera.chat"
+             :port "6697"
+             :password password)))
+
 ;; which-key
 (use-package which-key
   :config
