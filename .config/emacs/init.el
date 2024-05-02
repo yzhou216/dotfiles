@@ -199,6 +199,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>bs") 'switch-to-only-file-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>bS") 'switch-to-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader> w1") 'delete-other-windows)
+  (evil-define-key 'normal 'global (kbd "<leader> W1") 'delete-other-windows-and-kill-buffers)
+  (evil-define-key 'normal 'global (kbd "C-w O") 'delete-other-windows-and-kill-buffers)
 
   ;; file operation
   (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file)
