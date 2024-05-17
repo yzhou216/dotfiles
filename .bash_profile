@@ -40,5 +40,10 @@ fi
 # Fix for Java GUI
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# GTK theme
+export GTK_THEME="Adwaita-dark";
+export XCURSOR_THEME="Adwaita";
+export XCURSOR_SIZE="24";
+
 # QT programs settings
 export QT_QPA_PLATFORMTHEME=qt5ct
