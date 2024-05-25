@@ -344,6 +344,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :init
   (setq rust-mode-treesitter-derive t))
 
+;; go-mode.el (major mode for Go)
+(use-package go-mode)
+
 ;; markdown-mode (major mode for Markdown)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
