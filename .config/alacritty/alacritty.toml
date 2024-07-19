@@ -10,3 +10,6 @@ green = "0x008000"
 
 [colors.primary]
 background = "0x000000"
+
+[window]
+decorations = "None"
