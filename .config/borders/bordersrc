@@ -1,0 +1,14 @@
+#!/bin/bash
+
+options=(
+	style=square
+	width=5.0
+	hidpi=off
+	active_color=0xFFFF6EC7
+	inactive_color=0xFF000000
+)
+
+borders "${options[@]}"
+
+	#active_color=0xFF00FF00 # green
+	#active_color=0xFFFFC0CB # pink
