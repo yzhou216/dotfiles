@@ -30,6 +30,7 @@ fi
 unset rc
 
 # User specific aliases and functions
+alias ls='ls --color=auto'
 alias emacs='emacs -nw'
 
 # set VIM as default editor
