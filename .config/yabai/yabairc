@@ -50,3 +50,9 @@ echo "yabai configuration loaded.."
 
 # JankyBorders
 borders &
+
+# Run on login
+Tailscale rungui &
+open /Applications/DiscreteScroll.app
+open /Applications/Swift\ Quit.app
+open /Applications/Scroll\ Reverser.app
