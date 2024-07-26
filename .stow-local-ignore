@@ -1,6 +1,7 @@
 Makefile
 \.git
 .gitignore
+.gitattributes
 .tags
 cscope.out
 ncscope.out.temp
