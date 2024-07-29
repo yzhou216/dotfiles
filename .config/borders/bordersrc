@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 options=(
 	style=square
@@ -10,5 +10,5 @@ options=(
 
 borders "${options[@]}"
 
-	#active_color=0xFF00FF00 # green
-	#active_color=0xFFFFC0CB # pink
+# active_color=0xFF00FF00 # green
+# active_color=0xFFFFC0CB # pink
