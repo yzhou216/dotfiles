@@ -69,7 +69,7 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " enhancement for termdebug
-packadd termdebug		" enable termdebug
+packadd! termdebug		" enable termdebug
 let g:termdebug_wide=1		" split vertically
 
 " disable arrow keys insert mode
