@@ -257,8 +257,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; treesit-auto
 (use-package treesit-auto
+  :custom
+  (treesit-auto-install t)
   :config
-  (setq treesit-auto-install t)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
