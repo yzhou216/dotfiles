@@ -215,24 +215,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   (evil-collection-init))
 
-;;(use-package general
-;;  :config
-;;  (general-evil-setup t)
-;;  (general-create-definer yiyu/leader-keys
-;;    :keymaps '(normal insert visual emacs)
-;;    :prefix "SPC"
-;;    :global-prefix "C-SPC"))
-;;
-;;(yiyu/leader-keys
-;;  :states 'normal
-;;  :keymaps 'override
-;;  "bs" 'switch-to-only-file-buffer
-;;  "bk" 'kill-buffer
-;; )
-
-  ;;"t"  '(:ignore t :which-key "toggles")
-  ;;"tt" '(counsel-load-theme :which-key "choose theme"))
-
 ;; general.el
 (use-package general
   :config
