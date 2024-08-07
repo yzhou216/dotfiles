@@ -190,10 +190,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-mode 1)
 
   ;; set space key as global leader
-  (evil-set-leader 'normal " ")
+  ;;(evil-set-leader 'normal " ")
 
   ;; set backslash as local leader
-  (evil-set-leader 'normal "\\" t)
+  ;;(evil-set-leader 'normal "\\" t)
 
   ;; buffer operation
   (evil-define-key 'normal 'global (kbd "<leader>bs") 'switch-to-only-file-buffer)
@@ -214,6 +214,45 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :after evil
   :config
   (evil-collection-init))
+
+;;(use-package general
+;;  :config
+;;  (general-evil-setup t)
+;;  (general-create-definer yiyu/leader-keys
+;;    :keymaps '(normal insert visual emacs)
+;;    :prefix "SPC"
+;;    :global-prefix "C-SPC"))
+;;
+;;(yiyu/leader-keys
+;;  :states 'normal
+;;  :keymaps 'override
+;;  "bs" 'switch-to-only-file-buffer
+;;  "bk" 'kill-buffer
+;; )
+
+  ;;"t"  '(:ignore t :which-key "toggles")
+  ;;"tt" '(counsel-load-theme :which-key "choose theme"))
+
+;; general.el
+(use-package general
+  :config
+  (general-evil-setup t)
+
+  (general-create-definer yiyu/leader
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+    :prefix ",")
+
+  (general-create-definer yiyu/localleader
+    :states 'normal
+    :keymaps '(normal insert visual emacs)
+    :prefix "C-,"))
+
+;; global leader key
+(yiyu/leader
+  "bs" 'switch-to-only-file-buffer
+  "bk" 'kill-buffer
+  "fc" 'open-init-file)
 
 ;; git-gutter
 (use-package git-gutter
