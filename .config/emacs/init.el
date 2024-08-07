@@ -230,11 +230,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :keymaps '(normal insert visual emacs)
     :prefix "C-,"))
 
-;; global leader key
+;; global leader
 (yiyu/leader
   "bs" 'switch-to-only-file-buffer
   "bk" 'kill-buffer
-  "fc" 'open-init-file)
+  "fc" 'open-init-file
+  "gs" 'magit-status)
 
 ;; git-gutter
 (use-package git-gutter
