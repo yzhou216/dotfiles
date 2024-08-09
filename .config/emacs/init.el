@@ -244,6 +244,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   "bs" 'switch-to-only-file-buffer
   "bk" 'kill-buffer
   "fc" 'open-init-file
+  "fs" 'find-file
   "gs" 'magit-status
   "e" 'yiyu/eval-eol-sexp)
 
