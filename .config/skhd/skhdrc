@@ -156,9 +156,8 @@ cmd - 6 : yabai -m space --focus 6 || yabai -m space --focus recent
 cmd + alt - 1 : yabai -m window --space 1
 cmd + alt - 2 : yabai -m window --space 2
 
+# Spotlight
+cmd - d : osascript -e 'tell application "System Events" to keystroke space using {command down}'
+
 # spawn terminal emulator
 cmd - return: alacritty
-
-# launcher: dmenu-mac
-cmd - d : dmenu-mac
-cmd - space : dmenu-mac
