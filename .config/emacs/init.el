@@ -246,6 +246,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; global leader
 (yiyu/leader
+  "h" 'help
   "bs" 'switch-to-only-file-buffer
   "bk" 'kill-buffer
   "fc" 'open-init-file
