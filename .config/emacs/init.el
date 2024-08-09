@@ -230,12 +230,22 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :keymaps '(normal insert visual emacs)
     :prefix "C-,"))
 
+(defun yiyu/eval-eol-sexp ()
+  (interactive)
+  (let ((cursor-pos (point))) ; preserve cursor position
+  (evil-insert 1)
+  (end-of-line)
+  (eval-last-sexp nil)
+  (evil-force-normal-state)
+  (goto-char cursor-pos)))
+
 ;; global leader
 (yiyu/leader
   "bs" 'switch-to-only-file-buffer
   "bk" 'kill-buffer
   "fc" 'open-init-file
-  "gs" 'magit-status)
+  "gs" 'magit-status
+  "e" 'yiyu/eval-eol-sexp)
 
 ;; git-gutter
 (use-package git-gutter
