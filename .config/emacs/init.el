@@ -226,8 +226,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :prefix ",")
 
   (general-create-definer yiyu/localleader
-    :states 'normal
-    :keymaps '(normal insert visual emacs)
+    :states '(normal insert visual emacs)
     :prefix "C-,"))
 
 (defun yiyu/eval-eol-sexp ()
@@ -251,7 +250,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   "bk" 'kill-buffer
   "fc" 'open-init-file
   "fs" 'find-file
-  "gs" 'magit-status
+  "gs" 'magit-status)
+
+;; local leader for emacs-lisp-mode
+(yiyu/localleader
+  :keymaps 'emacs-lisp-mode-map
   "e" 'yiyu/eval-eol-sexp)
 
 ;; git-gutter
