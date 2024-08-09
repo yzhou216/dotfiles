@@ -232,12 +232,17 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 (defun yiyu/eval-eol-sexp ()
   (interactive)
-  (let ((cursor-pos (point))) ; preserve cursor position
-  (evil-insert 1)
-  (end-of-line)
-  (eval-last-sexp nil)
-  (evil-force-normal-state)
-  (goto-char cursor-pos)))
+  (let ((is-in-insert-state (evil-insert-state-p))
+	(cursor-pos (point))) ; preserve cursor position
+    (evil-insert 1)
+    (end-of-line)
+    (eval-last-sexp nil)
+    (if is-in-insert-state
+	(evil-insert 1)
+      (progn
+	(evil-force-normal-state)
+	(forward-char 1))) ; counteract evil state switching offset
+    (goto-char cursor-pos)))
 
 ;; global leader
 (yiyu/leader
