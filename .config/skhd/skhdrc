@@ -159,6 +159,6 @@ cmd + alt - 2 : yabai -m window --space 2
 # spawn terminal emulator
 cmd - return: alacritty
 
-# Quicksilver launcher
-cmd - d : open /Applications/Quicksilver.app
-cmd - space : open /Applications/Quicksilver.app
+# launcher: dmenu-mac
+cmd - d : dmenu-mac
+cmd - space : dmenu-mac
