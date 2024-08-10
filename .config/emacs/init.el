@@ -203,7 +203,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   "wk" 'yiyu/delete-other-windows-and-kill-buffers
   "fc" 'open-init-file
   "fs" 'find-file
-  "gs" 'magit-status)
+  "gs" 'magit-status
+  "gj" 'git-gutter:next-hunk
+  "gk" 'git-gutter:previous-hunk)
 
 ;; local leader for emacs-lisp-mode
 (yiyu/localleader
@@ -214,9 +216,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :config
-  (setq git-gutter:update-interval 0.02)
-  (evil-define-key 'normal 'global (kbd "<leader>gj") 'git-gutter:next-hunk)
-  (evil-define-key 'normal 'global (kbd "<leader>gk") 'git-gutter:previous-hunk))
+  (setq git-gutter:update-interval 0.02))
 
 ;; git-gutter-fringe.el (disable in tty frame)
 (if (display-graphic-p)
