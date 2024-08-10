@@ -169,6 +169,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; general.el
 (use-package general
+  :after evil
+  :hook (after-init . (lambda ()
+			(when-let ((messages-buffer (get-buffer "*Messages*")))
+			  (with-current-buffer messages-buffer
+			    (evil-normalize-keymaps)))))
   :config
   (general-evil-setup t)
 
