@@ -196,7 +196,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "c" 'open-init-file
     "gs" 'magit-status
     "gj" 'git-gutter:next-hunk
-    "gk" 'git-gutter:previous-hunk)
+    "gk" 'git-gutter:previous-hunk
+    "ps" 'persp-switch
+    "pk" 'persp-kill
+    "pb" 'persp-set-buffer) ; move buffer to current perspective
 
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
@@ -366,7 +369,4 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   ;; key bindings
   (define-key global-map (kbd "M-p") 'persp-prev)
-  (define-key global-map (kbd "M-n") 'persp-next)
-  (evil-define-key 'normal 'global (kbd "<leader>ps") 'persp-switch)
-  (evil-define-key 'normal 'global (kbd "<leader>pk") 'persp-kill)
-  (evil-define-key 'normal 'global (kbd "<leader>pmb") 'persp-set-buffer)) ;; move buffer to current perspective
+  (define-key global-map (kbd "M-n") 'persp-next))
