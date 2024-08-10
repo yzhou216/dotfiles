@@ -159,19 +159,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; set backslash as local leader
   ;;(evil-set-leader 'normal "\\" t)
 
-  ;; buffer operation
-  (evil-define-key 'normal 'global (kbd "<leader>bs") 'switch-to-only-file-buffer)
-  (evil-define-key 'normal 'global (kbd "<leader>bS") 'switch-to-buffer)
-  (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-buffer)
-  (evil-define-key 'normal 'global (kbd "<leader> w1") 'delete-other-windows)
-  (evil-define-key 'normal 'global (kbd "<leader> W1") 'delete-other-windows-and-kill-buffers)
-  (evil-define-key 'normal 'global (kbd "C-w O") 'delete-other-windows-and-kill-buffers)
-
-  ;; file operation
-  (evil-define-key 'normal 'global (kbd "<leader>fs") 'find-file)
-
-  ;; emacs config
-  (evil-define-key 'normal 'global (kbd "<leader>fc") 'open-init-file))
+  )
 
 ;; Evil Collection
 (use-package evil-collection
@@ -335,9 +323,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package flycheck)
 
 ;; Magit
-(use-package magit
-  :config
-  (evil-define-key 'normal 'global (kbd "<leader>gs") 'magit-status))
+(use-package magit)
 
 ;; Racket Mode
 (use-package racket-mode)
