@@ -215,16 +215,23 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 		(forward-char 1))) ; counteract evil state switching offset
             (goto-char cursor-pos))))
 
-  ;; local leader for eglot
+  ;; local leader for eglot and dape (LSP and DAP)
   (yiyu/localleader
-    :keymaps 'eglot-mode-map
+    :keymaps '(eglot-mode-map dape-global-map)
     "r" 'eglot-rename
     "i" 'eglot-code-action-organize-imports
     "h" 'eldoc
     "f" 'eglot-format
     "a" 'eglot-code-actions
     "j" 'flymake-goto-next-error
-    "k" 'flymake-goto-prev-error))
+    "k" 'flymake-goto-prev-error
+    "d" 'dape
+    "q" 'dape-quit
+    "b" 'dape-breakpoint-toggle
+    "c" 'dape-breakpoint-remove-all
+    "n" 'dape-next
+    "s" 'dape-step-in
+    "o" 'dape-step-out))
 
 ;; git-gutter
 (use-package git-gutter
@@ -306,15 +313,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
 
 ;; dape
-(use-package dape
-  :config
-  (evil-define-key 'normal 'global (kbd "<leader>dl") 'dape)
-  (evil-define-key 'normal 'global (kbd "<leader>dq") 'dape-quit)
-  (evil-define-key 'normal 'global (kbd "<leader>db") 'dape-breakpoint-toggle)
-  (evil-define-key 'normal 'global (kbd "<leader>dc") 'dape-breakpoint-remove-all)
-  (evil-define-key 'normal 'global (kbd "<leader>dn") 'dape-next)
-  (evil-define-key 'normal 'global (kbd "<leader>ds") 'dape-step-in)
-  (evil-define-key 'normal 'global (kbd "<leader>do") 'dape-step-out))
+(use-package dape)
 
 ;; company-mode
 (use-package company
