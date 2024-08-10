@@ -184,36 +184,36 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   (general-create-definer yiyu/localleader
     :states '(normal insert visual emacs)
-    :prefix "C-,"))
+    :prefix "C-,")
 
-;; global leader
-(yiyu/leader
-  "h" 'help
-  "bs" 'switch-to-buffer
-  "bk" 'kill-buffer
-  "wk" 'yiyu/delete-other-windows-and-kill-buffers
-  "fc" 'open-init-file
-  "fs" 'find-file
-  "gs" 'magit-status
-  "gj" 'git-gutter:next-hunk
-  "gk" 'git-gutter:previous-hunk)
+  ;; global leader
+  (yiyu/leader
+    "h" 'help
+    "bs" 'switch-to-buffer
+    "bk" 'kill-buffer
+    "wk" 'yiyu/delete-other-windows-and-kill-buffers
+    "fc" 'open-init-file
+    "fs" 'find-file
+    "gs" 'magit-status
+    "gj" 'git-gutter:next-hunk
+    "gk" 'git-gutter:previous-hunk)
 
-;; local leader for emacs-lisp-mode
-(yiyu/localleader
-  :keymaps 'emacs-lisp-mode-map
-  "e" (lambda () ; eval the last sexp at the end of the line
-	(interactive)
-	(let ((is-in-insert-state (evil-insert-state-p))
-              (cursor-pos (point))) ; preserve cursor position
-          (evil-insert 1)
-          (end-of-line)
-          (eval-last-sexp nil)
-          (if is-in-insert-state
-              (evil-insert 1)
-            (progn
-              (evil-force-normal-state)
-              (forward-char 1))) ; counteract evil state switching offset
-          (goto-char cursor-pos))))
+  ;; local leader for emacs-lisp-mode
+  (yiyu/localleader
+    :keymaps 'emacs-lisp-mode-map
+    "e" (lambda () ; eval the last sexp at the end of the line
+	  (interactive)
+	  (let ((is-in-insert-state (evil-insert-state-p))
+		(cursor-pos (point))) ; preserve cursor position
+            (evil-insert 1)
+            (end-of-line)
+            (eval-last-sexp nil)
+            (if is-in-insert-state
+		(evil-insert 1)
+              (progn
+		(evil-force-normal-state)
+		(forward-char 1))) ; counteract evil state switching offset
+            (goto-char cursor-pos)))))
 
 ;; git-gutter
 (use-package git-gutter
