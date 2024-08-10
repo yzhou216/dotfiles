@@ -122,15 +122,18 @@ source: https://www.emacswiki.org/emacs/FlySpell "
           (lambda ()
             (eshell/alias "clear" "clear 1")))
 
-(require 'package)
-(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
 ;; use-package
 (require 'use-package)
+(use-package use-package
+  :ensure nil
+  :custom use-package-always-ensure t)
 
-;; ensure packages are automatically installed when using use-package
-(setq use-package-always-ensure t)
+;; package archives
+(use-package package
+  :ensure nil
+  :config
+  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
 ;; auto-package-update
 (use-package auto-package-update
