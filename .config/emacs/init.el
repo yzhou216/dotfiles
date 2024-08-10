@@ -102,7 +102,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 (global-set-key (kbd "C-c f") 'flyspell-toggle)
 
-(defun delete-other-windows-and-kill-buffers ()
+(defun yiyu/delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
   (interactive)
   (let ((current-buffer (current-buffer)))
@@ -111,7 +111,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
         (kill-buffer (window-buffer window))
         (delete-window window))))
   (message "Other windows deleted and buffers killed."))
-(global-set-key (kbd "C-x C-1") 'delete-other-windows-and-kill-buffers)
 
 ;; open Emacs config file
 (defun open-init-file ()
@@ -213,6 +212,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   "h" 'help
   "bs" 'switch-to-buffer
   "bk" 'kill-buffer
+  "wk" 'yiyu/delete-other-windows-and-kill-buffers
   "fc" 'open-init-file
   "fs" 'find-file
   "gs" 'magit-status)
