@@ -113,41 +113,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (message "Other windows deleted and buffers killed."))
 (global-set-key (kbd "C-x C-1") 'delete-other-windows-and-kill-buffers)
 
-(defun switch-to-only-file-buffer (buffer-or-name &optional norecord force-same-window)
-  "Switch to only file buffer, with the exception of '*scratch*'."
-  (interactive
-   (let ((force-same-window
-          (cond
-           ((window-minibuffer-p) nil)
-           ((not (eq (window-dedicated-p) t)) 'force-same-window)
-           ((pcase switch-to-buffer-in-dedicated-window
-              (`nil (user-error
-                     "Cannot switch buffers in a dedicated window"))
-              (`prompt
-               (if (y-or-n-p
-                    (format "Window is dedicated to %s; undedicate it"
-                            (window-buffer)))
-                   (progn
-                     (set-window-dedicated-p nil nil)
-                     'force-same-window)
-                 (user-error
-                  "Cannot switch buffers in a dedicated window")))
-              (`pop nil)
-              (_ (set-window-dedicated-p nil nil) 'force-same-window))))))
-     (list (read-buffer "Buffer: "
-                        (other-buffer (current-buffer))
-                        (confirm-nonexistent-file-or-buffer)
-                        (lambda (name.buf)
-  (let ((buf-name (car name.buf))
-        (buf (cdr name.buf)))
-    (and (not (string= "*scratch*" buf-name)) ; exception: *scratch* buffer
-         (not (string-match "^\\*.*\\*$" buf-name)) ; exclude buffers with names surrounded by asterisks
-         (not (eq 'dired-mode (buffer-local-value 'major-mode buf)))))))))) ; exclude dired buffers
-  (switch-to-buffer buffer-or-name norecord force-same-window))
-
-(global-set-key (kbd "C-x b") 'switch-to-only-file-buffer) ; only file buffer (except *scratch*)
-(global-set-key (kbd "C-x B") 'switch-to-buffer) ; all buffer
-
 ;; open Emacs config file
 (defun open-init-file ()
   "Open the init file."
@@ -246,7 +211,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; global leader
 (yiyu/leader
   "h" 'help
-  "bs" 'switch-to-only-file-buffer
+  "bs" 'switch-to-buffer
   "bk" 'kill-buffer
   "fc" 'open-init-file
   "fs" 'find-file
