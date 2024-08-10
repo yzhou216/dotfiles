@@ -151,15 +151,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (setq evil-want-keybinding nil)
 
   :config
-  (evil-mode 1)
-
-  ;; set space key as global leader
-  ;;(evil-set-leader 'normal " ")
-
-  ;; set backslash as local leader
-  ;;(evil-set-leader 'normal "\\" t)
-
-  )
+  (evil-mode 1))
 
 ;; Evil Collection
 (use-package evil-collection
