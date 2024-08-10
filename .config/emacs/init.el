@@ -189,11 +189,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; global leader
   (yiyu/leader
     "h" 'help
-    "bs" 'switch-to-buffer
-    "bk" 'kill-buffer
-    "wk" 'yiyu/delete-other-windows-and-kill-buffers
-    "fc" 'open-init-file
-    "fs" 'find-file
+    "b" 'switch-to-buffer
+    "k" 'kill-buffer
+    "w" 'yiyu/delete-other-windows-and-kill-buffers
+    "f" 'find-file
+    "c" 'open-init-file
     "gs" 'magit-status
     "gj" 'git-gutter:next-hunk
     "gk" 'git-gutter:previous-hunk)
