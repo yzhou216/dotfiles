@@ -213,7 +213,18 @@ source: https://www.emacswiki.org/emacs/FlySpell "
               (progn
 		(evil-force-normal-state)
 		(forward-char 1))) ; counteract evil state switching offset
-            (goto-char cursor-pos)))))
+            (goto-char cursor-pos))))
+
+  ;; local leader for eglot
+  (yiyu/localleader
+    :keymaps 'eglot-mode-map
+    "r" 'eglot-rename
+    "i" 'eglot-code-action-organize-imports
+    "h" 'eldoc
+    "f" 'eglot-format
+    "a" 'eglot-code-actions
+    "j" 'flymake-goto-next-error
+    "k" 'flymake-goto-prev-error))
 
 ;; git-gutter
 (use-package git-gutter
@@ -270,14 +281,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; Eglot
 (require 'eglot)
-(with-eval-after-load 'evil
-  (evil-define-key 'normal 'global (kbd "<leader>lr") 'eglot-rename)
-  (evil-define-key 'normal 'global (kbd "<leader>li") 'eglot-code-action-organize-imports)
-  (evil-define-key 'normal 'global (kbd "<leader>lh") 'eldoc)
-  (evil-define-key 'normal 'global (kbd "<leader>lf") 'eglot-format)
-  (evil-define-key 'normal 'global (kbd "<leader>la") 'eglot-code-actions)
-  (evil-define-key 'normal 'global (kbd "<leader>lj") 'flymake-goto-next-error)
-  (evil-define-key 'normal 'global (kbd "<leader>lk") 'flymake-goto-prev-error))
 
 ;; Eglot language specific hooks
 (add-hook 'rust-mode-hook 'eglot-ensure)
