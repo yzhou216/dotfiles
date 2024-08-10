@@ -186,20 +186,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :states '(normal insert visual emacs)
     :prefix "C-,"))
 
-(defun yiyu/eval-eol-sexp ()
-  (interactive)
-  (let ((is-in-insert-state (evil-insert-state-p))
-	(cursor-pos (point))) ; preserve cursor position
-    (evil-insert 1)
-    (end-of-line)
-    (eval-last-sexp nil)
-    (if is-in-insert-state
-	(evil-insert 1)
-      (progn
-	(evil-force-normal-state)
-	(forward-char 1))) ; counteract evil state switching offset
-    (goto-char cursor-pos)))
-
 ;; global leader
 (yiyu/leader
   "h" 'help
@@ -215,7 +201,19 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; local leader for emacs-lisp-mode
 (yiyu/localleader
   :keymaps 'emacs-lisp-mode-map
-  "e" 'yiyu/eval-eol-sexp)
+  "e" (lambda () ; eval the last sexp at the end of the line
+	(interactive)
+	(let ((is-in-insert-state (evil-insert-state-p))
+              (cursor-pos (point))) ; preserve cursor position
+          (evil-insert 1)
+          (end-of-line)
+          (eval-last-sexp nil)
+          (if is-in-insert-state
+              (evil-insert 1)
+            (progn
+              (evil-force-normal-state)
+              (forward-char 1))) ; counteract evil state switching offset
+          (goto-char cursor-pos))))
 
 ;; git-gutter
 (use-package git-gutter
