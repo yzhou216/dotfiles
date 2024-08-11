@@ -183,6 +183,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   ;; global leader
   (yiyu/leader
+    "," (lambda () (interactive) (insert ",")) ; escape to a comma: ","
+    "SPC" (lambda () (interactive) (insert ", ")) ; escape to a comma followed by a space: ", "
     "h" 'help
     "b" 'switch-to-buffer
     "k" 'kill-buffer
