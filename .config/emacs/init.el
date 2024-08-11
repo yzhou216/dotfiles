@@ -169,6 +169,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :config
   (which-key-mode))
 
+;; org-modern
+(use-package org-modern
+  :after org
+  :config (global-org-modern-mode))
+
 ;; treesit-auto
 (use-package treesit-auto
   :custom
@@ -225,12 +230,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; flycheck
 (use-package flycheck)
-
-;; org-superstar-mode
-(use-package org-superstar
-  :after org
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
 ;; extra major modes
 (use-package racket-mode)
