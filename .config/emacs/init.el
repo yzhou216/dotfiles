@@ -174,6 +174,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :after org
   :config (global-org-modern-mode))
 
+;; Marginalia (rich annotations)
+(use-package marginalia
+  :init (marginalia-mode))
+
 ;; treesit-auto
 (use-package treesit-auto
   :custom
