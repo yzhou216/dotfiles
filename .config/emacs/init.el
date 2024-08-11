@@ -145,6 +145,134 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
 
+;; ERC
+(setq
+ erc-nick "yiyu"
+ erc-user-full-name "Yiyu Zhou"
+ erc-track-shorten-start 8
+ erc-kill-buffer-on-part t
+ erc-auto-query 'bury
+ erc-fill-column 120
+ erc-fill-function 'erc-fill-static
+ erc-fill-static-center 16)
+
+;; Libera Chat
+(defun libera-chat ()
+  (interactive)
+  (let ((password (read-passwd "Password: ")))
+    (erc-tls :server "irc.libera.chat"
+             :port "6697"
+             :password password)))
+
+;; which-key
+(use-package which-key
+  :config
+  (which-key-mode))
+
+;; treesit-auto
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install t)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
+;; yasnippet
+(use-package yasnippet
+  :config (yas-global-mode))
+
+;; yasnippet-snippets
+(use-package yasnippet-snippets)
+
+;; Eglot
+(use-package eglot
+  :ensure nil
+  :hook
+  (rust-mode . eglot-ensure)
+  (rust-ts-mode . eglot-ensure)
+  (go-mode . eglot-ensure)
+  (go-ts-mode . eglot-ensure)
+  (python-base-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) .
+		 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
+
+;; eglot-java (Eclipse JDT LS)
+(use-package eglot-java
+  :hook
+  (java-mode    . eglot-java-mode)
+  (java-ts-mode . eglot-java-mode)
+  :config
+  (evil-define-key 'normal 'global (kbd "<leader>ln") 'eglot-java-file-new)
+  (evil-define-key 'normal 'global (kbd "<leader>lx") 'eglot-java-run-main)
+  (evil-define-key 'normal 'global (kbd "<leader>lt") 'eglot-java-run-test)
+  (evil-define-key 'normal 'global (kbd "<leader>lN") 'eglot-java-project-new)
+  (evil-define-key 'normal 'global (kbd "<leader>lT") 'eglot-java-project-build-task)
+  (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
+
+;; dape
+(use-package dape)
+
+;; company-mode
+(use-package company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0.0) ;; default: 0.2
+  (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))) ; disable company in eshell
+
+;; flycheck
+(use-package flycheck)
+
+;; org-superstar-mode
+(use-package org-superstar
+  :after org
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
+
+;; extra major modes
+(use-package racket-mode)
+(use-package rust-mode)
+(use-package go-mode)
+(use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+;; libvterm
+(use-package vterm)
+
+;; perspective.el
+(use-package perspective
+  :bind
+  ("C-x C-b" . persp-list-buffers)
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))
+  :init
+  (persp-mode)
+  :config
+  ;; key bindings
+  (define-key global-map (kbd "M-p") 'persp-prev)
+  (define-key global-map (kbd "M-n") 'persp-next))
+
+;; Magit
+(use-package magit)
+
+;; git-gutter
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
+
+;; git-gutter-fringe.el (disable in tty frame)
+(if (display-graphic-p)
+    (use-package git-gutter-fringe
+      :config
+      (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+      (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+      (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)))
+
 ;; Evil
 (use-package evil
   :demand t
@@ -232,137 +360,3 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "n" 'dape-next
     "s" 'dape-step-in
     "o" 'dape-step-out))
-
-;; git-gutter
-(use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
-  :config
-  (setq git-gutter:update-interval 0.02))
-
-;; git-gutter-fringe.el (disable in tty frame)
-(if (display-graphic-p)
-    (use-package git-gutter-fringe
-    :config
-    (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-    (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-    (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)))
-
-;; ERC
-(setq
-  erc-nick "yiyu"
-  erc-user-full-name "Yiyu Zhou"
-  erc-track-shorten-start 8
-  erc-kill-buffer-on-part t
-  erc-auto-query 'bury
-  erc-fill-column 120
-  erc-fill-function 'erc-fill-static
-  erc-fill-static-center 16)
-
-;; Libera Chat
-(defun libera-chat ()
-  (interactive)
-  (let ((password (read-passwd "Password: ")))
-    (erc-tls :server "irc.libera.chat"
-             :port "6697"
-             :password password)))
-
-;; which-key
-(use-package which-key
-  :config
-  (which-key-mode))
-
-;; treesit-auto
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install t)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
-
-;; yasnippet
-(use-package yasnippet
-  :config (yas-global-mode))
-
-;; yasnippet-snippets
-(use-package yasnippet-snippets)
-
-;; Eglot
-(use-package eglot
-  :ensure nil
-  :hook
-  (rust-mode . eglot-ensure)
-  (rust-ts-mode . eglot-ensure)
-  (go-mode . eglot-ensure)
-  (go-ts-mode . eglot-ensure)
-  (python-base-mode . eglot-ensure)
-  :config
-  (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) .
-		 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
-
-;; eglot-java (Eclipse JDT LS)
-(use-package eglot-java
-  :hook
-  (java-mode    . eglot-java-mode)
-  (java-ts-mode . eglot-java-mode)
-  :config
-  (evil-define-key 'normal 'global (kbd "<leader>ln") 'eglot-java-file-new)
-  (evil-define-key 'normal 'global (kbd "<leader>lx") 'eglot-java-run-main)
-  (evil-define-key 'normal 'global (kbd "<leader>lt") 'eglot-java-run-test)
-  (evil-define-key 'normal 'global (kbd "<leader>lN") 'eglot-java-project-new)
-  (evil-define-key 'normal 'global (kbd "<leader>lT") 'eglot-java-project-build-task)
-  (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
-
-;; dape
-(use-package dape)
-
-;; company-mode
-(use-package company
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 1
-        company-idle-delay 0.0) ;; default: 0.2
-  (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))) ; disable company in eshell
-
-;; flycheck
-(use-package flycheck)
-
-;; Magit
-(use-package magit)
-
-;; Racket Mode
-(use-package racket-mode)
-
-;; org-superstar-mode
-(use-package org-superstar
-  :after org
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
-
-;; rust-mode (major mode for Rust)
-(use-package rust-mode)
-
-;; go-mode.el (major mode for Go)
-(use-package go-mode)
-
-;; markdown-mode (major mode for Markdown)
-(use-package markdown-mode
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
-
-;; libvterm
-(use-package vterm)
-
-;; perspective.el
-(use-package perspective
-  :bind
-  ("C-x C-b" . persp-list-buffers)
-  :custom
-  (persp-mode-prefix-key (kbd "C-c M-p"))
-  :init
-  (persp-mode)
-  :config
-  ;; key bindings
-  (define-key global-map (kbd "M-p") 'persp-prev)
-  (define-key global-map (kbd "M-n") 'persp-next))
