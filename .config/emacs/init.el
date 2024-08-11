@@ -287,17 +287,18 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package yasnippet-snippets)
 
 ;; Eglot
-(require 'eglot)
-
-;; Eglot language specific hooks
-(add-hook 'rust-mode-hook 'eglot-ensure)
-(add-hook 'rust-ts-mode-hook 'eglot-ensure)
-(add-hook 'python-base-mode-hook 'eglot-ensure)
-
-;; Eglot setup for rust-analyzer
-(add-to-list 'eglot-server-programs
-             '((rust-ts-mode rust-mode) .
-               ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+(use-package eglot
+  :ensure nil
+  :hook
+  (rust-mode . eglot-ensure)
+  (rust-ts-mode . eglot-ensure)
+  (go-mode . eglot-ensure)
+  (go-ts-mode . eglot-ensure)
+  (python-base-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) .
+		 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
 
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
