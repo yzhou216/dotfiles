@@ -232,9 +232,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
         company-idle-delay 0.0) ;; default: 0.2
   (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))) ; disable company in eshell
 
-;; flycheck
-(use-package flycheck)
-
 ;; extra major modes
 (use-package racket-mode)
 (use-package rust-mode)
