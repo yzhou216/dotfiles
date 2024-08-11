@@ -338,9 +338,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
 ;; rust-mode (major mode for Rust)
-(use-package rust-mode
-  :init
-  (setq rust-mode-treesitter-derive t))
+(use-package rust-mode)
 
 ;; go-mode.el (major mode for Go)
 (use-package go-mode)
