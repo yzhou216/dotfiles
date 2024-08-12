@@ -188,14 +188,14 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (icomplete-minibuffer-setup . (lambda ()
                                   (setq-local completion-styles '(orderless)))))
 
+;; Marginalia (rich annotations)
+(use-package marginalia
+  :init (marginalia-mode))
+
 ;; org-modern
 (use-package org-modern
   :after org
   :config (global-org-modern-mode))
-
-;; Marginalia (rich annotations)
-(use-package marginalia
-  :init (marginalia-mode))
 
 ;; treesit-auto
 (use-package treesit-auto
@@ -266,11 +266,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (define-key global-map (kbd "M-p") 'persp-prev)
   (define-key global-map (kbd "M-n") 'persp-next))
 
-;; Magit
-(use-package magit
-  :hook ((magit-pre-refresh  . diff-hl-magit-pre-refresh)
-         (magit-post-refresh . diff-hl-magit-post-refresh)))
-
 ;; diff-hl
 (use-package diff-hl
   :config
@@ -278,6 +273,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (diff-hl-flydiff-mode)      ; handle unsaved buffers
   (unless (display-graphic-p) ; enable margin mode for TTY frames
     (diff-hl-margin-mode 1)))
+
+;; Magit
+(use-package magit
+  :hook ((magit-pre-refresh  . diff-hl-magit-pre-refresh)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; Evil
 (use-package evil
