@@ -76,15 +76,14 @@ If flyspell is already enabled, does nothing.
 source: https://www.emacswiki.org/emacs/FlySpell "
   (interactive)
   (if (not (symbol-value flyspell-mode)) ; if not already on
-    (progn
-      (if (derived-mode-p 'prog-mode)
-        (progn
-          (message "Flyspell on (code)")
-          (flyspell-prog-mode))
-        ; else
-        (progn
-          (message "Flyspell on (text)")
-          (flyspell-mode 1))))))
+      (progn
+	(if (derived-mode-p 'prog-mode)
+	    (progn
+	      (message "Flyspell on (code)")
+	      (flyspell-prog-mode))
+	  (progn ; else
+	    (message "Flyspell on (text)")
+	    (flyspell-mode 1))))))
 
 (defun flyspell-toggle ()
   "Turn Flyspell on if it is off, or off if it is on.  When turning on, it uses
@@ -92,12 +91,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 source: https://www.emacswiki.org/emacs/FlySpell "
   (interactive)
-    (if (symbol-value flyspell-mode)
+  (if (symbol-value flyspell-mode)
       (progn ; flyspell is on, turn it off
-        (message "Flyspell off")
+	(message "Flyspell off")
         (flyspell-mode -1))
-      ; else - flyspell is off, turn it on
-      (flyspell-on-for-buffer-type)))
+    (flyspell-on-for-buffer-type))) ; else - flyspell is off, turn it on
 
 (global-set-key (kbd "C-c f") 'flyspell-toggle)
 
@@ -107,13 +105,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (let ((current-buffer (current-buffer)))
     (dolist (window (window-list))
       (unless (eq (window-buffer window) current-buffer)
-        (kill-buffer (window-buffer window))
-        (delete-window window))))
+	(kill-buffer (window-buffer window))
+	(delete-window window))))
   (message "Other windows deleted and buffers killed."))
 
 (add-hook 'eshell-mode-hook
-          (lambda ()
-            (eshell/alias "clear" "clear 1")))
+	  (lambda ()
+	    (eshell/alias "clear" "clear 1")))
 
 (require 'use-package)
 
