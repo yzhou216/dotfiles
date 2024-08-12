@@ -282,12 +282,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (setq git-gutter:update-interval 0.02))
 
 ;; git-gutter-fringe.el (disable in tty frame)
-(if (display-graphic-p)
-    (use-package git-gutter-fringe
-      :config
-      (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-      (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-      (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)))
+(use-package git-gutter-fringe
+  :if (display-graphic-p)
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
 ;; Evil
 (use-package evil
