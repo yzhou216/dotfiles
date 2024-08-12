@@ -112,12 +112,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
         (delete-window window))))
   (message "Other windows deleted and buffers killed."))
 
-;; open Emacs config file
-(defun open-init-file ()
-  "Open the init file."
-  (interactive)
-  (find-file user-init-file))
-
 (add-hook 'eshell-mode-hook
           (lambda ()
             (eshell/alias "clear" "clear 1")))
@@ -334,20 +328,20 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   ;; global leader
   (yiyu/leader
-    "," (lambda () (interactive) (insert ",")) ; escape to a comma: ","
-    "SPC" (lambda () (interactive) (insert ", ")) ; escape to a comma followed by a space: ", "
-    "h" 'help
-    "b" 'switch-to-buffer
-    "k" 'kill-buffer
-    "w" 'yiyu/delete-other-windows-and-kill-buffers
-    "f" 'find-file
-    "c" 'open-init-file
-    "gs" 'magit-status
-    "gj" 'git-gutter:next-hunk
-    "gk" 'git-gutter:previous-hunk
-    "ps" 'persp-switch
-    "pk" 'persp-kill
-    "pb" 'persp-set-buffer) ; move buffer to current perspective
+    ","   (lambda () (interactive) (insert ","))               ; escape to a comma: ","
+    "SPC" (lambda () (interactive) (insert ", "))              ; escape to a comma followed by a space: ", "
+    "c"   (lambda () (interactive) (find-file user-init-file)) ; open Emacs config file
+    "h"   'help
+    "b"   'switch-to-buffer
+    "k"   'kill-buffer
+    "w"   'yiyu/delete-other-windows-and-kill-buffers
+    "f"   'find-file
+    "gs"  'magit-status
+    "gj"  'git-gutter:next-hunk
+    "gk"  'git-gutter:previous-hunk
+    "ps"  'persp-switch
+    "pk"  'persp-kill
+    "pb"  'persp-set-buffer)                                   ; move buffer to current perspective
 
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
