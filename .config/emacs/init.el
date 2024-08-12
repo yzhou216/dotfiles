@@ -113,8 +113,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 	  (lambda ()
 	    (eshell/alias "clear" "clear 1")))
 
-(require 'use-package)
-
 (use-package emacs
   :custom
   ;; TAB cycle if there are only few candidates
@@ -131,18 +129,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not used via M-x.
   (read-extended-command-predicate #'command-completion-default-include-p))
-
-;; use-package
-(use-package use-package
-  :ensure nil
-  :custom use-package-always-ensure t)
-
-;; package archives
-(use-package package
-  :ensure nil
-  :config
-  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
 ;; auto-package-update
 (use-package auto-package-update

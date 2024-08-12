@@ -10,6 +10,7 @@
 # Emacs
 .config/emacs/*
 !.config/emacs/init.el
+!.config/emacs/early-init.el
 
 # Nyxt
 .config/nyxt/*
