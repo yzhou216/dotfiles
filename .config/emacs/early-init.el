@@ -11,3 +11,6 @@
   (package-initialize)
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
+
+;; no-littering (keeping ~/.config/emacs clean)
+(use-package no-littering)
