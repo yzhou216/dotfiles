@@ -267,7 +267,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (define-key global-map (kbd "M-n") 'persp-next))
 
 ;; Magit
-(use-package magit)
+(use-package magit
+  :hook ((magit-pre-refresh  . diff-hl-magit-pre-refresh)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; diff-hl
 (use-package diff-hl
