@@ -43,10 +43,6 @@
 ;; set a margin of 10 lines at the top and bottom for scrolling
 (setq scroll-margin 10)
 
-;; fido-vertical-mdoe (icomplete-mode with flex match)
-(fido-vertical-mode 1)
-(setq completions-detailed t)
-
 ;; midnight.el
 (require 'midnight)
 (midnight-delay-set 'midnight-delay 16200) ; (eq (* 4.5 60 60) "4:30am")
@@ -183,6 +179,14 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :if (not (display-graphic-p))
   :after corfu
   :config (corfu-terminal-mode +1))
+
+;; orderless (with fido-vertical-mode)
+(use-package orderless
+  :config (fido-vertical-mode)
+  :custom (completion-styles '(orderless))
+  :hook
+  (icomplete-minibuffer-setup . (lambda ()
+                                  (setq-local completion-styles '(orderless)))))
 
 ;; org-modern
 (use-package org-modern
