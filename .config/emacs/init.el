@@ -259,19 +259,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; Magit
 (use-package magit)
 
-;; git-gutter
-(use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
+;; diff-hl
+(use-package diff-hl
   :config
-  (setq git-gutter:update-interval 0.02))
-
-;; git-gutter-fringe.el (disable in tty frame)
-(use-package git-gutter-fringe
-  :if (display-graphic-p)
-  :config
-  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode)      ; handle unsaved buffers
+  (unless (display-graphic-p) ; enable margin mode for TTY frames
+    (diff-hl-margin-mode 1)))
 
 ;; Evil
 (use-package evil
@@ -320,8 +314,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "w"   'yiyu/delete-other-windows-and-kill-buffers
     "f"   'find-file
     "gs"  'magit-status
-    "gj"  'git-gutter:next-hunk
-    "gk"  'git-gutter:previous-hunk
+    "gj"  'diff-hl-next-hunk
+    "gk"  'diff-hl-previous-hunk
     "ps"  'persp-switch
     "pk"  'persp-kill
     "pb"  'persp-set-buffer)                                   ; move buffer to current perspective
