@@ -178,6 +178,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
   (corfu-auto t))
 
+;; corfu-terminal (corfu popup in TTY frames)
+(use-package corfu-terminal
+  :if (not (display-graphic-p))
+  :after corfu
+  :config (corfu-terminal-mode +1))
+
 ;; org-modern
 (use-package org-modern
   :after org
