@@ -110,6 +110,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 	    (eshell/alias "clear" "clear 1")))
 
 (use-package emacs
+  :config
+  (display-battery-mode)
+  (display-time-mode)
+
   :custom
   ;; TAB cycle if there are only few candidates
   (completion-cycle-threshold 3)
