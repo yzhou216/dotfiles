@@ -160,7 +160,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-  (corfu-auto t))
+  (corfu-auto t)
+  :bind (:map corfu-map
+	      ("M-SPC" . corfu-insert-separator)))
 
 ;; corfu-terminal (corfu popup in TTY frames)
 (use-package corfu-terminal
