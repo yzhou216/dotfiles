@@ -1,27 +1,51 @@
-;; enable line number
-(global-display-line-numbers-mode 1)
+(use-package emacs
+  :config
+  (load-theme 'modus-vivendi)
+  (display-battery-mode)
+  (display-time-mode)
 
-;; relative line numbers
-(setq display-line-numbers-type 'relative)
+  :custom
+  ;; relative line numbers
+  (display-line-numbers-type 'relative)
 
-;; set non blinking cursor
-(blink-cursor-mode 0)
+  ;; ensure smooth scrolling
+  (scroll-conservatively 101)
 
-;; enable hl-line-mode to highlight the current line
-(global-hl-line-mode t)
+  ;; set a margin of 10 lines at the top and bottom for scrolling
+  (scroll-margin 10)
 
-;; set path for customise system
-(setq custom-file "~/.config/emacs/custom.el")
-(ignore-errors (load custom-file)) ;; It may not yet exist.
+  ;; TAB cycle if there are only few candidates
+  (completion-cycle-threshold 3)
 
-;; update buffers when files on the disk changes
-(add-hook 'after-init-hook 'global-auto-revert-mode)
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete)
 
-;; ensure smooth scrolling
-(setq scroll-conservatively 101)
+  ;; Emacs 30 and newer: Disable Ispell completion function.
+  ;; Use `cape-dict' as an alternative
+  (text-mode-ispell-word-completion nil)
 
-;; set a margin of 10 lines at the top and bottom for scrolling
-(setq scroll-margin 10)
+  ;; Hide commands in M-x which do not apply to the current mode.
+  ;; Corfu commands are hidden, since they are not used via M-x.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+
+  :hook
+  ;; update buffers when files on the disk changes
+  (after-init . global-auto-revert-mode)
+
+  :config
+  ;; set path for customise system
+  (setq custom-file "~/.config/emacs/custom.el")
+  (ignore-errors (load custom-file)) ;; It may not yet exist.
+
+  ;; enable line number
+  (global-display-line-numbers-mode 1)
+
+  ;; set non blinking cursor
+  (blink-cursor-mode 0)
+
+  ;; enable hl-line-mode to highlight the current line
+  (global-hl-line-mode t))
 
 ;; midnight.el
 (require 'midnight)
@@ -84,28 +108,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 	(kill-buffer (window-buffer window))
 	(delete-window window))))
   (message "Other windows deleted and buffers killed."))
-
-(use-package emacs
-  :config
-  (load-theme 'modus-vivendi)
-  (display-battery-mode)
-  (display-time-mode)
-
-  :custom
-  ;; TAB cycle if there are only few candidates
-  (completion-cycle-threshold 3)
-
-  ;; Enable indentation+completion using the TAB key.
-  ;; `completion-at-point' is often bound to M-TAB.
-  (tab-always-indent 'complete)
-
-  ;; Emacs 30 and newer: Disable Ispell completion function.
-  ;; Use `cape-dict' as an alternative
-  (text-mode-ispell-word-completion nil)
-
-  ;; Hide commands in M-x which do not apply to the current mode.
-  ;; Corfu commands are hidden, since they are not used via M-x.
-  (read-extended-command-predicate #'command-completion-default-include-p))
 
 ;; Eshell
 (use-package eshell
