@@ -22,14 +22,6 @@
 ;; enable hl-line-mode to highlight the current line
 (global-hl-line-mode t)
 
-;; customize the hl-line face to be gray
-(custom-set-faces
- '(hl-line ((t (:background "gray20")))))
-
-;; light on dark
-(set-background-color "black")
-(set-foreground-color "white")
-
 ;; set path for customise system
 (setq custom-file "~/.config/emacs/custom.el")
 (ignore-errors (load custom-file)) ;; It may not yet exist.
@@ -111,6 +103,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 (use-package emacs
   :config
+  (load-theme 'modus-vivendi)
   (display-battery-mode)
   (display-time-mode)
 
