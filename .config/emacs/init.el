@@ -5,6 +5,9 @@
   (display-time-mode)
 
   :custom
+  ;; disable binking cursor in a text terminal (TTY frames)
+  (visible-cursor nil)
+
   ;; relative line numbers
   (display-line-numbers-type 'relative)
 
