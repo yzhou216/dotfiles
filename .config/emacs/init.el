@@ -319,7 +319,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
-    :keymaps 'emacs-lisp-mode-map
+    :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
     "e" (lambda () ; eval the last sexp at the end of the line
 	  (interactive)
 	  (let ((is-in-insert-state (evil-insert-state-p))
