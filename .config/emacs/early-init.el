@@ -14,3 +14,5 @@
 
 ;; no-littering (keeping ~/.config/emacs clean)
 (use-package no-littering)
+
+(setq use-dialog-box nil)
