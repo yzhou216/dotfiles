@@ -85,10 +85,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 	(delete-window window))))
   (message "Other windows deleted and buffers killed."))
 
-(add-hook 'eshell-mode-hook
-	  (lambda ()
-	    (eshell/alias "clear" "clear 1")))
-
 (use-package emacs
   :config
   (load-theme 'modus-vivendi)
@@ -110,6 +106,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not used via M-x.
   (read-extended-command-predicate #'command-completion-default-include-p))
+
+;; Eshell
+(use-package eshell
+  :ensure nil
+  :hook (eshell-mode . (lambda ()
+			 (eshell/alias "clear" "clear 1")))
+  :bind ("M-RET" . eshell))
 
 ;; auto-package-update
 (use-package auto-package-update
