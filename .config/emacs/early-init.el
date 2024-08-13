@@ -10,7 +10,9 @@
   :config
   (package-initialize)
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  :custom
+  (package-enable-at-startup nil)) ; Prevent initialization after early-init.el
 
 ;; no-littering (keeping ~/.config/emacs clean)
 (use-package no-littering)
