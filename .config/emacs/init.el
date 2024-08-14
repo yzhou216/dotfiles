@@ -117,7 +117,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :ensure nil
   :hook (eshell-mode . (lambda ()
 			 (eshell/alias "clear" "clear 1")))
-  :bind ("M-RET" . eshell))
+  :config (bind-key* "M-RET" 'eshell))
 
 ;; auto-package-update
 (use-package auto-package-update
