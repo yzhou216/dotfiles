@@ -285,7 +285,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (setq evil-want-keybinding nil)
 
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+
+  ;; Custom window comamnds
+  (bind-key* "C-h" 'evil-window-left)
+  (bind-key* "C-l" 'evil-window-right)
+  (bind-key* "C-j" 'evil-window-down)
+  (bind-key* "C-k" 'evil-window-up))
 
 ;; Evil Collection
 (use-package evil-collection
