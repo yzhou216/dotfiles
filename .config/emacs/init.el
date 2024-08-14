@@ -211,6 +211,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package eglot
   :ensure nil
   :hook
+  (haskell-mode . eglot-ensure)
   (rust-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
   (go-mode . eglot-ensure)
@@ -239,6 +240,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; extra major modes
 (use-package racket-mode)
+(use-package haskell-mode)
 (use-package rust-mode)
 (use-package go-mode)
 (use-package markdown-mode
