@@ -150,6 +150,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; which-key
 (use-package which-key
+  :custom (which-key-idle-delay 0.1)
   :config
   (which-key-mode))
 
