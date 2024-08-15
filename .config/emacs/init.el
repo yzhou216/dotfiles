@@ -252,10 +252,11 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; /usr/share/emacs/site-lisp (/run/current-system/sw/share/emacs/site-lisp on
 ;; Nix) directory, which is in the default `load-path'.
 ;; Therefore, make sure GNU LilyPond is installed and set ensure to nil.
-(use-package lilypond-mode
-  :ensure nil
-  :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
-  :hook (LilyPond-mode . turn-on-font-lock))
+(when (executable-find "lilypond")
+  (use-package lilypond-mode
+    :ensure nil
+    :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
+    :hook (LilyPond-mode . turn-on-font-lock)))
 
 ;; libvterm
 (use-package vterm)
