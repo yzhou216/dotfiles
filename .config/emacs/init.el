@@ -247,6 +247,16 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 
+;; lilypond-mode (Major mode for editing GNU LilyPond files)
+;; GNU LilyPond system package automatically adds its Elisp files into the
+;; /usr/share/emacs/site-lisp (/run/current-system/sw/share/emacs/site-lisp on
+;; Nix) directory, which is in the default `load-path'.
+;; Therefore, make sure GNU LilyPond is installed and set ensure to nil.
+(use-package lilypond-mode
+  :ensure nil
+  :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
+  :hook (LilyPond-mode . turn-on-font-lock))
+
 ;; libvterm
 (use-package vterm)
 
