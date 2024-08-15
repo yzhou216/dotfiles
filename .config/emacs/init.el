@@ -296,13 +296,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (setq evil-want-keybinding nil)
 
   :config
-  (evil-mode 1)
-
-  ;; Custom window comamnds
-  (bind-key* "C-h" 'evil-window-left)
-  (bind-key* "C-l" 'evil-window-right)
-  (bind-key* "C-j" 'evil-window-down)
-  (bind-key* "C-k" 'evil-window-up))
+  (evil-mode 1))
 
 ;; Evil Collection
 (use-package evil-collection
@@ -319,6 +313,14 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 			    (evil-normalize-keymaps)))))
   :config
   (general-evil-setup t)
+
+  ;; Custom window comamnds
+  (general-define-key
+     :keymaps 'override
+     "C-h" 'evil-window-left
+     "C-l" 'evil-window-right
+     "C-j" 'evil-window-down
+     "C-k" 'evil-window-up)
 
   (general-create-definer yiyu/leader
     :states '(normal insert visual emacs)
