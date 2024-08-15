@@ -258,6 +258,17 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
     :hook (LilyPond-mode . turn-on-font-lock)))
 
+;; pdf-tools
+(use-package pdf-tools
+  :pin manual ; don't reinstall when package updates
+  :mode  ("\\.pdf\\'" . pdf-view-mode)
+  :hook (pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
+  :config
+  (setq-default pdf-view-display-size 'fit-page)
+  (setq pdf-annot-activate-created-annotations t)
+  (pdf-tools-install :no-query)
+  (require 'pdf-occur))
+
 ;; libvterm
 (use-package vterm)
 
