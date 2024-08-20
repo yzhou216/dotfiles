@@ -347,6 +347,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     ","   (lambda () (interactive) (insert ","))               ; escape to a comma: ","
     "SPC" (lambda () (interactive) (insert ", "))              ; escape to a comma followed by a space: ", "
     "c"   (lambda () (interactive) (find-file user-init-file)) ; open Emacs config file
+    "x"   'execute-extended-command
     "h"   'help
     "b"   'switch-to-buffer
     "k"   'kill-buffer
