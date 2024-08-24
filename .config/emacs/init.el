@@ -393,4 +393,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "c" 'dape-breakpoint-remove-all
     "n" 'dape-next
     "s" 'dape-step-in
-    "o" 'dape-step-out))
+    "o" 'dape-step-out)
+
+  (yiyu/localleader
+    :keymaps '(org-mode-map)
+    "f" 'org-fill-paragraph))
