@@ -397,4 +397,5 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
   (yiyu/localleader
     :keymaps '(org-mode-map)
-    "f" 'org-fill-paragraph))
+    "f" 'org-fill-paragraph
+    "p" 'org-latex-export-to-pdf))
