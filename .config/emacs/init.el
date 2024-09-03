@@ -37,6 +37,8 @@
   (after-init . global-auto-revert-mode)
 
   :config
+  (set-face-attribute 'default nil :height 125) ; default font size
+
   ;; set path for customise system
   (setq custom-file "~/.config/emacs/custom.el")
   (ignore-errors (load custom-file)) ;; It may not yet exist.
