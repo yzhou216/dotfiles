@@ -216,7 +216,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ((haskell-mode
     rust-mode
     rust-ts-mode
-    go-mode
     go-ts-mode
     python-base-mode) . eglot-ensure)
   :config
@@ -246,7 +245,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package racket-mode)
 (use-package haskell-mode)
 (use-package rust-mode)
-(use-package go-mode)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
