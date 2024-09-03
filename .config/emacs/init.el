@@ -213,12 +213,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :hook
   ;; Format on save
   (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
-  (haskell-mode . eglot-ensure)
-  (rust-mode . eglot-ensure)
-  (rust-ts-mode . eglot-ensure)
-  (go-mode . eglot-ensure)
-  (go-ts-mode . eglot-ensure)
-  (python-base-mode . eglot-ensure)
+  ((haskell-mode
+    rust-mode
+    rust-ts-mode
+    go-mode
+    go-ts-mode
+    python-base-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) .
