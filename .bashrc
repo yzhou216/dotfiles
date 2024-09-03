@@ -32,6 +32,7 @@ unset rc
 # User specific aliases and functions
 alias ls='ls --color=auto'
 alias emacs='emacs -nw'
+alias golines='golines --max-len=80 --tab-len=8 --write-output'
 
 # set VIM as default editor
 export VISUAL=vim
