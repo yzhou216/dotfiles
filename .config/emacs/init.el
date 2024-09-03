@@ -217,7 +217,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     rust-mode
     rust-ts-mode
     go-ts-mode
-    python-base-mode) . eglot-ensure)
+    python-base-mode
+    nix-ts-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) .
@@ -248,6 +249,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+(use-package nix-ts-mode
+  :mode "\\.nix\\'")
 
 ;; lilypond-mode (Major mode for editing GNU LilyPond files)
 ;; GNU LilyPond system package automatically adds its Elisp files into the
