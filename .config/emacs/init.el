@@ -211,6 +211,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package eglot
   :ensure nil
   :hook
+  ;; Format on save
+  (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
   (haskell-mode . eglot-ensure)
   (rust-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
@@ -385,7 +387,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "r" 'eglot-rename
     "i" 'eglot-code-action-organize-imports
     "h" 'eldoc
-    "f" 'eglot-format
     "a" 'eglot-code-actions
     "j" 'flymake-goto-next-error
     "k" 'flymake-goto-prev-error
