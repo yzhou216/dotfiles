@@ -53,8 +53,10 @@
   (global-hl-line-mode t))
 
 ;; midnight.el
-(require 'midnight)
-(midnight-delay-set 'midnight-delay 16200) ; (eq (* 4.5 60 60) "4:30am")
+(use-package midnight
+  :ensure nil
+  :config
+  (midnight-delay-set 'midnight-delay 16200)) ; (eq (* 4.5 60 60) "4:30am")
 
 ;; set indentation style for C
 (setq-default c-default-style "linux"
