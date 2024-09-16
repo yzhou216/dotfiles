@@ -284,9 +284,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (pdf-tools-install :no-query)
   (require 'pdf-occur))
 
-;; libvterm
-(use-package vterm)
-
 ;; perspective.el
 (use-package perspective
   :bind
