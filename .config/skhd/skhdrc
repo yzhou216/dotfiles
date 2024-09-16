@@ -155,6 +155,10 @@ cmd - 6 : yabai -m space --focus 6 || yabai -m space --focus recent
 # send focused window to spaces
 cmd + alt - 1 : yabai -m window --space 1
 cmd + alt - 2 : yabai -m window --space 2
+cmd + alt - 3 : yabai -m window --space 3
+cmd + alt - 4 : yabai -m window --space 4
+cmd + alt - 5 : yabai -m window --space 5
+cmd + alt - 6 : yabai -m window --space 6
 
 # Spotlight
 cmd - d : osascript -e 'tell application "System Events" to keystroke space using {command down}'
