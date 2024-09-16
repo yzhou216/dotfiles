@@ -123,6 +123,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 			 (eshell/alias "clear" "clear 1")))
   :config (bind-key* "M-RET" 'eshell))
 
+;; Eat: Emulate A Terminal
+(use-package eat
+  :config
+  (eat-eshell-mode)
+  (setq eshell-visual-commands '()))
+
 ;; auto-package-update
 (use-package auto-package-update
   :custom
