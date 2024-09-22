@@ -207,6 +207,15 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :custom
   (treesit-auto-install t)
   :config
+  (setq yiyu/haskell-tsauto-config
+	(make-treesit-auto-recipe
+	 :lang 'haskell
+	 :ts-mode 'haskell-ts-mode
+	 :remap 'haskell-mode
+	 :url "https://github.com/tree-sitter/tree-sitter-haskell"
+	 :ext "\\.hs\\'"))
+  (add-to-list 'treesit-auto-recipe-list yiyu/haskell-tsauto-config)
+  (add-to-list 'treesit-auto-langs 'haskell)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
@@ -223,7 +232,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :hook
   ;; Format on save
   (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
-  ((haskell-mode
+  ((haskell-ts-mode
     rust-mode
     rust-ts-mode
     go-ts-mode
@@ -254,7 +263,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; extra major modes
 (use-package racket-mode)
-(use-package haskell-mode)
+(use-package haskell-ts-mode
+  :mode "\\.hs\\'"
+  :hook
+  (haskell-ts-mode . haskell-ts-setup-eglot))
 (use-package rust-mode)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
