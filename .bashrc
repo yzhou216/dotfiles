@@ -31,6 +31,7 @@ unset rc
 
 # User specific aliases and functions
 alias ls='ls --color=auto'
+alias info='info --vi-keys'
 alias emacs='emacs --no-window-system'
 alias golines='golines --max-len=80 --tab-len=8 --write-output'
 alias python='rustpython'
