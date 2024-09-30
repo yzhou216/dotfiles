@@ -242,8 +242,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) .
 		 ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  :config
-  (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t))))))
+  (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t)
+							   (hints . ((assignVariableTypes . t)
+								     (compositeLiteralFields . t))))))))
 
 ;; eglot-java (Eclipse JDT LS)
 (use-package eglot-java
