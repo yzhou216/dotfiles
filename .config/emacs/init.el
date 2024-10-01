@@ -422,4 +422,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (yiyu/localleader
     :keymaps '(org-mode-map)
     "f" 'org-fill-paragraph
-    "p" 'org-latex-export-to-pdf))
+    "p" 'org-latex-export-to-pdf)
+
+  (yiyu/localleader
+    :keymaps '(go-ts-mode-map)
+    "t" 'go-ts-mode-test-function-at-point
+    "T" 'go-ts-mode-test-this-package))
