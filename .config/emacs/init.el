@@ -239,9 +239,13 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     python-base-mode
     nix-ts-mode) . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) .
-		 ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (with-eval-after-load 'eglot
+    (dolist (mode '((nix-ts-mode . ("nil" :initializationOptions
+				    (:formatting (:command ["alejandra"]))))
+		    ((rust-ts-mode rust-mode) .
+		     ("rust-analyzer" :initializationOptions
+		      (:check (:command "clippy"))))))
+      (add-to-list 'eglot-server-programs mode)))
   (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t)
 							   (hints . ((assignVariableTypes . t)
 								     (compositeLiteralFields . t))))))))
