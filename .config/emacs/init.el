@@ -233,7 +233,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   ;; Format on save
   (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
   ((haskell-ts-mode
-    rust-mode
     rust-ts-mode
     go-ts-mode
     python-base-mode
@@ -242,9 +241,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (with-eval-after-load 'eglot
     (dolist (mode '((nix-ts-mode . ("nil" :initializationOptions
 				    (:formatting (:command ["alejandra"]))))
-		    ((rust-ts-mode rust-mode) .
-		     ("rust-analyzer" :initializationOptions
-		      (:check (:command "clippy"))))))
+		    (rust-ts-mode . ("rust-analyzer" :initializationOptions
+				     (:check (:command "clippy"))))))
       (add-to-list 'eglot-server-programs mode)))
   (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t)
 							   (hints . ((assignVariableTypes . t)
@@ -272,7 +270,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :mode "\\.hs\\'"
   :hook
   (haskell-ts-mode . haskell-ts-setup-eglot))
-(use-package rust-mode)
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
