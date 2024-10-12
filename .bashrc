@@ -36,6 +36,11 @@ alias emacs='emacs --no-window-system'
 alias golines='golines --max-len=80 --tab-len=8 --write-output'
 alias python='rustpython'
 alias python3='rustpython'
+alias 'nswitch'='nh os switch -- --impure'
+nsh () {
+  package=$1
+  nix shell nixpkgs#$package
+}
 
 # set VIM as default editor
 export VISUAL=vim
