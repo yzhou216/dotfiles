@@ -1,0 +1,7 @@
+[ui]
+default-command = "log"
+paginate = "never"
+
+[user]
+email = "yiyuzhou19@gmail.com"
+name = "Yiyu Zhou"
