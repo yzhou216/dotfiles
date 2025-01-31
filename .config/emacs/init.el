@@ -179,12 +179,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   :bind (:map corfu-map
 	      ("M-SPC" . corfu-insert-separator)))
 
-;; corfu-terminal (corfu popup in TTY frames)
-(use-package corfu-terminal
-  :if (not (display-graphic-p))
-  :after corfu
-  :config (corfu-terminal-mode +1))
-
 ;; orderless (with fido-vertical-mode)
 (use-package orderless
   :config (fido-vertical-mode)
