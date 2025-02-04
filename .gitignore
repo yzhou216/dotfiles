@@ -1,6 +1,6 @@
 # Vim
-.vim/*
-!.vim/vimrc
+.config/vim/*
+!.config/vim/vimrc
 
 # Neovim
 .config/nvim/*
