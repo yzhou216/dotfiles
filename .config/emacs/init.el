@@ -366,6 +366,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (yiyu/leader
     ","   (lambda () (interactive) (insert ","))               ; escape to a comma: ","
     "SPC" (lambda () (interactive) (insert ", "))              ; escape to a comma followed by a space: ", "
+    "RET" (lambda () (interactive) (insert ",\n"))             ; escape to a comma followed by a return: ",\n"
     "c"   (lambda () (interactive) (find-file user-init-file)) ; open Emacs config file
     "x"   'execute-extended-command
     "h"   'help
