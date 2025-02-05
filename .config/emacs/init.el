@@ -191,6 +191,26 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package marginalia
   :init (marginalia-mode))
 
+;; Org Mode
+(use-package org
+  :ensure nil
+  :hook (org-mode . org-indent-mode)
+  :custom
+  (org-src-preserve-indentation nil)
+  (org-edit-src-content-indentation 0)
+  (org-confirm-babel-evaluate nil) ; Trust execution
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((haskell . t))))
+
+;; org-babel-lilypond
+(use-package ob-lilypond
+  :ensure nil)
+
+(use-package ob-haskell
+  :ensure nil)
+
 ;; org-modern
 (use-package org-modern
   :after org
