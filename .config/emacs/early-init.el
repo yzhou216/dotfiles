@@ -1,37 +1,14 @@
-;; use-package
-(require 'use-package)
-(use-package use-package
-  :ensure nil
-  :custom use-package-always-ensure t)
+;; hide uneeded UI elements
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
 
-;; package archives
-(use-package package
-  :ensure nil
-  :config
-  (package-initialize)
-  (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  :custom
-  (package-enable-at-startup nil)) ; Prevent initialization after early-init.el
+;; disable dialog box
+(setq use-dialog-box nil)
 
-;; no-littering (keeping ~/.config/emacs clean)
-(use-package no-littering)
+;; inhibit startup message
+(setq inhibit-startup-message t
+    visible-bell t)
 
-;; Emacs settings
-(use-package emacs
-  :after no-littering
-  :config
-  ;; hide uneeded UI elements
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (menu-bar-mode -1)
-
-  ;; disable dialog box
-  (setq use-dialog-box nil)
-
-  ;; inhibit startup message
-  (setq inhibit-startup-message t
-        visible-bell t)
-
-  ;; hide native comp warnings
-  (setq native-comp-async-report-warnings-errors nil))
+;; hide native comp warnings
+(setq native-comp-async-report-warnings-errors nil)

@@ -1,3 +1,8 @@
+;; use-package
+(use-package use-package
+  :ensure nil
+  :custom use-package-always-ensure t)
+
 (use-package emacs
   :config
   (load-theme 'modus-vivendi)
@@ -51,6 +56,14 @@
 
   ;; enable hl-line-mode to highlight the current line
   (global-hl-line-mode t))
+
+;; package archives
+(use-package package
+  :ensure nil
+  :config
+  (package-initialize)
+  (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
 ;; midnight.el
 (use-package midnight
