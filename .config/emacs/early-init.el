@@ -9,6 +9,7 @@
   :ensure nil
   :config
   (package-initialize)
+  (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
   :custom
   (package-enable-at-startup nil)) ; Prevent initialization after early-init.el
