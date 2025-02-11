@@ -278,19 +278,6 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 							   (hints . ((assignVariableTypes . t)
 								     (compositeLiteralFields . t))))))))
 
-;; eglot-java (Eclipse JDT LS)
-(use-package eglot-java
-  :hook
-  (java-mode    . eglot-java-mode)
-  (java-ts-mode . eglot-java-mode)
-  :config
-  (evil-define-key 'normal 'global (kbd "<leader>ln") 'eglot-java-file-new)
-  (evil-define-key 'normal 'global (kbd "<leader>lx") 'eglot-java-run-main)
-  (evil-define-key 'normal 'global (kbd "<leader>lt") 'eglot-java-run-test)
-  (evil-define-key 'normal 'global (kbd "<leader>lN") 'eglot-java-project-new)
-  (evil-define-key 'normal 'global (kbd "<leader>lT") 'eglot-java-project-build-task)
-  (evil-define-key 'normal 'global (kbd "<leader>lR") 'eglot-java-project-build-refresh))
-
 ;; dape
 (use-package dape)
 
