@@ -200,6 +200,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (icomplete-minibuffer-setup . (lambda ()
                                   (setq-local completion-styles '(orderless)))))
 
+;; consult.el (Consulting completing-read)
+(use-package consult)
+
 ;; Marginalia (rich annotations)
 (use-package marginalia
   :init (marginalia-mode))
@@ -403,7 +406,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "c"   (lambda () (interactive) (find-file user-init-file)) ; open Emacs config file
     "x"   'execute-extended-command
     "h"   'help
-    "b"   'switch-to-buffer
+    "/"   'consult-line
+    "m"   'consult-man
+    "b"   'consult-buffer
     "k"   'kill-buffer
     "w"   'yiyu/delete-other-windows-and-kill-buffers
     "f"   'find-file
