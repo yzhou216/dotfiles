@@ -167,13 +167,13 @@ riverctl map normal Super Return spawn alacritty
 riverctl map normal Super D spawn "wofi --show=drun"
 
 # Dynamic display configuration: kanshi
-exec kanshi </dev/null &>/dev/null &
+riverctl spawn "exec kanshi"
 
 # status panel: Yambar
-exec yambar </dev/null &>/dev/null &
+riverctl spawn "exec yambar"
 
 # Notification daemon: fnott
-exec fnott </dev/null &>/dev/null &
+riverctl spawn "exec fnott"
 riverctl map normal Super C spawn 'fnottctl dismiss all'
 
 # Screenshots: wayshot
@@ -181,4 +181,4 @@ riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%
 riverctl map normal Super+Shift S spawn 'region=$(slurp) && wayshot -s "$region" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot -s "$region" --stdout | wl-copy -t image/png'
 
 # Update D-Bus activation environment variable
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
