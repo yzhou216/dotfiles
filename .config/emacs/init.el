@@ -335,16 +335,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; perspective.el
 (use-package perspective
-  :bind
-  ("C-x C-b" . persp-list-buffers)
-  :custom
-  (persp-mode-prefix-key (kbd "C-c M-p"))
   :init
-  (persp-mode)
-  :config
-  ;; key bindings
-  (define-key global-map (kbd "M-p") 'persp-prev)
-  (define-key global-map (kbd "M-n") 'persp-next))
+  (persp-mode))
 
 ;; diff-hl
 (use-package diff-hl
@@ -420,9 +412,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "gs"  'magit-status
     "gj"  'diff-hl-next-hunk
     "gk"  'diff-hl-previous-hunk
-    "ps"  'persp-switch
-    "pk"  'persp-kill
-    "pb"  'persp-set-buffer)                                   ; move buffer to current perspective
+    "p"   'perspective-map :which-key "perspective"
+    "P"   'persp-list-buffers)
 
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
