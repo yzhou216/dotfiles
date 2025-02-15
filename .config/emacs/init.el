@@ -257,6 +257,12 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; yasnippet-snippets
 (use-package yasnippet-snippets)
 
+;; Flymake
+(use-package flymake
+  :ensure nil
+  :hook
+  (emacs-lisp-mode . flymake-mode))
+
 ;; Eglot
 (use-package eglot
   :ensure nil
