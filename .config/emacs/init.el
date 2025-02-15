@@ -336,7 +336,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 ;; perspective.el
 (use-package perspective
   :init
-  (persp-mode))
+  (persp-mode)
+  :custom
+  (persp-suppress-no-prefix-key-warning t))
 
 ;; diff-hl
 (use-package diff-hl
