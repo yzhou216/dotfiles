@@ -286,7 +286,18 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 								     (compositeLiteralFields . t))))))))
 
 ;; dape
-(use-package dape)
+(use-package dape
+  :hook
+  ;; Auto save and load breakpoints
+  (kill-emacs . dape-breakpoint-save)
+  (after-init . dape-breakpoint-load)
+  ;; Kill compile buffer on build success
+  (dape-compile . kill-buffer)
+  ;; Save buffers on startup, useful for interpreted languages
+  (dape-start . (lambda () (save-some-buffers t t)))
+  :custom
+  (dape-buffer-window-arrangement 'right)
+  (dape-inlay-hints t))
 
 ;; extra major modes
 (use-package racket-mode)
