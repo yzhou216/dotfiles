@@ -215,6 +215,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (org-src-preserve-indentation nil)
   (org-edit-src-content-indentation 0)
   (org-confirm-babel-evaluate nil) ; Trust execution
+  (org-latex-pdf-process '("tectonic %f")) ; Use Tectonic for PDF export
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
