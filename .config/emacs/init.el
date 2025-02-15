@@ -432,9 +432,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 		(forward-char 1))) ; counteract evil state switching offset
             (goto-char cursor-pos))))
 
-  ;; local leader for eglot and dape (LSP and DAP)
+  ;; local leader for LSP/DAP and frontend minor modes
   (yiyu/localleader
-    :keymaps '(eglot-mode-map dape-global-map)
+    :keymaps '(eglot-mode-map dape-global-map flymake-mode-map)
     "r" 'eglot-rename
     "i" 'eglot-code-action-organize-imports
     "h" 'eldoc
