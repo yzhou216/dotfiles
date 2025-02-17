@@ -79,7 +79,7 @@
   :custom
   (dictionary-server "dict.org"))
 
-(defun flyspell-on-for-buffer-type ()
+(defun yiyu/flyspell-on-for-buffer-type ()
   "Enable Flyspell appropriately for the major mode of the current buffer.  Uses
 `flyspell-prog-mode' for modes derived from `prog-mode', so only strings and
 comments get checked.  All other buffers get `flyspell-mode' to check all text.
@@ -97,7 +97,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 	    (message "Flyspell on (text)")
 	    (flyspell-mode 1))))))
 
-(defun flyspell-toggle ()
+(defun yiyu/flyspell-toggle ()
   "Turn Flyspell on if it is off, or off if it is on.  When turning on, it uses
 `flyspell-on-for-buffer-type' so code-vs-text is handled appropriately.
 
@@ -109,7 +109,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
         (flyspell-mode -1))
     (flyspell-on-for-buffer-type))) ; else - flyspell is off, turn it on
 
-(global-set-key (kbd "C-c f") 'flyspell-toggle)
+(global-set-key (kbd "C-c f") 'yiyu/flyspell-toggle)
 
 (defun yiyu/delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
@@ -158,7 +158,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (erc-fill-function 'erc-fill-static)
   (erc-fill-static-center 16)
   :config
-  (defun libera-chat ()
+  (defun yiyu/libera-chat ()
     (interactive)
     (let ((password (read-passwd "Password: ")))
       (erc-tls :server "irc.libera.chat"
