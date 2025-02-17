@@ -45,7 +45,9 @@
   (set-face-attribute 'default nil :height 125) ; default font size
 
   ;; set path for customise system
-  (setq custom-file "~/.config/emacs/custom.el")
+  (setq custom-file
+	(concat (file-name-directory (or load-file-name (buffer-file-name)))
+		"custom.el"))
   (ignore-errors (load custom-file)) ;; It may not yet exist.
 
   ;; enable line number
