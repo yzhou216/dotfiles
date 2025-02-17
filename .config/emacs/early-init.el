@@ -1,3 +1,11 @@
+;;; early-init.el --- -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;; The Early Init File
+
+;;; Code:
+
 ;; hide uneeded UI elements
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -10,3 +18,5 @@
 (setopt
  native-comp-async-report-warnings-errors nil  ; hide native comp warnings
  inhibit-startup-message t)                    ; inhibit startup message
+
+;;; early-init.el ends here
