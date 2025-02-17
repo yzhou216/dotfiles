@@ -73,9 +73,11 @@
   :config
   (midnight-delay-set 'midnight-delay 16200)) ; (eq (* 4.5 60 60) "4:30am")
 
-;; set the dictionary server for dictionary lookup to dict.org
-(setq dictionary-server "dict.org")
-(global-set-key (kbd "C-c l") #'dictionary-lookup-definition)
+;; dictionary-mode
+(use-package dictionary
+  :ensure nil
+  :custom
+  (dictionary-server "dict.org"))
 
 (defun flyspell-on-for-buffer-type ()
   "Enable Flyspell appropriately for the major mode of the current buffer.  Uses
@@ -393,6 +395,7 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     "SPC" (lambda () (interactive) (insert ", "))              ; escape to a comma followed by a space: ", "
     "RET" (lambda () (interactive) (insert ",\n"))             ; escape to a comma followed by a return: ",\n"
     "c"   (lambda () (interactive) (find-file user-init-file)) ; open Emacs config file
+    "d"   'dictionary-lookup-definition
     "x"   'execute-extended-command
     "h"   'help
     "/"   'consult-line
