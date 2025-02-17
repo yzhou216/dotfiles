@@ -378,7 +378,7 @@ source: https://www.emacswiki.org/emacs/FlySpell"
 (use-package general
   :after evil
   :hook (after-init . (lambda ()
-			(when-let ((messages-buffer (get-buffer "*Messages*")))
+			(when-let* ((messages-buffer (get-buffer "*Messages*")))
 			  (with-current-buffer messages-buffer
 			    (evil-normalize-keymaps)))))
   :config
