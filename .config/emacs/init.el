@@ -1,3 +1,11 @@
+;;; init.el --- -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;; The Emacs Initialization File
+
+;;; Code:
+
 ;; use-package
 (use-package use-package
   :ensure nil
@@ -455,3 +463,5 @@ source: https://www.emacswiki.org/emacs/FlySpell "
     :keymaps '(go-ts-mode-map)
     "t" 'go-ts-mode-test-function-at-point
     "T" 'go-ts-mode-test-this-package))
+
+;;; init.el ends here
