@@ -3,12 +3,10 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
-;; disable dialog box
-(setq use-dialog-box nil)
+(setq-default
+ use-dialog-box nil                            ; disable dialog box
+ visible-bell t)
 
-;; inhibit startup message
-(setq inhibit-startup-message t
-    visible-bell t)
-
-;; hide native comp warnings
-(setq native-comp-async-report-warnings-errors nil)
+(setopt
+ native-comp-async-report-warnings-errors nil  ; hide native comp warnings
+ inhibit-startup-message t)                    ; inhibit startup message

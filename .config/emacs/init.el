@@ -45,9 +45,9 @@
   (set-face-attribute 'default nil :height 125) ; default font size
 
   ;; set path for customise system
-  (setq custom-file
-	(concat (file-name-directory (or load-file-name (buffer-file-name)))
-		"custom.el"))
+  (setopt custom-file
+	  (concat (file-name-directory (or load-file-name (buffer-file-name)))
+		  "custom.el"))
   (ignore-errors (load custom-file)) ;; It may not yet exist.
 
   ;; enable line number
@@ -130,9 +130,10 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 
 ;; Eat: Emulate A Terminal
 (use-package eat
+  :custom
+  (eshell-visual-commands '())
   :config
-  (eat-eshell-mode)
-  (setq eshell-visual-commands '()))
+  (eat-eshell-mode))
 
 ;; auto-package-update
 (use-package auto-package-update
@@ -145,23 +146,24 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (auto-package-update-at-time "09:00"))
 
 ;; ERC
-(setq
- erc-nick "yiyu"
- erc-user-full-name "Yiyu Zhou"
- erc-track-shorten-start 8
- erc-kill-buffer-on-part t
- erc-auto-query 'bury
- erc-fill-column 120
- erc-fill-function 'erc-fill-static
- erc-fill-static-center 16)
-
-;; Libera Chat
-(defun libera-chat ()
-  (interactive)
-  (let ((password (read-passwd "Password: ")))
-    (erc-tls :server "irc.libera.chat"
-             :port "6697"
-             :password password)))
+(use-package erc
+  :ensure nil
+  :custom
+  (erc-nick "yiyu")
+  (erc-user-full-name "Yiyu Zhou")
+  (erc-track-shorten-start 8)
+  (erc-kill-buffer-on-part t)
+  (erc-auto-query 'bury)
+  (erc-fill-column 120)
+  (erc-fill-function 'erc-fill-static)
+  (erc-fill-static-center 16)
+  :config
+  (defun libera-chat ()
+    (interactive)
+    (let ((password (read-passwd "Password: ")))
+      (erc-tls :server "irc.libera.chat"
+	       :port "6697"
+	       :password password))))
 
 ;; which-key
 (use-package which-key
@@ -299,7 +301,8 @@ source: https://www.emacswiki.org/emacs/FlySpell "
   (haskell-ts-mode . haskell-ts-setup-eglot))
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :custom
+  (markdown-command "multimarkdown"))
 (use-package nix-ts-mode
   :mode "\\.nix\\'")
 
@@ -349,10 +352,9 @@ source: https://www.emacswiki.org/emacs/FlySpell "
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-
+  :custom
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
   :config
   (evil-mode 1))
 
