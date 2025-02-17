@@ -7,9 +7,13 @@
 ;;; Code:
 
 ;; hide uneeded UI elements
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (menu-bar-mode -1)
+(when
+    (and
+     (fboundp 'tool-bar-mode)
+     (fboundp 'scroll-bar-mode))
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
 
 (setq-default
  use-dialog-box nil                            ; disable dialog box
