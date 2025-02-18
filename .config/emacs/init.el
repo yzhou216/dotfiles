@@ -119,7 +119,7 @@
         (progn ; flyspell is on, turn it off
   	(message "Flyspell off")
           (flyspell-mode -1))
-      (flyspell-on-for-buffer-type)))) ; else - flyspell is off, turn it on
+      (yiyu/flyspell-on-for-buffer-type)))) ; else - flyspell is off, turn it on
 
 (defun yiyu/delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
