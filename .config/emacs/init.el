@@ -11,6 +11,7 @@
   (load-theme 'modus-vivendi)
   (display-battery-mode)
   (display-time-mode)
+  (global-completion-preview-mode)
 
   :custom
   ;; disable binking cursor in a text terminal (TTY frames)
