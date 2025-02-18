@@ -6,11 +6,6 @@
 
 ;;; Code:
 
-;; use-package
-(use-package use-package
-  :ensure nil
-  :custom use-package-always-ensure t)
-
 (use-package emacs
   :config
   (load-theme 'modus-vivendi)
@@ -69,7 +64,6 @@
 
 ;; package archives
 (use-package package
-  :ensure nil
   :config
   (package-initialize)
   (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
@@ -77,13 +71,11 @@
 
 ;; midnight.el
 (use-package midnight
-  :ensure nil
   :config
   (midnight-delay-set 'midnight-delay 16200)) ; (eq (* 4.5 60 60) "4:30am")
 
 ;; dictionary-mode
 (use-package dictionary
-  :ensure nil
   :custom
   (dictionary-server "dict.org"))
 
@@ -133,13 +125,13 @@
 
 ;; Eshell
 (use-package eshell
-  :ensure nil
   :hook (eshell-mode . (lambda ()
 			 (eshell/alias "clear" "clear 1")))
   :config (bind-key* "M-RET" 'eshell))
 
 ;; Eat: Emulate A Terminal
 (use-package eat
+  :ensure t
   :custom
   (eshell-visual-commands '())
   :config
@@ -147,6 +139,7 @@
 
 ;; auto-package-update
 (use-package auto-package-update
+  :ensure t
   :custom
   (auto-package-update-interval 7)
   (auto-package-update-prompt-before-update t)
@@ -157,7 +150,6 @@
 
 ;; ERC
 (use-package erc
-  :ensure nil
   :custom
   (erc-nick "yiyu")
   (erc-user-full-name "Yiyu Zhou")
@@ -177,11 +169,13 @@
 
 ;; which-key
 (use-package which-key
+  :ensure t
   :custom (which-key-idle-delay 0.1)
   :config (which-key-mode))
 
 ;; corfu.el (COmpletion in Region FUnction)
 (use-package corfu
+  :ensure t
   :init (global-corfu-mode)
   :custom
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
@@ -198,6 +192,7 @@
 
 ;; orderless (with fido-vertical-mode)
 (use-package orderless
+  :ensure t
   :config (fido-vertical-mode)
   :custom (completion-styles '(orderless))
   :hook
@@ -205,15 +200,16 @@
                                   (setq-local completion-styles '(orderless)))))
 
 ;; consult.el (Consulting completing-read)
-(use-package consult)
+(use-package consult
+  :ensure t)
 
 ;; Marginalia (rich annotations)
 (use-package marginalia
+  :ensure t
   :init (marginalia-mode))
 
 ;; Org Mode
 (use-package org
-  :ensure nil
   :hook (org-mode . org-indent-mode)
   :custom
   (org-src-preserve-indentation nil)
@@ -226,19 +222,19 @@
    '((haskell . t))))
 
 ;; org-babel-lilypond
-(use-package ob-lilypond
-  :ensure nil)
+(use-package ob-lilypond)
 
-(use-package ob-haskell
-  :ensure nil)
+(use-package ob-haskell)
 
 ;; org-modern
 (use-package org-modern
+  :ensure t
   :after org
   :config (global-org-modern-mode))
 
 ;; treesit-auto
 (use-package treesit-auto
+  :ensure t
   :custom
   (treesit-auto-install t)
   :config
@@ -256,20 +252,20 @@
 
 ;; yasnippet
 (use-package yasnippet
+  :ensure t
   :config (yas-global-mode))
 
 ;; yasnippet-snippets
-(use-package yasnippet-snippets)
+(use-package yasnippet-snippets
+  :ensure t)
 
 ;; Flymake
 (use-package flymake
-  :ensure nil
   :hook
   (emacs-lisp-mode . flymake-mode))
 
 ;; Eglot
 (use-package eglot
-  :ensure nil
   :hook
   ;; Format on save
   (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
@@ -291,6 +287,7 @@
 
 ;; dape
 (use-package dape
+  :ensure t
   :hook
   ;; Auto save and load breakpoints
   (kill-emacs . dape-breakpoint-save)
@@ -304,16 +301,20 @@
   (dape-inlay-hints t))
 
 ;; extra major modes
-(use-package racket-mode)
+(use-package racket-mode
+  :ensure t)
 (use-package haskell-ts-mode
+  :ensure t
   :mode "\\.hs\\'"
   :hook
   (haskell-ts-mode . haskell-ts-setup-eglot))
 (use-package markdown-mode
+  :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :custom
   (markdown-command "multimarkdown"))
 (use-package nix-ts-mode
+  :ensure t
   :mode "\\.nix\\'")
 
 ;; lilypond-mode (Major mode for editing GNU LilyPond files)
@@ -323,12 +324,12 @@
 ;; Therefore, make sure GNU LilyPond is installed and set ensure to nil.
 (when (executable-find "lilypond")
   (use-package lilypond-mode
-    :ensure nil
     :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
     :hook (LilyPond-mode . turn-on-font-lock)))
 
 ;; pdf-tools
 (use-package pdf-tools
+  :ensure t
   :pin manual ; don't reinstall when package updates
   :mode  ("\\.pdf\\'" . pdf-view-mode)
   :hook (pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
@@ -340,6 +341,7 @@
 
 ;; perspective.el
 (use-package perspective
+  :ensure t
   :init
   (persp-mode)
   :custom
@@ -347,6 +349,7 @@
 
 ;; diff-hl
 (use-package diff-hl
+  :ensure t
   :config
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)      ; handle unsaved buffers
@@ -355,11 +358,13 @@
 
 ;; Magit
 (use-package magit
+  :ensure t
   :hook ((magit-pre-refresh  . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; Evil
 (use-package evil
+  :ensure t
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
   :custom
@@ -370,12 +375,14 @@
 
 ;; Evil Collection
 (use-package evil-collection
+  :ensure t
   :after evil
   :config
   (evil-collection-init))
 
 ;; general.el
 (use-package general
+  :ensure t
   :after evil
   :hook (after-init . (lambda ()
 			(when-let* ((messages-buffer (get-buffer "*Messages*")))
