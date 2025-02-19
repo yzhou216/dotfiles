@@ -213,6 +213,7 @@
 (use-package org
   :hook
   (org-mode . org-indent-mode)
+  (org-mode . turn-on-auto-fill)
   (org-mode . (lambda ()
 		(add-hook 'before-save-hook
 			  (lambda ()
