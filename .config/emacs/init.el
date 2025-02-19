@@ -211,13 +211,29 @@
 
 ;; Org Mode
 (use-package org
-  :hook (org-mode . org-indent-mode)
+  :hook
+  (org-mode . org-indent-mode)
+  (org-mode . (lambda ()
+		(add-hook 'before-save-hook
+			  (lambda ()
+			    (when (derived-mode-p 'org-mode)
+			      (yiyu/org-fill-paragraph-buffer))))))
   :custom
   (org-src-preserve-indentation nil)
   (org-edit-src-content-indentation 0)
   (org-confirm-babel-evaluate nil) ; Trust execution
   (org-latex-pdf-process '("tectonic %f")) ; Use Tectonic for PDF export
   :config
+  (defun yiyu/org-fill-paragraph-buffer()
+    (org-with-wide-buffer
+     (let* ((elements (reverse
+		       (org-element-map (org-element-parse-buffer)
+			   '(paragraph) #'identity))))
+       (progn
+	 (dolist (el elements)
+	   (goto-char (org-element-property :contents-begin el))
+	   (org-fill-paragraph))))))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((haskell . t))))
