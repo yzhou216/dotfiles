@@ -70,6 +70,19 @@
   (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
+;; window.el
+(use-package window
+  :config
+  (defun yiyu/delete-other-windows-and-kill-buffers ()
+    "Make current window fill its frame and kill the buffers displayed in them."
+    (interactive)
+    (let ((current-buffer (current-buffer)))
+      (dolist (window (window-list))
+        (unless (eq (window-buffer window) current-buffer)
+  	(kill-buffer (window-buffer window))
+  	(delete-window window))))
+    (message "Other windows deleted and buffers killed.")))
+
 ;; midnight.el
 (use-package midnight
   :config
@@ -87,16 +100,6 @@
   (org-mode  . flyspell-mode)
   :custom
   (flyspell-use-meta-tab nil)) ; Do not bind M-<tab>, used for `completion-at-point'
-
-(defun yiyu/delete-other-windows-and-kill-buffers ()
-  "Make current window fill its frame and kill the buffers displayed in them."
-  (interactive)
-  (let ((current-buffer (current-buffer)))
-    (dolist (window (window-list))
-      (unless (eq (window-buffer window) current-buffer)
-	(kill-buffer (window-buffer window))
-	(delete-window window))))
-  (message "Other windows deleted and buffers killed."))
 
 ;; Eshell
 (use-package eshell
