@@ -26,7 +26,7 @@
   (kept-old-versions 2)
   (version-control t)
 
-  ;; disable binking cursor in a text terminal (TTY frames)
+  ;; disable blinking cursor in a text terminal (TTY frames)
   (visible-cursor nil)
 
   ;; relative line numbers
@@ -60,10 +60,9 @@
   :config
   (set-face-attribute 'default nil :height 125) ; default font size
 
-  ;; set path for customise system
+  ;; set path for customize system
   (setopt custom-file
-	  (concat (file-name-directory (or load-file-name (buffer-file-name)))
-		  "custom.el"))
+	  (concat yiyu/user-init-file-dir "custom.el"))
   (ignore-errors (load custom-file)) ;; It may not yet exist.
 
   ;; enable line number
@@ -280,7 +279,8 @@
     rust-ts-mode
     go-ts-mode
     python-base-mode
-    nix-ts-mode) . eglot-ensure)
+    nix-ts-mode)
+   . eglot-ensure)
   :config
   (with-eval-after-load 'eglot
     (dolist (mode '((nix-ts-mode . ("nil" :initializationOptions
