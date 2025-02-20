@@ -466,6 +466,10 @@
     "p" 'org-latex-export-to-pdf)
 
   (yiyu/localleader
+    :keymaps '(LaTeX-mode-map)
+    "f" 'LaTeX-fill-paragraph)
+
+  (yiyu/localleader
     :keymaps '(go-ts-mode-map)
     "t" 'go-ts-mode-test-function-at-point
     "T" 'go-ts-mode-test-this-package))
