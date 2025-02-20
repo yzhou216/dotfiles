@@ -84,7 +84,9 @@
 (use-package flyspell
   :hook
   (prog-mode . flyspell-prog-mode)
-  (org-mode  . flyspell-mode))
+  (org-mode  . flyspell-mode)
+  :custom
+  (flyspell-use-meta-tab nil)) ; Do not bind M-<tab>, used for `completion-at-point'
 
 (defun yiyu/delete-other-windows-and-kill-buffers ()
   "Make current window fill its frame and kill the buffers displayed in them."
