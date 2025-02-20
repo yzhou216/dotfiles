@@ -164,23 +164,6 @@
   :custom (which-key-idle-delay 0.1)
   :config (which-key-mode))
 
-;; corfu.el (COmpletion in Region FUnction)
-(use-package corfu
-  :ensure t
-  :init (global-corfu-mode)
-  :custom
-  ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
-  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-  (corfu-auto t)
-  :bind (:map corfu-map
-	      ("M-SPC" . corfu-insert-separator)))
-
 ;; orderless (with fido-vertical-mode)
 (use-package orderless
   :ensure t
@@ -192,7 +175,9 @@
 
 ;; consult.el (Consulting completing-read)
 (use-package consult
-  :ensure t)
+  :ensure t
+  :custom
+  (completion-in-region-function 'consult-completion-in-region))
 
 ;; Marginalia (rich annotations)
 (use-package marginalia
