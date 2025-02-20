@@ -281,7 +281,9 @@
     rust-ts-mode
     go-ts-mode
     python-base-mode
-    nix-ts-mode)
+    nix-ts-mode
+    TeX-mode
+    bibtex-mode)
    . eglot-ensure)
   :config
   (with-eval-after-load 'eglot
