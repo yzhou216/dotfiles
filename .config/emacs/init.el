@@ -108,7 +108,9 @@
 (use-package flyspell
   :hook
   (prog-mode . flyspell-prog-mode)
-  (org-mode  . flyspell-mode)
+  ((org-mode
+    text-mode)
+   . flyspell-mode)
   :custom
   (flyspell-use-meta-tab nil)) ; Do not bind M-<tab>, used for `completion-at-point'
 
