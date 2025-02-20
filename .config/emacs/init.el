@@ -12,8 +12,20 @@
   (display-battery-mode)
   (display-time-mode)
   (global-completion-preview-mode)
+  (defvar yiyu/user-init-file-dir
+    (file-name-directory
+     (or load-file-name (buffer-file-name)))
+    "Path to directory that contains the Emacs initialization file.")
 
   :custom
+  ;; Backups
+  (directory-backup-alist `(("." . (concat yiyu/user-init-file-dir "backups"))))
+  (backup-by-copying t)
+  (delete-old-versions t)
+  (kept-new-versions 6)
+  (kept-old-versions 2)
+  (version-control t)
+
   ;; disable binking cursor in a text terminal (TTY frames)
   (visible-cursor nil)
 
