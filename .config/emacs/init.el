@@ -429,19 +429,18 @@
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
     :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
-    "e" (lambda () ; eval the last sexp at the end of the line
+    "e" (defun yiyu/eval-last-sexp-eol ()
+	  "Evaluate the last sexp at the end of the line.
+Evaluate at the end of the sexp when a comment exists at the end of the
+line.  Restore the current position of point and the Evil state after
+the call."
 	  (interactive)
-	  (let ((is-in-insert-state (evil-insert-state-p))
-		(cursor-pos (point))) ; preserve cursor position
-            (evil-insert 1)
-            (end-of-line)
-            (eval-last-sexp nil)
-            (if is-in-insert-state
-		(evil-insert 1)
-              (progn
-		(evil-force-normal-state)
-		(forward-char 1))) ; counteract evil state switching offset
-            (goto-char cursor-pos))))
+	  (save-excursion
+	    (evil-save-state
+	      (evil-insert 1)
+	      (unless (search-forward ";" (pos-eol) t)
+		(end-of-line))
+	      (eval-last-sexp nil)))))
 
   ;; local leader for LSP/DAP and frontend minor modes
   (yiyu/localleader
