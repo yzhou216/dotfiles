@@ -86,8 +86,8 @@
     (let ((current-buffer (current-buffer)))
       (dolist (window (window-list))
         (unless (eq (window-buffer window) current-buffer)
-  	(kill-buffer (window-buffer window))
-  	(delete-window window))))
+  	  (kill-buffer (window-buffer window))
+  	  (delete-window window))))
     (message "Other windows deleted and buffers killed.")))
 
 ;; midnight.el
@@ -205,7 +205,7 @@
     (org-with-wide-buffer
      (let* ((elements (reverse
 		       (org-element-map (org-element-parse-buffer)
-			   '(paragraph) #'identity))))
+					'(paragraph) #'identity))))
        (progn
 	 (dolist (el elements)
 	   (goto-char (org-element-property :contents-begin el))
@@ -390,11 +390,11 @@
 
   ;; Custom window commands
   (general-define-key
-     :keymaps 'override
-     "C-h" 'evil-window-left
-     "C-l" 'evil-window-right
-     "C-j" 'evil-window-down
-     "C-k" 'evil-window-up)
+   :keymaps 'override
+   "C-h" 'evil-window-left
+   "C-l" 'evil-window-right
+   "C-j" 'evil-window-down
+   "C-k" 'evil-window-up)
 
   (general-create-definer yiyu/leader
     :states '(normal insert visual emacs)
