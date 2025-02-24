@@ -383,7 +383,7 @@
   :config
   (general-evil-setup t)
 
-  ;; Custom window comamnds
+  ;; Custom window commands
   (general-define-key
      :keymaps 'override
      "C-h" 'evil-window-left
