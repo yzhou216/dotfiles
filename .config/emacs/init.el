@@ -12,14 +12,10 @@
   (display-battery-mode)
   (display-time-mode)
   (global-completion-preview-mode)
-  (defvar yiyu/user-init-file-dir
-    (file-name-directory
-     (or load-file-name (buffer-file-name)))
-    "Path to directory that contains the Emacs initialization file.")
 
   :custom
   ;; Backups
-  (directory-backup-alist `(("." . (concat yiyu/user-init-file-dir "backups"))))
+  (backup-directory-alist `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
   (backup-by-copying t)
   (delete-old-versions t)
   (kept-new-versions 6)
@@ -62,7 +58,7 @@
 
   ;; set path for customize system
   (setopt custom-file
-	  (concat yiyu/user-init-file-dir "custom.el"))
+	  (concat user-emacs-directory "custom.el"))
   (ignore-errors (load custom-file)) ;; It may not yet exist.
 
   ;; enable line number
