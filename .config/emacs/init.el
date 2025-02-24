@@ -226,6 +226,30 @@
   :after org
   :config (global-org-modern-mode))
 
+;; AucTeX
+(use-package tex
+  :hook
+  (after-change-major-mode . (lambda ()
+			       (when-let* ((project (project-current))
+					   (proot (project-root project)))
+				 (when (file-exists-p (expand-file-name "Tectonic.toml" proot))
+				   (setopt TeX-output-dir (expand-file-name "build/index" proot))))))
+  :custom
+  (TeX-engine-alist '((default
+                       "Tectonic"
+                       "tectonic -X compile -f plain %T"
+                       "tectonic -X watch"
+                       nil)))
+  (LaTeX-command-style '(("" "%(latex)")))
+  (TeX-process-asynchronous t)
+  (TeX-check-TeX nil)
+  (TeX-engine 'default)
+  :config
+  (let ((tex-list (assoc "TeX" TeX-command-list))
+	(latex-list (assoc "LaTeX" TeX-command-list)))
+    (setf (cadr tex-list) "%(tex)"
+          (cadr latex-list) "%l")))
+
 ;; treesit-auto
 (use-package treesit-auto
   :ensure t
