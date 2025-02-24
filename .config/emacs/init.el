@@ -336,6 +336,12 @@
   (pdf-tools-install :no-query)
   (require 'pdf-occur))
 
+;; undo-tree
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
+
 ;; perspective.el
 (use-package perspective
   :ensure t
@@ -420,6 +426,7 @@
     "k"   'kill-buffer
     "w"   'yiyu/delete-other-windows-and-kill-buffers
     "f"   'find-file
+    "u"   'undo-tree-visualize
     "gs"  'magit-status
     "gj"  'diff-hl-next-hunk
     "gk"  'diff-hl-previous-hunk
