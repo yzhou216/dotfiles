@@ -160,6 +160,12 @@
   :custom (which-key-idle-delay 0.1)
   :config (which-key-mode))
 
+;; dired-preview
+(use-package dired-preview
+  :ensure t
+  :config (dired-preview-global-mode)
+  :custom (dired-preview-delay 0.1))
+
 ;; orderless (with fido-vertical-mode)
 (use-package orderless
   :ensure t
