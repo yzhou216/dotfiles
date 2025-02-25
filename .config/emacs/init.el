@@ -226,7 +226,7 @@
   :after org
   :config (global-org-modern-mode))
 
-;; AucTeX
+;; AUCTeX
 (use-package auctex
   :ensure t
   :hook
