@@ -2,10 +2,10 @@
 (define-configuration buffer
   ((default-modes (append '(dark-mode) %slot-value%))))
 
-;; emacs-mode
-(define-configuration (web-buffer prompt-buffer panel-buffer
-                       nyxt/mode/editor:editor-buffer)
-  ((default-modes (pushnew 'nyxt/mode/emacs:emacs-mode %slot-value%))))
+;; vi keybinds
+(define-configuration buffer
+    ((default-modes
+	 (pushnew 'nyxt/mode/vi:vi-normal-mode %slot-value%))))
 
 (define-configuration input-buffer
   ((override-map
