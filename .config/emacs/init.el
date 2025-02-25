@@ -360,11 +360,10 @@
   (pdf-tools-install :no-query)
   (require 'pdf-occur))
 
-;; undo-tree
-(use-package undo-tree
+;; Visual undo tree
+(use-package vundo
   :ensure t
-  :config
-  (global-undo-tree-mode))
+  :custom (vundo-glyph-alist vundo-unicode-symbols))
 
 ;; perspective.el
 (use-package perspective
@@ -450,7 +449,7 @@
     "k"   'kill-buffer
     "w"   'yiyu/delete-other-windows-and-kill-buffers
     "f"   'find-file
-    "u"   'undo-tree-visualize
+    "u"   'vundo
     "gs"  'magit-status
     "gj"  'diff-hl-next-hunk
     "gk"  'diff-hl-previous-hunk
