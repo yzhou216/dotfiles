@@ -227,7 +227,8 @@
   :config (global-org-modern-mode))
 
 ;; AucTeX
-(use-package tex
+(use-package auctex
+  :ensure t
   :hook
   (after-change-major-mode . (lambda ()
 			       (when-let* ((project (project-current))
@@ -243,7 +244,10 @@
   (LaTeX-command-style '(("" "%(latex)")))
   (TeX-process-asynchronous t)
   (TeX-check-TeX nil)
-  (TeX-engine 'default)
+  (TeX-engine 'default))
+
+(use-package tex
+  :after auctex
   :config
   (let ((tex-list (assoc "TeX" TeX-command-list))
 	(latex-list (assoc "LaTeX" TeX-command-list)))
