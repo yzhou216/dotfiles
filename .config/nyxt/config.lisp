@@ -7,6 +7,11 @@
     ((default-modes
 	 (pushnew 'nyxt/mode/vi:vi-normal-mode %slot-value%))))
 
+;; reduce-tracking-mode
+(define-configuration web-buffer
+    ((default-modes
+	 (pushnew 'nyxt/mode/reduce-tracking:reduce-tracking-mode %slot-value%))))
+
 ;; blocker-mode
 (define-configuration web-buffer
     ((default-modes
