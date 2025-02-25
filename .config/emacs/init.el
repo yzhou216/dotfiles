@@ -351,7 +351,6 @@
 ;; pdf-tools
 (use-package pdf-tools
   :ensure t
-  :pin manual ; don't reinstall when package updates
   :mode  ("\\.pdf\\'" . pdf-view-mode)
   :hook (pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
   :config
