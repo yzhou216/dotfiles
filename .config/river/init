@@ -160,8 +160,8 @@ do
   riverctl input $pad natural-scroll enabled
 done
 
-# terminal emulator: alacritty
-riverctl map normal Super Return spawn alacritty
+# terminal emulator: foot
+riverctl map normal Super Return spawn foot
 
 # launcher: wofi
 riverctl map normal Super D spawn "wofi --show=drun"
