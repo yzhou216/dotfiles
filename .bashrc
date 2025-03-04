@@ -37,9 +37,18 @@ alias golines='golines --max-len=80 --tab-len=8 --write-output'
 alias python='rustpython'
 alias python3='rustpython'
 alias 'nswitch'='nh os switch -- --impure'
-nsh () {
-  package=$1
-  nix shell nixpkgs#$package
+nsh() {
+  if [ "$#" -eq 0 ]; then
+    echo "Error: No packages specified"
+    return 1
+  fi
+
+  packages=()
+  for package in "$@"; do
+    packages+=("nixpkgs#$package")
+  done
+
+  nix shell "${packages[@]}"
 }
 
 # set VIM as default editor
