@@ -33,6 +33,7 @@ unset rc
 alias ls='ls --color=auto'
 alias info='info --vi-keys'
 alias emacs='emacs --no-window-system'
+alias shfmt='shfmt --indent 2 --write'
 alias golines='golines --max-len=80 --tab-len=8 --write-output'
 alias python='rustpython'
 alias python3='rustpython'
