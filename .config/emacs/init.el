@@ -326,6 +326,11 @@
   (dape-buffer-window-arrangement 'right)
   (dape-inlay-hints t))
 
+;; EditorConfig
+(use-package editorconfig
+  :ensure t
+  :config (editorconfig-mode 1))
+
 ;; extra major modes
 (use-package racket-mode
   :ensure t)
