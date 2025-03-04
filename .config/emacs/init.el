@@ -294,6 +294,7 @@
   ((haskell-ts-mode
     rust-ts-mode
     go-ts-mode
+    bash-ts-mode
     python-base-mode
     nix-ts-mode
     TeX-mode
