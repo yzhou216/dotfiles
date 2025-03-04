@@ -464,7 +464,8 @@
     "gk"  'diff-hl-previous-hunk
     "s"   'yiyu/flyspell-toggle
     "p"   'perspective-map :which-key "perspective"
-    "P"   'persp-list-buffers)
+    "P"   'persp-list-buffers
+    "R"   'restart-emacs)
 
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
@@ -512,5 +513,9 @@ the call."
     :keymaps '(go-ts-mode-map)
     "t" 'go-ts-mode-test-function-at-point
     "T" 'go-ts-mode-test-this-package))
+
+;; Restart Emacs
+(use-package restart-emacs
+  :ensure t)
 
 ;;; init.el ends here
