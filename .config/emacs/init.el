@@ -159,6 +159,10 @@
   :custom (which-key-idle-delay 0.1)
   :config (which-key-mode))
 
+;; EditorConfig
+(use-package editorconfig
+  :config (editorconfig-mode 1))
+
 ;; dired-preview
 (use-package dired-preview
   :ensure t
@@ -325,11 +329,6 @@
   :custom
   (dape-buffer-window-arrangement 'right)
   (dape-inlay-hints t))
-
-;; EditorConfig
-(use-package editorconfig
-  :ensure t
-  :config (editorconfig-mode 1))
 
 ;; extra major modes
 (use-package racket-mode
