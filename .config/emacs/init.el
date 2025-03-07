@@ -7,6 +7,7 @@
 ;;; Code:
 
 (use-package emacs
+  :hook (after-init . global-auto-revert-mode)    ; update buffers when files on the disk changes
   :custom
   ;; Backups
   (backup-directory-alist `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
@@ -43,32 +44,21 @@
   ;; Corfu commands are hidden, since they are not used via M-x.
   (read-extended-command-predicate #'command-completion-default-include-p)
 
-  :hook
-  ;; update buffers when files on the disk changes
-  (after-init . global-auto-revert-mode)
-
+  ;; set path for customize system
+  (custom-file
+   (concat user-emacs-directory "custom.el"))
   :config
+  (ignore-errors (load custom-file))              ; custom file may not yet exist.
+  (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
+  (global-completion-preview-mode)
+  (set-face-attribute 'default nil
+		      :height 125)                ; default font size
+  (global-display-line-numbers-mode 1)
+  (global-hl-line-mode t)                         ; highlight the current line
+  (blink-cursor-mode 0)
   (load-theme 'modus-vivendi)
   (display-battery-mode)
-  (display-time-mode)
-  (global-completion-preview-mode)
-  (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
-
-  (set-face-attribute 'default nil :height 125) ; default font size
-
-  ;; set path for customize system
-  (setopt custom-file
-	  (concat user-emacs-directory "custom.el"))
-  (ignore-errors (load custom-file)) ;; It may not yet exist.
-
-  ;; enable line number
-  (global-display-line-numbers-mode 1)
-
-  ;; set non blinking cursor
-  (blink-cursor-mode 0)
-
-  ;; enable hl-line-mode to highlight the current line
-  (global-hl-line-mode t))
+  (display-time-mode))
 
 ;; package archives
 (use-package package
