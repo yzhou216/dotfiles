@@ -280,6 +280,16 @@
   :hook
   (emacs-lisp-mode . flymake-mode))
 
+;; flylisp
+(use-package flylisp
+  :ensure t
+  :hook
+  ((emacs-lisp-mode
+    common-lisp-mode
+    scheme-mode
+    racket-mode)
+   . flylisp-mode))
+
 ;; Eglot
 (use-package eglot
   :hook
