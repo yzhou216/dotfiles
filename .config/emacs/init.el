@@ -12,6 +12,7 @@
   (display-battery-mode)
   (display-time-mode)
   (global-completion-preview-mode)
+  (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
 
   :custom
   ;; Backups
