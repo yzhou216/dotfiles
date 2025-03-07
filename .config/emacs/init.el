@@ -7,13 +7,6 @@
 ;;; Code:
 
 (use-package emacs
-  :config
-  (load-theme 'modus-vivendi)
-  (display-battery-mode)
-  (display-time-mode)
-  (global-completion-preview-mode)
-  (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
-
   :custom
   ;; Backups
   (backup-directory-alist `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
@@ -55,6 +48,12 @@
   (after-init . global-auto-revert-mode)
 
   :config
+  (load-theme 'modus-vivendi)
+  (display-battery-mode)
+  (display-time-mode)
+  (global-completion-preview-mode)
+  (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
+
   (set-face-attribute 'default nil :height 125) ; default font size
 
   ;; set path for customize system
