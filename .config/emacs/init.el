@@ -65,6 +65,7 @@
   :config
   (package-initialize)
   (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
+  (add-to-list 'package-archives '("nongnu-devel" . "https://elpa.nongnu.org/nongnu-devel/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
 ;; window.el
