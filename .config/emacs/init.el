@@ -306,12 +306,13 @@
     bibtex-mode)
    . eglot-ensure)
   :config
-  (with-eval-after-load 'eglot
-    (dolist (mode '((nix-ts-mode . ("nil" :initializationOptions
-				    (:formatting (:command ["alejandra"]))))
-		    (rust-ts-mode . ("rust-analyzer" :initializationOptions
-				     (:check (:command "clippy"))))))
-      (add-to-list 'eglot-server-programs mode)))
+  (dolist (config '((nix-ts-mode . ("nil" :initializationOptions
+                                    (:formatting (:command ["alejandra"]))))
+                    (rust-ts-mode . ("rust-analyzer" :initializationOptions
+                                     (:check (:command "clippy"))))))
+    (let ((major-mode (car config))
+          (contact (cdr config)))
+      (add-to-list 'eglot-server-programs (cons major-mode contact))))
   (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t)
 							   (hints . ((assignVariableTypes . t)
 								     (compositeLiteralFields . t))))))))
