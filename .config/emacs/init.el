@@ -161,14 +161,17 @@
   :config (dired-preview-global-mode)
   :custom (dired-preview-delay 0.1))
 
-;; orderless (with fido-vertical-mode)
+;; orderless
 (use-package orderless
   :ensure t
-  :config (fido-vertical-mode)
-  :custom (completion-styles '(orderless))
+  :custom (completion-styles '(orderless)))
+
+;; icomplete (fido-vertical-mode)
+(use-package icomplete
   :hook
   (icomplete-minibuffer-setup . (lambda ()
-                                  (setq-local completion-styles '(orderless)))))
+                                  (setq-local completion-styles '(orderless))))
+  :config (fido-vertical-mode))
 
 ;; consult.el (Consulting completing-read)
 (use-package consult
@@ -487,14 +490,14 @@ the call."
 
   ;; local leader for LSP/DAP and frontend minor modes
   (yiyu/localleader
-    :keymaps '(eglot-mode-map dape-global-map flymake-mode-map)
-    "r" 'eglot-rename
-    "i" 'eglot-code-action-organize-imports
-    "h" 'eldoc
-    "a" 'eglot-code-actions
+    :keymaps '(flymake-mode-map eglot-mode-map dape-global-map)
     "e" 'consult-flymake
     "j" 'flymake-goto-next-error
     "k" 'flymake-goto-prev-error
+    "h" 'eldoc
+    "r" 'eglot-rename
+    "a" 'eglot-code-actions
+    "i" 'eglot-code-action-organize-imports
     "d" 'dape
     "q" 'dape-quit
     "b" 'dape-breakpoint-toggle
