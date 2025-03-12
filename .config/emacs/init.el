@@ -84,6 +84,7 @@
 ;; midnight.el
 (use-package midnight
   :config
+  (midnight-mode +1)
   (midnight-delay-set 'midnight-delay 16200)) ; (eq (* 4.5 60 60) "4:30am")
 
 ;; dictionary-mode
