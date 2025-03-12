@@ -475,7 +475,7 @@
   ;; local leader for emacs-lisp-mode
   (yiyu/localleader
     :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
-    "e" (defun yiyu/eval-last-sexp-eol ()
+    "E" (defun yiyu/eval-last-sexp-eol ()
 	  "Evaluate the last sexp at the end of the line.
 Evaluate at the end of the sexp when a comment exists at the end of the
 line.  Restore the current position of point and the Evil state after
