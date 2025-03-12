@@ -492,6 +492,7 @@ the call."
     "i" 'eglot-code-action-organize-imports
     "h" 'eldoc
     "a" 'eglot-code-actions
+    "e" 'consult-flymake
     "j" 'flymake-goto-next-error
     "k" 'flymake-goto-prev-error
     "d" 'dape
