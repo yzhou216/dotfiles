@@ -307,7 +307,7 @@
    . eglot-ensure)
   :config
   (dolist (config '((nix-ts-mode . ("nil" :initializationOptions
-                                    (:formatting (:command ["alejandra"]))))
+                                    (:formatting (:command ["nixfmt"]))))
                     (rust-ts-mode . ("rust-analyzer" :initializationOptions
                                      (:check (:command "clippy"))))))
     (let ((major-mode (car config))
