@@ -4,7 +4,7 @@
 riverctl map normal Super+Control E exit
 
 # close the focused view
-riverctl map normal Super Q close
+riverctl map normal Super+Alt Q close
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
