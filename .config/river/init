@@ -140,13 +140,13 @@ riverctl map normal Super Return spawn foot
 riverctl map normal Super D spawn "wofi --show=drun"
 
 # Dynamic display configuration: kanshi
-riverctl spawn "exec kanshi"
+riverctl spawn "kanshi"
 
 # status panel: Yambar
-riverctl spawn "exec yambar"
+riverctl spawn "yambar"
 
 # Notification daemon: fnott
-riverctl spawn "exec fnott"
+riverctl spawn "fnott"
 riverctl map normal Super C spawn 'fnottctl dismiss all'
 
 # Screenshots: wayshot
