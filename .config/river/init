@@ -130,6 +130,9 @@ do
   riverctl input $pad natural-scroll enabled
 done
 
+# session lock: swaylock
+riverctl map normal Super+Alt L spawn "swaylock --color 000000"
+
 # terminal emulator: foot
 riverctl map normal Super Return spawn foot
 
