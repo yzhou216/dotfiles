@@ -132,6 +132,7 @@ done
 
 # session lock: swaylock
 riverctl map normal Super+Alt L spawn "swaylock --color 000000"
+riverctl map-switch normal lid close "swaylock"
 
 # idle management: swayidle
 riverctl spawn "swayidle -w timeout 100 'swaylock'"
