@@ -300,7 +300,8 @@
   :hook
   ;; Format on save
   (eglot-managed-mode . (lambda () (add-hook 'before-save-hook #'eglot-format-buffer t t)))
-  ((haskell-ts-mode
+  ((scheme-mode
+    haskell-ts-mode
     rust-ts-mode
     go-ts-mode
     bash-ts-mode
@@ -310,7 +311,8 @@
     bibtex-mode)
    . eglot-ensure)
   :config
-  (dolist (config '((nix-ts-mode . ("nil" :initializationOptions
+  (dolist (config '((scheme-mode . ("scheme-langserver"))
+		    (nix-ts-mode . ("nil" :initializationOptions
                                     (:formatting (:command ["nixfmt"]))))
                     (rust-ts-mode . ("rust-analyzer" :initializationOptions
                                      (:check (:command "clippy"))))))
