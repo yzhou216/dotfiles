@@ -520,6 +520,14 @@ the call."
     "t" 'go-ts-mode-test-function-at-point
     "T" 'go-ts-mode-test-this-package))
 
+;; pyim (中文输入法)
+(use-package pyim
+  :ensure t
+  :after pyim-basedict)
+(use-package pyim-basedict
+  :ensure t
+  :config (pyim-basedict-enable))
+
 ;; Restart Emacs
 (use-package restart-emacs
   :ensure t)
