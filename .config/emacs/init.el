@@ -379,6 +379,14 @@
   :ensure t
   :custom (vundo-glyph-alist vundo-unicode-symbols))
 
+;; pyim (中文输入法)
+(use-package pyim
+  :ensure t
+  :after pyim-basedict)
+(use-package pyim-basedict
+  :ensure t
+  :config (pyim-basedict-enable))
+
 ;; perspective.el
 (use-package perspective
   :ensure t
@@ -519,14 +527,6 @@ the call."
     :keymaps '(go-ts-mode-map)
     "t" 'go-ts-mode-test-function-at-point
     "T" 'go-ts-mode-test-this-package))
-
-;; pyim (中文输入法)
-(use-package pyim
-  :ensure t
-  :after pyim-basedict)
-(use-package pyim-basedict
-  :ensure t
-  :config (pyim-basedict-enable))
 
 ;; Restart Emacs
 (use-package restart-emacs
