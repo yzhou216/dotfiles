@@ -306,7 +306,13 @@
     go-ts-mode
     bash-ts-mode
     python-base-mode
+    java-ts-mode
     nix-ts-mode
+    mhtml-ts-mode
+    css-mode
+    javascript-mode
+    json-ts-mode
+    markdown-ts-mode
     TeX-mode
     bibtex-mode)
    . eglot-ensure)
