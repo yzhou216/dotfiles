@@ -267,6 +267,15 @@
   :ensure t
   :custom (treesit-auto-install t)
   :config
+  (add-to-list
+   'treesit-language-source-alist
+   '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+  (add-to-list
+   'treesit-language-source-alist
+   '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
+  (add-to-list 'treesit-auto-langs 'markdown)
+  (add-to-list 'treesit-auto-langs 'markdown-inline)
+
   (global-treesit-auto-mode)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (add-to-list 'treesit-auto-langs 'haskell)
