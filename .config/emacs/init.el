@@ -50,11 +50,11 @@
   :config
   (ignore-errors (load custom-file))              ; custom file may not yet exist.
   (set-default-toplevel-value 'lexical-binding t) ; default 'lexical-binding' to t
-  (global-completion-preview-mode)
   (set-face-attribute 'default nil
 		      :height 125)                ; default font size
   (global-display-line-numbers-mode 1)
   (global-hl-line-mode t)                         ; highlight the current line
+  (global-completion-preview-mode)                ; completion preview
   (blink-cursor-mode 0)
   (load-theme 'modus-vivendi)
   (display-battery-mode)
@@ -63,10 +63,10 @@
 ;; package archives
 (use-package package
   :config
-  (package-initialize)
   (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
   (add-to-list 'package-archives '("nongnu-devel" . "https://elpa.nongnu.org/nongnu-devel/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize))
 
 ;; window.el
 (use-package window
@@ -84,13 +84,12 @@
 ;; midnight.el
 (use-package midnight
   :config
-  (midnight-mode +1)
-  (midnight-delay-set 'midnight-delay 16200)) ; (eq (* 4.5 60 60) "4:30am")
+  (midnight-delay-set 'midnight-delay 16200) ; (eq (* 4.5 60 60) "4:30am")
+  (midnight-mode +1))
 
 ;; dictionary-mode
 (use-package dictionary
-  :custom
-  (dictionary-server "dict.org"))
+  :custom (dictionary-server "dict.org"))
 
 ;; Flyspell
 (use-package flyspell
@@ -99,8 +98,7 @@
   ((org-mode
     text-mode)
    . flyspell-mode)
-  :custom
-  (flyspell-use-meta-tab nil)) ; Do not bind M-<tab>, used for `completion-at-point'
+  :custom (flyspell-use-meta-tab nil)) ; Do not bind M-<tab>, used for `completion-at-point'
 
 ;; Eshell
 (use-package eshell
@@ -111,10 +109,8 @@
 ;; Eat: Emulate A Terminal
 (use-package eat
   :ensure t
-  :custom
-  (eshell-visual-commands '())
-  :config
-  (eat-eshell-mode))
+  :custom (eshell-visual-commands '())
+  :config (eat-eshell-mode))
 
 ;; auto-package-update
 (use-package auto-package-update
@@ -176,8 +172,7 @@
 ;; consult.el (Consulting completing-read)
 (use-package consult
   :ensure t
-  :custom
-  (completion-in-region-function 'consult-completion-in-region))
+  :custom (completion-in-region-function 'consult-completion-in-region))
 
 ;; Marginalia (rich annotations)
 (use-package marginalia
@@ -213,11 +208,6 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((haskell . t))))
-
-;; org-babel-lilypond
-(use-package ob-lilypond)
-
-(use-package ob-haskell)
 
 ;; org-modern
 (use-package org-modern
@@ -293,23 +283,20 @@
   :config (yas-global-mode))
 
 ;; yasnippet-snippets
-(use-package yasnippet-snippets
-  :ensure t)
+(use-package yasnippet-snippets :ensure t)
 
 ;; Flymake
 (use-package flymake
-  :hook
-  (emacs-lisp-mode . flymake-mode))
+  :hook (emacs-lisp-mode . flymake-mode))
 
 ;; flylisp
 (use-package flylisp
   :ensure t
-  :hook
-  ((emacs-lisp-mode
-    common-lisp-mode
-    scheme-mode
-    racket-mode)
-   . flylisp-mode))
+  :hook ((emacs-lisp-mode
+	  common-lisp-mode
+	  scheme-mode
+	  racket-mode)
+	 . flylisp-mode))
 
 ;; Eglot
 (use-package eglot
@@ -360,17 +347,12 @@
   (dape-buffer-window-arrangement 'right)
   (dape-inlay-hints t))
 
-;; extra major modes
-(use-package racket-mode
-  :ensure t)
+;; Third-party major modes
 (use-package haskell-ts-mode
   :ensure t
-  :mode "\\.hs\\'"
-  :hook
-  (haskell-ts-mode . haskell-ts-setup-eglot))
-(use-package nix-ts-mode
-  :ensure t
-  :mode "\\.nix\\'")
+  :hook (haskell-ts-mode . haskell-ts-setup-eglot))
+(use-package racket-mode :ensure t)
+(use-package nix-ts-mode :ensure t)
 
 ;; lilypond-mode (Major mode for editing GNU LilyPond files)
 ;; GNU LilyPond system package automatically adds its Elisp files into the
@@ -403,6 +385,8 @@
 (use-package pyim
   :ensure t
   :after pyim-basedict)
+
+;; pyim backend
 (use-package pyim-basedict
   :ensure t
   :config (pyim-basedict-enable))
@@ -410,10 +394,8 @@
 ;; perspective.el
 (use-package perspective
   :ensure t
-  :init
-  (persp-mode)
-  :custom
-  (persp-suppress-no-prefix-key-warning t))
+  :init (persp-mode)
+  :custom (persp-suppress-no-prefix-key-warning t))
 
 ;; diff-hl
 (use-package diff-hl
@@ -438,24 +420,23 @@
   :custom
   (evil-want-integration t)
   (evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
+  :config (evil-mode 1))
 
 ;; Evil Collection
 (use-package evil-collection
   :ensure t
   :after evil
-  :config
-  (evil-collection-init))
+  :config (evil-collection-init))
 
 ;; general.el
 (use-package general
   :ensure t
   :after evil
-  :hook (after-init . (lambda ()
-			(when-let* ((messages-buffer (get-buffer "*Messages*")))
-			  (with-current-buffer messages-buffer
-			    (evil-normalize-keymaps)))))
+  :hook
+  (after-init . (lambda ()
+		  (when-let* ((messages-buffer (get-buffer "*Messages*")))
+		    (with-current-buffer messages-buffer
+		  (evil-normalize-keymaps)))))
   :config
   (general-evil-setup t)
 
@@ -549,7 +530,6 @@ the call."
     "T" 'go-ts-mode-test-this-package))
 
 ;; Restart Emacs
-(use-package restart-emacs
-  :ensure t)
+(use-package restart-emacs :ensure t)
 
 ;;; init.el ends here
