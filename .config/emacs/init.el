@@ -225,6 +225,15 @@
   :after org
   :config (global-org-modern-mode))
 
+;; indent-bars
+(use-package indent-bars
+  :ensure t
+  :hook (prog-mode . indent-bars-mode)
+  :custom
+  (indent-bars-no-descend-lists t) ; no extra bars in continued func arg lists
+  (indent-bars-treesit-support t)
+  (indent-bars-treesit-ignore-blank-lines-types '("module")))
+
 ;; AUCTeX
 (use-package auctex
   :ensure t
