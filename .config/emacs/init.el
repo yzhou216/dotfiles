@@ -265,20 +265,18 @@
 ;; treesit-auto
 (use-package treesit-auto
   :ensure t
-  :custom
-  (treesit-auto-install t)
+  :custom (treesit-auto-install t)
   :config
-  (setq yiyu/haskell-tsauto-config
-	(make-treesit-auto-recipe
-	 :lang 'haskell
-	 :ts-mode 'haskell-ts-mode
-	 :remap 'haskell-mode
-	 :url "https://github.com/tree-sitter/tree-sitter-haskell"
-	 :ext "\\.hs\\'"))
-  (add-to-list 'treesit-auto-recipe-list yiyu/haskell-tsauto-config)
-  (add-to-list 'treesit-auto-langs 'haskell)
+  (global-treesit-auto-mode)
   (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+  (add-to-list 'treesit-auto-langs 'haskell)
+  (add-to-list 'treesit-auto-recipe-list
+	       (make-treesit-auto-recipe
+		:lang 'haskell
+		:ts-mode 'haskell-ts-mode
+		:remap 'haskell-mode
+		:url "https://github.com/tree-sitter/tree-sitter-haskell"
+		:ext "\\.hs\\'")))
 
 ;; yasnippet
 (use-package yasnippet
