@@ -131,8 +131,8 @@ do
 done
 
 # session lock: swaylock
-riverctl map normal Super+Alt L spawn "swaylock"
-riverctl map-switch normal lid close "swaylock"
+riverctl map normal Super+Alt L spawn swaylock
+riverctl map-switch normal lid close swaylock
 
 # idle management: swayidle
 riverctl spawn "swayidle -w timeout 100 'swaylock'"
@@ -141,16 +141,16 @@ riverctl spawn "swayidle -w timeout 100 'swaylock'"
 riverctl map normal Super Return spawn foot
 
 # launcher: wofi
-riverctl map normal Super D spawn "wofi --show=drun"
+riverctl map normal Super D spawn 'wofi --show=drun'
 
 # Dynamic display configuration: kanshi
-riverctl spawn "kanshi"
+riverctl spawn kanshi
 
 # status panel: Yambar
-riverctl spawn "yambar"
+riverctl spawn yambar
 
 # Notification daemon: fnott
-riverctl spawn "fnott"
+riverctl spawn fnott
 riverctl map normal Super C spawn 'fnottctl dismiss all'
 
 # Screenshots: wayshot
@@ -158,4 +158,4 @@ riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%
 riverctl map normal Super+Shift S spawn 'region=$(slurp) && wayshot -s "$region" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot -s "$region" --stdout | wl-copy -t image/png'
 
 # Update D-Bus activation environment variable
-riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+riverctl spawn 'dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'
