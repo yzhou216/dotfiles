@@ -359,11 +359,6 @@
   :mode "\\.hs\\'"
   :hook
   (haskell-ts-mode . haskell-ts-setup-eglot))
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :custom
-  (markdown-command "multimarkdown"))
 (use-package nix-ts-mode
   :ensure t
   :mode "\\.nix\\'")
