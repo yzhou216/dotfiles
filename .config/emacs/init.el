@@ -7,7 +7,6 @@
 ;;; Code:
 
 (use-package emacs
-  :hook (after-init . global-auto-revert-mode)    ; update buffers when files on the disk changes
   :custom
   ;; Backups
   (backup-directory-alist `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
@@ -58,6 +57,7 @@
   (global-display-line-numbers-mode 1)
   (global-hl-line-mode t)                         ; highlight the current line
   (global-completion-preview-mode)                ; completion preview
+  (global-auto-revert-mode 1)                     ; update buffers when files on the disk changes
   (recentf-mode 1)                                ; recently visited files
   (save-place-mode 1)                             ; drop point to last visited location
   (blink-cursor-mode 0)
