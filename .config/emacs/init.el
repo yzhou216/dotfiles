@@ -56,6 +56,7 @@
   (global-hl-line-mode t)                         ; highlight the current line
   (global-completion-preview-mode)                ; completion preview
   (recentf-mode 1)                                ; recently visited files
+  (save-place-mode 1)                             ; drop point to last visited location
   (blink-cursor-mode 0)
   (load-theme 'modus-vivendi)
   (display-battery-mode)
