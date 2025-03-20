@@ -156,7 +156,7 @@
 (use-package dired-preview
   :ensure t
   :config (dired-preview-global-mode)
-  :custom (dired-preview-delay 0.1))
+  :custom (dired-preview-delay 0))
 
 ;; orderless
 (use-package orderless
