@@ -44,6 +44,9 @@
   ;; Corfu commands are hidden, since they are not used via M-x.
   (read-extended-command-predicate #'command-completion-default-include-p)
 
+  ;; Revert all buffers (useful for Dired)
+  (global-auto-revert-non-file-buffers t)
+
   ;; set path for customize system
   (custom-file
    (concat user-emacs-directory "custom.el"))
