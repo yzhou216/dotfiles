@@ -55,6 +55,7 @@
   (global-display-line-numbers-mode 1)
   (global-hl-line-mode t)                         ; highlight the current line
   (global-completion-preview-mode)                ; completion preview
+  (recentf-mode 1)                                ; recently visited files
   (blink-cursor-mode 0)
   (load-theme 'modus-vivendi)
   (display-battery-mode)
@@ -472,6 +473,7 @@
     "k"   'kill-buffer
     "w"   'yiyu/delete-other-windows-and-kill-buffers
     "f"   'find-file
+    "F"   'recentf-open-files
     "u"   'vundo
     "gs"  'magit-status
     "gj"  'diff-hl-next-hunk
