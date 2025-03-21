@@ -9,7 +9,8 @@
 (use-package emacs
   :custom
   ;; Backups
-  (backup-directory-alist `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
+  (backup-directory-alist
+   `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
   (backup-by-copying t)
   (delete-old-versions t)
   (kept-new-versions 6)
@@ -260,10 +261,16 @@
   :config
   (add-to-list
    'treesit-language-source-alist
-   '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+   '(markdown
+     "https://github.com/tree-sitter-grammars/tree-sitter-markdown"
+     "split_parser"
+     "tree-sitter-markdown/src"))
   (add-to-list
    'treesit-language-source-alist
-   '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
+   '(markdown-inline
+     "https://github.com/tree-sitter-grammars/tree-sitter-markdown"
+     "split_parser"
+     "tree-sitter-markdown-inline/src"))
   (add-to-list 'treesit-auto-langs 'markdown)
   (add-to-list 'treesit-auto-langs 'markdown-inline)
 
