@@ -336,9 +336,10 @@
     (let ((major-mode (car config))
           (contact (cdr config)))
       (add-to-list 'eglot-server-programs (cons major-mode contact))))
-  (setq-default eglot-workspace-configuration '((:gopls . ((gofumpt . t)
-							   (hints . ((assignVariableTypes . t)
-								     (compositeLiteralFields . t))))))))
+  (setq-default eglot-workspace-configuration
+		'((:gopls . ((gofumpt . t)
+			     (hints . ((assignVariableTypes . t)
+				  (compositeLiteralFields . t))))))))
 
 ;; dape
 (use-package dape
@@ -362,11 +363,12 @@
 (use-package racket-mode :ensure t)
 (use-package nix-ts-mode :ensure t)
 
-;; lilypond-mode (Major mode for editing GNU LilyPond files)
-;; GNU LilyPond system package automatically adds its Elisp files into the
-;; /usr/share/emacs/site-lisp (/run/current-system/sw/share/emacs/site-lisp on
-;; Nix) directory, which is in the default `load-path'.
-;; Therefore, make sure GNU LilyPond is installed and set ensure to nil.
+;; lilypond-mode (Major mode for editing GNU LilyPond files) GNU
+;; LilyPond system package automatically adds its Elisp files into the
+;; /usr/share/emacs/site-lisp
+;; (/run/current-system/sw/share/emacs/site-lisp on Nix) directory,
+;; which is in the default `load-path'.  Therefore, make sure GNU
+;; LilyPond is installed and set ensure to nil.
 (when (executable-find "lilypond")
   (use-package lilypond-mode
     :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
