@@ -130,12 +130,12 @@ do
   riverctl input $pad natural-scroll enabled
 done
 
-# session lock: swaylock
-riverctl map normal Super+Alt L spawn swaylock
-riverctl map-switch normal lid close swaylock
+# session lock: wlock
+riverctl map normal Super+Alt L spawn wlock
+riverctl map-switch normal lid close wlock
 
 # idle management: swayidle
-riverctl spawn "swayidle -w timeout 100 'swaylock'"
+riverctl spawn "swayidle -w timeout 100 'wlock'"
 
 # terminal emulator: foot
 riverctl map normal Super Return spawn foot
