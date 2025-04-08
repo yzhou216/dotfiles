@@ -8,6 +8,8 @@
 
 (use-package emacs
   :custom
+  (custom-enabled-themes '(modus-vivendi))
+
   ;; Backups
   (backup-directory-alist
    `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
@@ -58,7 +60,6 @@
   (recentf-mode 1)                                ; recently visited files
   (save-place-mode 1)                             ; drop point to last visited location
   (blink-cursor-mode 0)
-  (load-theme 'modus-vivendi)
   (display-battery-mode)
   (display-time-mode))
 
