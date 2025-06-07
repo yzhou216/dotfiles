@@ -47,3 +47,8 @@ export XCURSOR_SIZE="24";
 
 # QT programs settings
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Autostart Wayland compositor
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  river
+fi
