@@ -16,6 +16,10 @@
 .config/nyxt/*
 !.config/nyxt/config.lisp
 
+# Librewolf
+.librewolf/*
+!.librewolf/librewolf.overrides.cfg
+
 # Emacs temp files
 \#*\#
 *~
