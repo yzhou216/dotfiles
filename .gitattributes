@@ -1,1 +1,2 @@
 *.lisp linguist-language=Common-Lisp
+*.cfg linguist-language=JavaScript
