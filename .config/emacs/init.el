@@ -54,6 +54,7 @@
   (set-face-attribute 'default nil
 		      :height 125)                ; default font size
   (global-display-line-numbers-mode 1)
+  (global-visual-wrap-prefix-mode 1)              ; Visual-Wrap-Prefix mode in all buffers
   (global-hl-line-mode t)                         ; highlight the current line
   (global-completion-preview-mode)                ; completion preview
   (global-auto-revert-mode 1)                     ; update buffers when files on the disk changes
