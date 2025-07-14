@@ -2,6 +2,7 @@ Makefile
 \.git
 .gitignore
 .gitattributes
+.editorconfig
 .tags
 cscope.out
 ncscope.out.temp
