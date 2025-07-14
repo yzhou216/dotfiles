@@ -5,5 +5,5 @@ Makefile
 .tags
 cscope.out
 ncscope.out.temp
-^etc-stow$
-LICENSE
+LICENSE.*$
+flake.*$
