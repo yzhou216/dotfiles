@@ -27,5 +27,8 @@ update:
 uninstall:
 	stow -D .
 
+clean:
+	rm -rf flake.lock
+
 sync:
 	git pull

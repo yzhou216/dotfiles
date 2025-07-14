@@ -7,3 +7,5 @@ cscope.out
 ncscope.out.temp
 LICENSE.*$
 flake.*$
+.envrc
+.direnv

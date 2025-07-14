@@ -20,6 +20,12 @@
 .librewolf/*
 !.librewolf/librewolf.overrides.cfg
 
+# Nix
+flake.lock
+
+# direnv
+.direnv
+
 # Emacs temp files
 \#*\#
 *~
