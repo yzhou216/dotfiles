@@ -24,7 +24,7 @@ update:
 	mkdir -p ~/.librewolf/native-messaging-hosts
 	ff2mpv-rust manifest > ~/.librewolf/native-messaging-hosts/ff2mpv.json
 
-clean:
+uninstall:
 	stow -D .
 
 sync:
