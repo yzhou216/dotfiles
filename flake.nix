@@ -23,6 +23,8 @@
             gnumake
             stow
             git
+            bash-language-server
+            shfmt
             lua-language-server
             vim-language-server
             ff2mpv-rust
