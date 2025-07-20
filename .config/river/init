@@ -137,8 +137,8 @@ riverctl map-switch normal lid close wlock
 # idle management: swayidle
 riverctl spawn "swayidle -w timeout 100 'wlock'"
 
-# terminal emulator: foot
-riverctl map normal Super Return spawn foot
+# terminal emulator: Alacritty
+riverctl map normal Super Return spawn alacritty
 
 # launcher: wofi
 riverctl map normal Super D spawn 'wofi --show=drun'
