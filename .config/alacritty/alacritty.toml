@@ -1,12 +1,24 @@
-# The default theme for alacritty is OK, but there are two issues:
-# 1. Green and bright green look like vomit.
-# 2. The background color is not black.
-
+# modus-vivendi
 [colors.bright]
-green = "0x00FF00"
+green = "#44df44"
+black = "#6b6b6b"
+red = "#ff5f5f"
+yellow = "#efef00"
+blue = "#338fff"
+magenta = "#ff66ff"
+cyan = "#00eff0"
+white = "#989898"
 
 [colors.normal]
-green = "0x008000"
+green = "#44bc44"
+black = "#000000"
+red = "#ff5f59"
+yellow = "#d0bc00"
+blue = "#2fafff"
+magenta = "#feacd0"
+cyan = "#00d3d0"
+white = "#ffffff"
 
 [colors.primary]
-background = "0x000000"
+background = "#000000"
+foreground = "#ffffff"
