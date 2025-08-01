@@ -3,4 +3,72 @@
 	name = Yiyu Zhou
 
 [core]
+	compression = 9
+	whitespace = trailing-space
 	excludesfile = ~/.config/git/gitignore_global
+
+[help]
+	autocorrect = prompt
+
+[maintenance]
+	auto = true
+	strategy = incremental
+
+[alias]
+	co = "checkout"
+	sm = "submodule"
+	sw = "switch"
+	wt = "worktree"
+	df = "diff"
+	st = status --short
+	graph = log --all --graph --decorate --oneline
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ignore = "!gi() { local IFS=','; curl -sL https://www.toptal.com/developers/gitignore/api/\"$*\"; }; gi"
+
+[column]
+	ui = auto
+
+[init]
+	defaultBranch = master
+	showUntrackedFiles = all
+
+[tag]
+	sort = -version:refname
+
+[commit]
+	verbose = true
+
+[branch]
+	sort = -committerdate
+
+[status]
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
+
+[diff]
+	algorithm = histogram
+	mnemonicPrefix = true
+	colorMoved = zebra
+	colorMovedWS = allow-indentation-change
+
+[rebase]
+	autoStash = true
+	autoSquash = true
+
+[interactive]
+	singleKey = true
+
+[pull]
+	ff = only
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[merge]
+	conflictStyle = zdiff3
+
+[rerere]
+	enabled = true
+	autoUpdate = true
