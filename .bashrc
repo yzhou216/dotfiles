@@ -37,7 +37,21 @@ alias shfmt='shfmt --indent 2 --write'
 alias golines='golines --max-len=80 --tab-len=8 --write-output'
 alias python='rustpython'
 alias python3='rustpython'
-alias 'nswitch'='nh os switch -- --impure'
+
+alias 'nh-switch'='nh os switch -- --impure'
+nixos-switch() {
+  cd ~/.config/flake || exit 1
+
+  local rebuild_cmd="nixos-rebuild switch --flake . --impure"
+  if [ -x "$(command -v doas)" ]; then
+    doas "$rebuild_cmd"
+  else
+    sudo "$rebuild_cmd"
+  fi
+
+  cd - || exit 1
+}
+
 nsh() {
   if [ "$#" -eq 0 ]; then
     echo "Error: No packages specified"
