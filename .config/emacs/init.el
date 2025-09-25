@@ -376,8 +376,8 @@
 ;; LilyPond is installed and set ensure to nil.
 (when (executable-find "lilypond")
   (use-package lilypond-mode
-    :mode ("\\.\\(ly\\|ily\\)$" . LilyPond-mode)
-    :hook (LilyPond-mode . turn-on-font-lock)))
+    :mode ("\\.\\(ly\\|ily\\)$" . lilypond-mode)
+    :hook (lilypond-mode . turn-on-font-lock)))
 
 ;; pdf-tools
 (use-package pdf-tools
