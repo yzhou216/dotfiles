@@ -183,6 +183,9 @@
   :ensure t
   :init (marginalia-mode))
 
+(use-package display-fill-column-indicator
+  :hook (prog-mode . display-fill-column-indicator-mode))
+
 ;; Org Mode
 (use-package org
   :hook
