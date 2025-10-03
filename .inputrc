@@ -1,3 +1,4 @@
+set completion-ignore-case
 set editing-mode vi
 
 # Enable Readline not waiting for additional input when a key is
