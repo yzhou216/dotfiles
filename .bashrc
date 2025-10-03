@@ -29,6 +29,9 @@ fi
 
 unset rc
 
+# Better cd
+shopt -s autocd cdspell
+
 # User specific aliases and functions
 alias ls='ls --color=auto'
 alias info='info --vi-keys'
