@@ -192,10 +192,10 @@
   (org-mode . org-indent-mode)
   (org-mode . turn-on-auto-fill)
   (org-mode . (lambda ()
-		(add-hook 'before-save-hook
-			  (lambda ()
-			    (when (derived-mode-p 'org-mode)
-			      (yiyu/org-fill-paragraph-buffer))))))
+  		(add-hook 'before-save-hook
+  			  (lambda ()
+  			    (when (derived-mode-p 'org-mode)
+  			      (yiyu/org-fill-paragraph-buffer))))))
   :custom
   (org-src-preserve-indentation nil)
   (org-edit-src-content-indentation 0)
