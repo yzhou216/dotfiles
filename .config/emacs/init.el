@@ -377,7 +377,13 @@
 (when (executable-find "lilypond")
   (use-package lilypond-mode
     :mode ("\\.\\(ly\\|ily\\)$" . lilypond-mode)
-    :hook (lilypond-mode . turn-on-font-lock)))
+    :hook ((lilypond-mode . (lambda ()
+			      (turn-on-font-lock)
+			      (add-hook 'after-save-hook
+					(lambda ()
+					  (save-window-excursion
+					    (project-recompile)))
+					nil t))))))
 
 ;; pdf-tools
 (use-package pdf-tools
