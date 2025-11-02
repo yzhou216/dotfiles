@@ -1,0 +1,8 @@
+command = "i3status-rs"
+
+height = 20
+tags_padding = 12.0
+
+background = "#000000ff"
+tag_fg = "#ffffffff"
+tag_bg = "#000000ff"
