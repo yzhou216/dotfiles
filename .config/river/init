@@ -140,8 +140,8 @@ riverctl spawn "swayidle -w timeout 100 'wlock'"
 # terminal emulator: Alacritty
 riverctl map normal Super Return spawn alacritty
 
-# launcher: wofi
-riverctl map normal Super D spawn 'wofi --show=drun'
+# launcher: wmenu
+riverctl map normal Super D spawn 'pkill wmenu;  wmenu-run -l 24 -N 000000ff'
 
 # Dynamic display configuration: kanshi
 riverctl spawn kanshi
