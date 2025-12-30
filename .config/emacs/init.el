@@ -8,6 +8,8 @@
 
 (use-package emacs
   :custom
+  (user-full-name "Yiyu Zhou")
+  (user-mail-address "yiyu@yiyuzhou.io")
   (custom-enabled-themes '(modus-vivendi))
 
   ;; Backups
@@ -126,6 +128,53 @@
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
+
+(use-package gnus
+  :hook (gnus-group-mode . gnus-topic-mode)
+  :custom
+  (mail-user-agent 'gnus-user-agent)
+  (read-mail-command 'gnus)
+  (message-send-mail-function 'smtpmail-send-it)
+  (gnus-select-method '(nnnil ""))
+  (gnus-secondary-select-methods
+   '((nntp "news.gwene.org")
+     (nnimap "zoho"
+             (nnimap-address "imappro.zoho.com")
+             (nnimap-server-port 993)
+             (nnimap-stream tls)
+             (nnimap-authenticator plain)
+             (nnimap-user "yiyu@yiyuzhou.io"))
+     (nnimap "cock"
+             (nnimap-address "mail.cock.li")
+             (nnimap-server-port 993)
+             (nnimap-stream tls)
+             (nnimap-authenticator plain)
+             (nnimap-user "yiyu@cock.li"))))
+  (gnus-posting-styles
+   '(("nnimap\\+zoho:.*"
+      (address "yiyu@yiyuzhou.io")
+      ("X-Message-SMTP-Method" "smtp smtppro.zoho.com 465")
+      (gcc "nnimap+zoho:INBOX"))
+     ("nnimap\\+cock:.*"
+      (address "yiyu@cock.li")
+      ("X-Message-SMTP-Method" "smtp mail.cock.li 465")
+      (gcc "nnimap+cock:INBOX"))))
+  (gnus-home-directory (expand-file-name "gnus/" user-emacs-directory))
+  (gnus-directory (expand-file-name "gnus/news/" user-emacs-directory))
+  (gnus-cache-directory (expand-file-name "gnus/news/cache/" user-emacs-directory))
+  (message-directory (expand-file-name "gnus/mail/" user-emacs-directory))
+  (nndraft-directory (expand-file-name "gnus/drafts/" user-emacs-directory))
+  (gnus-permanently-visible-groups ":INBOX$")
+  (gnus-gcc-mark-as-read t)
+  (gnus-save-newsrc-file nil)
+  (gnus-read-newsrc-file nil)
+  (gnus-interactive-exit nil)
+  (gnus-thread-sort-functions
+   '(gnus-thread-sort-by-number
+     gnus-thread-sort-by-subject
+     gnus-thread-sort-by-date))
+  (message-confirm-send t)
+  (message-forward-as-mine t))
 
 ;; ERC
 (use-package erc
