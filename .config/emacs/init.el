@@ -204,6 +204,8 @@
 (use-package editorconfig
   :config (editorconfig-mode 1))
 
+(use-package dired :hook (dired-mode . turn-on-gnus-dired-mode))
+
 ;; dired-preview
 (use-package dired-preview
   :ensure t
