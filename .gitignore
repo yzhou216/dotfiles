@@ -17,8 +17,8 @@
 !.config/nyxt/config.lisp
 
 # Librewolf
-.librewolf/*
-!.librewolf/librewolf.overrides.cfg
+.config/librewolf/librewolf/*
+!.config/librewolf/librewolf/librewolf.overrides.cfg
 
 # Nix
 flake.lock
