@@ -137,6 +137,9 @@ riverctl map-switch normal lid close wlock
 # idle management: swayidle
 riverctl spawn "swayidle -w timeout 100 'wlock'"
 
+# Inhibit idle when audio is in use
+riverctl spawn wayland-pipewire-idle-inhibit
+
 # terminal emulator: Alacritty
 riverctl map normal Super Return spawn alacritty
 
