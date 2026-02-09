@@ -2,6 +2,12 @@
 	email = yiyu@yiyuzhou.io
 	name = Yiyu Zhou
 
+[sendemail]
+	smtpserver = smtppro.zoho.com
+	smtpuser = yiyu@yiyuzhou.io
+	smtpencryption = ssl
+	smtpserverport = 465
+
 [core]
 	compression = 9
 	whitespace = trailing-space
