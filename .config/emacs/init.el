@@ -412,6 +412,15 @@
   (dape-buffer-window-arrangement 'right)
   (dape-inlay-hints t))
 
+(use-package buffer-env
+  :ensure t
+  :hook
+  (hack-local-variables . buffer-env-update)
+  (comint-mode . buffer-env-update)
+  :config
+  (add-to-list 'buffer-env-command-alist ; direnv integration
+	       '("/\\.envrc\\'" . "direnv exec . env -0")))
+
 ;; Third-party major modes
 (use-package haskell-ts-mode
   :ensure t
