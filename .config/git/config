@@ -11,7 +11,6 @@
 [core]
 	compression = 9
 	whitespace = trailing-space
-	excludesfile = ~/.config/git/gitignore_global
 
 [help]
 	autocorrect = prompt
