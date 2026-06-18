@@ -8,6 +8,7 @@
 
 (use-package emacs
   :custom
+  (mode-line-collapse-minor-modes 1)
   (user-full-name "Yiyu Zhou")
   (user-mail-address "yiyu@yiyuzhou.io")
   (custom-enabled-themes '(modus-vivendi))
