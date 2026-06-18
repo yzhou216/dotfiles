@@ -369,7 +369,9 @@
   (setq-default eglot-workspace-configuration
 		'((:gopls . ((gofumpt . t)
 			     (hints . ((assignVariableTypes . t)
-				  (compositeLiteralFields . t))))))))
+				       (compositeLiteralFields . t)))))))
+  :custom
+  (eglot-documentation-renderer 'markdown-ts-view-mode))
 
 ;; dape
 (use-package dape
