@@ -187,6 +187,7 @@
   (erc-fill-column 120)
   (erc-fill-function 'erc-fill-static)
   (erc-fill-static-center 16)
+  (erc-log-insert-log-on-open 'erc-log-new-target-buffer-p)
   :config
   (defun yiyu/libera-chat ()
     (interactive)
