@@ -527,7 +527,11 @@
     "m"   'consult-man
     "b"   'consult-buffer
     "k"   'kill-buffer
-    "w"   'yiyu/delete-other-windows-and-kill-buffers
+    "wk"  'yiyu/delete-other-windows-and-kill-buffers
+    "wt"  'window-layout-transpose
+    "wr"  'window-layout-rotate-clockwise
+    "wfh" 'window-layout-flip-leftright
+    "wfv" 'window-layout-flip-topdown
     "f"   'find-file
     "F"   'recentf-open-files
     "u"   'vundo
