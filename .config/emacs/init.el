@@ -64,6 +64,7 @@
   (recentf-mode 1)                                ; recently visited files
   (save-place-mode 1)                             ; drop point to last visited location
   (blink-cursor-mode 0)
+  (column-number-mode)
   (display-battery-mode))
 
 ;; package archives
