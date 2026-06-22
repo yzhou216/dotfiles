@@ -64,8 +64,7 @@
   (recentf-mode 1)                                ; recently visited files
   (save-place-mode 1)                             ; drop point to last visited location
   (blink-cursor-mode 0)
-  (display-battery-mode)
-  (display-time-mode))
+  (display-battery-mode))
 
 ;; package archives
 (use-package package
@@ -93,6 +92,12 @@
   :config
   (midnight-delay-set 'midnight-delay 16200) ; (eq (* 4.5 60 60) "4:30am")
   (midnight-mode +1))
+
+(use-package time
+  :custom
+  (display-time-format "%Y-%m-%dT%H:%M:%S%:z") ; ISO 8601
+  (display-time-interval 1)
+  :config (display-time-mode))
 
 ;; dictionary-mode
 (use-package dictionary
