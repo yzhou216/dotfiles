@@ -73,5 +73,11 @@ nsh() {
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Syntax highlighting for less using GNU Source-highlight
+if command -v src-hilite-lesspipe.sh >/dev/null 2>&1; then
+  export LESSOPEN="| src-hilite-lesspipe.sh %s"
+  export LESS=' -R '
+fi
+
 # autograder
 export PATH=~/autograder:$PATH
