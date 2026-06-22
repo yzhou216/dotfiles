@@ -55,6 +55,16 @@ nixos-switch() {
   cd - || exit 1
 }
 
+# Update package from the root of Nixpkgs repo
+nixpkgs-update() {
+  local update_script=maintainers/scripts/update.nix
+  if [ -f "$update_script" ]; then
+    nix-shell "$update_script" --argstr package "$@"
+  else
+    printf '%s: not in Nixpkgs root\n' "$FUNCNAME"
+  fi
+}
+
 nsh() {
   if [ "$#" -eq 0 ]; then
     echo "Error: No packages specified"
