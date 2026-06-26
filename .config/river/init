@@ -157,8 +157,8 @@ riverctl spawn fnott
 riverctl map normal Super C spawn 'fnottctl dismiss all'
 
 # Screenshots: wayshot
-riverctl map normal Super S spawn 'wayshot -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot --stdout | wl-copy -t image/png'
-riverctl map normal Super+Shift S spawn 'region=$(slurp) && wayshot -s "$region" -f ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot -s "$region" --stdout | wl-copy -t image/png'
+riverctl map normal Super S spawn 'wayshot -- ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot - | wl-copy -t image/png'
+riverctl map normal Super+Shift S spawn 'region=$(slurp) && wayshot --geometry "$region" -- ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png && wayshot --geometry "$region" - | wl-copy -t image/png'
 
 # Update D-Bus activation environment variable
 riverctl spawn 'dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'
