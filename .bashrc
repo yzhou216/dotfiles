@@ -33,7 +33,12 @@ unset rc
 shopt -s autocd cdspell
 
 # User specific aliases and functions
-alias ls='ls --color=auto'
+if command ls --version 2>/dev/null | grep -qi 'GNU'; then
+  alias ls='ls --color=auto'
+elif [[ ! "$(strings "$(which ls)" | grep -qi "BSD")" ]]; then
+  alias ls='ls -G'
+fi
+
 alias info='info --vi-keys'
 alias emacs='emacs --no-window-system'
 alias shfmt='shfmt --indent 2 --write'
