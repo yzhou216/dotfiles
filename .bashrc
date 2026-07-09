@@ -94,5 +94,16 @@ if command -v src-hilite-lesspipe.sh >/dev/null 2>&1; then
   export LESS=' -R '
 fi
 
+# Syntax highlighting for cat using GNU Source-highlight
+cat() {
+  if [ $# -eq 0 ]; then
+    command cat
+  elif [ -t 1 ] && [ -f "$1" ]; then
+    source-highlight -f esc -i "$1" 2>/dev/null || command cat "$@"
+  else
+    command cat "$@"
+  fi
+}
+
 # autograder
 export PATH=~/autograder:$PATH
