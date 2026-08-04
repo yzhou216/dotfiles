@@ -1,0 +1,15 @@
+{
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+  "overrides": [
+    {
+      "includes": ["**/chrome/*.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+:root {
+	--chrome-content-separator-color: unset !important;
+	--chrome-window-gap: 0px !important;
+}
+
+#browser {
+	padding: 0 !important;
+	border-radius: 0 !important;
+}
+
+#navigator-toolbox {
+	margin: 0 !important;
+	border-radius: 0 !important;
+}
+
+#tabbrowser-tabbox {
+	border-radius: 0 !important;
+}
+
+#nav-bar {
+	border-top: none !important;
+}
+
+#tabbrowser-tabpanels > :not(.split-view-panel) .browserContainer {
+	border-radius: 0 !important;
+}
+
+.tab-background {
+	border-radius: 0px !important;
+}

@@ -20,6 +20,9 @@
 .config/librewolf/librewolf/*
 !.config/librewolf/librewolf/librewolf.overrides.cfg
 !.config/librewolf/librewolf/profiles.ini
+!.config/librewolf/librewolf/profile.default/
+.config/librewolf/librewolf/profile.default/*
+!.config/librewolf/librewolf/profile.default/chrome/
 
 # Nix
 flake.lock
