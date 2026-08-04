@@ -19,6 +19,7 @@
 # Librewolf
 .config/librewolf/librewolf/*
 !.config/librewolf/librewolf/librewolf.overrides.cfg
+!.config/librewolf/librewolf/profiles.ini
 
 # Nix
 flake.lock
