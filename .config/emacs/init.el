@@ -588,4 +588,13 @@ the call."
 ;; Restart Emacs
 (use-package restart-emacs :ensure t)
 
+;; river compositor with reka window manager
+(when (getenv "REKA")
+  (add-to-list 'load-path "/run/current-system/sw/lib")
+  (require 'reka)
+  (add-hook 'reka-enable-hook
+            (lambda ()
+              (start-process "yambar" nil "yambar")))
+  (reka-enable))
+
 ;;; init.el ends here
