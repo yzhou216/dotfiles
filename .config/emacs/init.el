@@ -133,7 +133,8 @@
   (auto-package-update-prompt-before-update t)
   (auto-package-update-hide-results t)
   :config
-  (auto-package-update-maybe)
+  (unless (getenv "REKA")
+    (auto-package-update-maybe))
   (auto-package-update-at-time "09:00"))
 
 (use-package gnus
@@ -592,9 +593,107 @@ the call."
 (when (getenv "REKA")
   (add-to-list 'load-path "/run/current-system/sw/lib")
   (require 'reka)
-  (add-hook 'reka-enable-hook
-            (lambda ()
-              (start-process "yambar" nil "yambar")))
+
+  (defun yiyu/reka-spawn (cmd)
+    "Run CMD asynchronously without an Emacs buffer."
+    (start-process "reka-spawn" nil "sh" "-c" cmd))
+
+  (defun yiyu/reka-focus-next-window () (interactive) (next-window))
+  (defun yiyu/reka-focus-prev-window () (interactive) (previous-window))
+  (defun yiyu/reka-focus-next-output () (interactive) (other-frame 1))
+  (defun yiyu/reka-focus-prev-output () (interactive) (other-frame -1))
+  (defun yiyu/reka-swap-next () (interactive) (transpose-buffers 1))
+  (defun yiyu/reka-swap-prev () (interactive) (transpose-buffers -1))
+
+  (defun yiyu/reka-send-to-output (n)
+    (interactive)
+    (let ((buf (current-buffer))
+          (frame (if (> n 0)
+                     (next-frame (selected-frame) t)
+                   (previous-frame (selected-frame) t))))
+      (select-frame-set-input-focus frame)
+      (switch-to-buffer buf)))
+  (defun yiyu/reka-send-next-output () (interactive) (yiyu/reka-send-to-output 1))
+  (defun yiyu/reka-send-prev-output () (interactive) (yiyu/reka-send-to-output -1))
+
+  (defun yiyu/reka-exit ()
+    (interactive)
+    (start-process "river-exit" nil "pkill" "-TERM" "river"))
+
+  (defun yiyu/reka-terminal () (interactive) (yiyu/reka-spawn "alacritty"))
+  (defun yiyu/reka-launcher ()
+    (interactive)
+    (yiyu/reka-spawn "pkill wmenu; wmenu-run -l 24 -N 000000ff"))
+  (defun yiyu/reka-dismiss-notifications ()
+    (interactive) (yiyu/reka-spawn "fnottctl dismiss all"))
+  (defun yiyu/reka-wayshot-full ()
+    (interactive)
+    (yiyu/reka-spawn "wayshot - | wl-copy -t image/png; wayshot -- ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png"))
+  (defun yiyu/reka-wayshot-region ()
+    (interactive)
+    (yiyu/reka-spawn "region=$(slurp); wayshot --geometry \"$region\" - | wl-copy -t image/png; wayshot --geometry \"$region\" -- ~/Pictures/Screenshots/$(date +%s%N | cut -b1-13)-wayshot.png"))
+
+  (defun yiyu/reka-volume-up () (interactive) (yiyu/reka-spawn "pamixer -i 5"))
+  (defun yiyu/reka-volume-down () (interactive) (yiyu/reka-spawn "pamixer -d 5"))
+  (defun yiyu/reka-volume-mute () (interactive) (yiyu/reka-spawn "pamixer --toggle-mute"))
+  (defun yiyu/reka-media-play-pause () (interactive) (yiyu/reka-spawn "playerctl play-pause"))
+  (defun yiyu/reka-media-prev () (interactive) (yiyu/reka-spawn "playerctl previous"))
+  (defun yiyu/reka-media-next () (interactive) (yiyu/reka-spawn "playerctl next"))
+  (defun yiyu/reka-brightness-up () (interactive) (yiyu/reka-spawn "xbacklight -inc 10"))
+  (defun yiyu/reka-brightness-down () (interactive) (yiyu/reka-spawn "xbacklight -dec 10"))
+
+  ;; Keybindings are registered with river as XKB intercept prefixes so they
+  ;; reach Emacs even when another app has keyboard focus. On Emacs 32 the
+  ;; composed function-key events (e.g. `s-return') make event-basic-type
+  ;; return nil, so reka-push-intercept-prefix would resolve the keysym as
+  ;; "nil". Register via reka-register-xkb-prefix with explicit keysym names.
+  (defun yiyu/reka-bind (key-string keysym-name command)
+    "Register KEY-STRING (kbd syntax) as an XKB prefix matching KEY-NAME
+and bind COMMAND to it in the global keymap."
+    (let* ((data (reka--key-to-xkb key-string))
+           (event (car data))
+           (mods (caddr data))
+           (event-for-rust (if (integerp event) event (symbol-name event))))
+      (reka-register-xkb-prefix reka-handle event-for-rust keysym-name mods nil)
+      (global-set-key (kbd key-string) command)))
+
+  (defun yiyu/reka-bind-fullscreen (key-string keysym-name)
+    "Register KEY-STRING for reka's builtin fullscreen toggle."
+    (let* ((mods (caddr (reka--key-to-xkb key-string))))
+      (reka-register-xkb-prefix reka-handle keysym-name keysym-name
+                                mods 'toggle-fullscreen)))
+
+  (defun yiyu/reka-keys ()
+    (interactive)
+    ;; window management
+    (yiyu/reka-bind "s-j" "j" #'yiyu/reka-focus-next-window)
+    (yiyu/reka-bind "s-k" "k" #'yiyu/reka-focus-prev-window)
+    (yiyu/reka-bind "s-S-j" "j" #'yiyu/reka-swap-next)
+    (yiyu/reka-bind "s-S-k" "k" #'yiyu/reka-swap-prev)
+    (yiyu/reka-bind "s-." "period" #'yiyu/reka-focus-next-output)
+    (yiyu/reka-bind "s-," "comma" #'yiyu/reka-focus-prev-output)
+    (yiyu/reka-bind "s-S->" "greater" #'yiyu/reka-send-next-output)
+    (yiyu/reka-bind "s-S-<" "less" #'yiyu/reka-send-prev-output)
+    (yiyu/reka-bind "s-S-<return>" "Return" #'delete-other-windows)
+    (yiyu/reka-bind "s-S-q" "q" #'kill-current-buffer)
+    (yiyu/reka-bind "s-S-s" "s" #'yiyu/reka-wayshot-region)
+    ;; system keys
+    (yiyu/reka-bind "s-<return>" "Return" #'yiyu/reka-terminal)
+    (yiyu/reka-bind "s-d" "d" #'yiyu/reka-launcher)
+    (yiyu/reka-bind "s-c" "c" #'yiyu/reka-dismiss-notifications)
+    (yiyu/reka-bind "s-s" "s" #'yiyu/reka-wayshot-full)
+    (yiyu/reka-bind "s-C-e" "e" #'yiyu/reka-exit)
+    (yiyu/reka-bind "<XF86AudioRaiseVolume>" "XF86AudioRaiseVolume" 'yiyu/reka-volume-up)
+    (yiyu/reka-bind "<XF86AudioLowerVolume>" "XF86AudioLowerVolume" 'yiyu/reka-volume-down)
+    (yiyu/reka-bind "<XF86AudioMute>" "XF86AudioMute" 'yiyu/reka-volume-mute)
+    (yiyu/reka-bind "<XF86AudioPlay>" "XF86AudioPlay" 'yiyu/reka-media-play-pause)
+    (yiyu/reka-bind "<XF86AudioPrev>" "XF86AudioPrev" 'yiyu/reka-media-prev)
+    (yiyu/reka-bind "<XF86AudioNext>" "XF86AudioNext" 'yiyu/reka-media-next)
+    (yiyu/reka-bind "<XF86MonBrightnessUp>" "XF86MonBrightnessUp" 'yiyu/reka-brightness-up)
+    (yiyu/reka-bind "<XF86MonBrightnessDown>" "XF86MonBrightnessDown" 'yiyu/reka-brightness-down)
+    (yiyu/reka-bind-fullscreen "s-f" "f"))
+
+  (add-hook 'reka-enable-hook #'yiyu/reka-keys)
   (reka-enable))
 
 ;;; init.el ends here
