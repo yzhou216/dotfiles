@@ -7,7 +7,8 @@
     // applications started when kwm starts (previously spawned from river init)
     .startup_cmds = .{
         // idle management: swayidle
-        .{ "swayidle", "-w", "timeout", "100", "wlock" },
+        // No -w: it blocks until wlock exits and re-fires on unlock (lock loop).
+        .{ "swayidle", "timeout", "100", "wlock" },
         // inhibit idle when audio is in use
         .{ "wayland-pipewire-idle-inhibit" },
         // dynamic display configuration: kanshi
