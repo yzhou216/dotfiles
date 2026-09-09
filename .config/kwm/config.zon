@@ -1,10 +1,4 @@
 .{
-    // environment variables
-    // used by processes spawned by kwm
-    .env = .{},
-    .working_directory = .home,
-
-    // applications started when kwm starts (previously spawned from river init)
     .startup_cmds = .{
         // idle management: swayidle
         // No -w: it blocks until wlock exits and re-fires on unlock (lock loop).
@@ -26,16 +20,10 @@
         .{ "sh", "-c", "while :; do date '+%H:%M:%S'; sleep 1; done > ${XDG_RUNTIME_DIR}/kwm-status" },
     },
 
-    .xcursor_theme = null,
-
     // solid color background
     .background = 0x000000ff,
 
     .bar = .{
-        .show_default = true,
-        .position = .top,
-        .font = "monospace:size=10",
-
         .scheme = .{
             .normal = .{
                 .fg = 0xffffffff,
@@ -47,61 +35,11 @@
             },
         },
 
-        // tags part
+        // tags shown on the bar
         .tags = .{
-            // tags shown on the bar (1-5, t, w, e)
             .tags = .{ "1", "2", "3", "4", "5", "t", "w", "e" },
-            .click = .{
-                .left = .{ .set_output_tag = .{ .tag = .{ .tag = 0 } } },
-                .right = .{ .toggle_output_tag = .{ .mask = 0 } },
-                .middle = .{ .toggle_window_tag = .{ .mask = 0 } },
-            },
         },
-        .mode = .{
-            .tags = .{
-                .{ "default", "" },
-                .{ "passthrough", "P" },
-                .{ "floating", "F" },
-            },
-            .click = .{
-                .left = .{ .switch_mode = .{ .mode = "default" } },
-            },
-        },
-        .layout = .{
-            .tags = .{
-                .tile = .{
-                    .left = "[]=",
-                    .right = "=[]",
-                    .top = "[^]",
-                    .bottom = "[_]",
-                },
-                .grid = .{
-                    .horizontal = "|+|",
-                    .vertical = "|||",
-                },
-                .monocle = "[{{=}}]",
-                .deck = .{
-                    .left = "[{{D}}]=",
-                    .right = "=[{{D}}]",
-                    .top = "[{{D}}^]",
-                    .bottom = "[{{D}}_]",
-                },
-                .scroller = "[==]",
-                .centered_master = .{
-                    .horizontal = "=[]=",
-                    .vertical = "=[V]=",
-                },
-                .float = "><>",
-            },
-            .click = .{
-                .left = .switch_to_previous_layout,
-            },
-        },
-        .title = .{
-            .click = .{
-                .left = .{ .zoom = .{ .swap = false } },
-            },
-        },
+
         // status part fed by the fifo writer above (a clock)
         .status = .{
             .data = .{ .fifo = "${XDG_RUNTIME_DIR}/kwm-status" },
@@ -111,7 +49,7 @@
         },
 
         .override_colors = .{
-            // highlight the mode tag (shown in passthrough/floating mode)
+            // highlight the mode tag
             .{
                 .area = .{ .mode = null },
                 .scheme = .{
@@ -124,25 +62,6 @@
         },
     },
 
-    .single_tagset = false,
-    .sloppy_focus = false,
-    .cursor_warp = .none,
-    .disable_wrap_around_for_scroller = false,
-    .remember_floating_geometry = false,
-    .auto_swallow = true,
-
-    .default_attach_mode = .{
-        .tile = .top,
-        .grid = .top,
-        .monocle = .top,
-        .deck = .stack_top,
-        .scroller = .below_focused,
-        .centered_master = .top,
-        .float = .top,
-    },
-
-    .default_window_decoration = .ssd,
-
     // window border
     .border = .{
         .width = 2,
@@ -153,61 +72,29 @@
         },
     },
 
-    // rivertile was the only layout used previously, keep it as the default
-    .default_layout = .tile,
+    // tight gaps for the default tile layout (other layouts use defaults)
     .layout = .{
         .tile = .{
-            .nmaster = 1,
-            .mfact = 0.55,
             .inner_gap = 3,
             .outer_gap = 0,
-            .master_location = .left,
-        },
-        .grid = .{
-            .outer_gap = 9,
-            .inner_gap = 12,
-            .direction = .horizontal,
-        },
-        .monocle = .{
-            .gap = 9,
-        },
-        .deck = .{
-            .nmaster = 1,
-            .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
-            .master_location = .left,
-        },
-        .scroller = .{
-            .mfact = 0.5,
-            .inner_gap = 16,
-            .outer_gap = 9,
-        },
-        .centered_master = .{
-            .nmaster = 1,
-            .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
-            .direction = .horizontal,
         },
     },
 
     .bindings = .{
-        // keyboard repeat rate (river: set-repeat 50 300)
         .repeat_info = .{
             .rate = 50,
             .delay = 300,
         },
 
         .key = .{
-            // reload config (kwm default)
+            // reload config
             .{
                 .keysym = "r",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{ .click = .{ .pressed = .reload_config } },
             },
 
-            // passthrough mode (kwm default + river's Super+F11)
+            // passthrough mode (also Super+F11)
             .{
                 .keysym = "Escape",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -231,7 +118,7 @@
                 .event = .{ .click = .{ .pressed = .{ .switch_mode = .{ .mode = "default" } } } },
             },
 
-            // floating mode (kwm default): move/resize/snap
+            // floating mode: move/resize/snap
             .{
                 .keysym = "f",
                 .modifiers = .{ .mod4 = true, .ctrl = true },
@@ -310,7 +197,7 @@
                 .event = .{ .click = .{ .pressed = .{ .snap = .{ .edge = .top } } } },
             },
 
-            // quit the river session (Super+Ctrl+E from river init, keep kwm default too)
+            // quit session (Super+Shift+Q or Super+Ctrl+E)
             .{
                 .keysym = "q",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -322,7 +209,7 @@
                 .event = .{ .click = .{ .pressed = .{ .quit = .{ .exit_session = true } } } },
             },
 
-            // close the focused window (Super+Alt+Q from river init, keep kwm default too)
+            // close focused window (Super+Shift+C or Super+Alt+Q)
             .{
                 .keysym = "c",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -334,7 +221,7 @@
                 .event = .{ .click = .{ .pressed = .close } },
             },
 
-            // terminal emulator: alacritty (Super+Return) and zoom (Super+Shift+Return)
+            // terminal: alacritty (Super+Return), zoom (Super+Shift+Return)
             .{
                 .keysym = "Return",
                 .modifiers = .{ .mod4 = true },
@@ -523,7 +410,7 @@
             .{ .keysym = "e", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b10000000 } } } } } },
             .{ .keysym = "0", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b11111111 } } } } } },
 
-            // toggle output tag (kwm default)
+            // toggle output tag
             .{ .keysym = "1", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b1 } } } } },
             .{ .keysym = "2", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b10 } } } } },
             .{ .keysym = "3", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b100 } } } } },
@@ -554,7 +441,7 @@
             .{ .keysym = "w", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b1000000 } } } } },
             .{ .keysym = "e", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b10000000 } } } } },
 
-            // decrease/increase the main ratio of the master area (river: main-ratio)
+            // adjust master area ratio
             .{
                 .keysym = "l",
                 .modifiers = .{ .mod4 = true },
@@ -566,7 +453,7 @@
                 .event = .{ .click = .{ .pressed = .{ .modify_mfact = .{ .change = .{ .step = -0.05 } } } } },
             },
 
-            // decrease/increase the number of windows in the master area (river: main-count)
+            // adjust master area window count
             .{
                 .keysym = "l",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -588,7 +475,7 @@
                 .event = .{ .click = .{ .pressed = .{ .modify_nmaster = .{ .change = .decrease } } } },
             },
 
-            // change layout orientation (river: main-location)
+            // master area location
             .{
                 .keysym = "Up",
                 .modifiers = .{ .mod4 = true },
@@ -804,19 +691,17 @@
         },
     },
 
-    // window rules
-    // note: only the first matching rule is applied
+    // window rules (first match wins)
     .window_rules = .{
-        // kwm defaults
         .{ .app_id = .{ .str = "", .match_null = true }, .floating = true },
         .{ .app_id = .{ .str = "zenity" }, .floating = true },
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
         // make alacritty swallowable
         .{ .app_id = .{ .str = "alacritty" }, .is_terminal = true },
-        // from river init: float windows with app-id starting with "float" and title "foo"
+        // float windows with app-id starting with "float" and title "foo"
         .{ .app_id = .{ .str = "^float.*", .regex = true }, .title = .{ .str = "foo" }, .floating = true },
-        // from river init: client-side decorations for app-id "bar"
+        // client-side decorations for app-id "bar"
         .{ .app_id = .{ .str = "bar" }, .decoration = .csd },
     },
 
