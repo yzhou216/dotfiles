@@ -1,0 +1,15 @@
+.{
+    // match the Logitech wheel mouse: lower the scroll factor so the
+    // wheel does not scroll too far per notch
+    .input_device_rules = .{
+        .{ .name = .{ .str = ".*[Mm]ouse.*", .regex = true }, .scroll_factor = 0.5 },
+    },
+
+    // natural scrolling on the internal touchpad, matching previous macOS
+    // behavior; the Logitech wheel keeps the traditional direction
+    .libinput_device_rules = .{
+        .{ .name = .{ .str = ".*[tT]ouchpad", .regex = true }, .natural_scroll = .enabled },
+    },
+
+    .xkb_keyboard_rules = .{},
+}
