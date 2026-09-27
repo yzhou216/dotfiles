@@ -255,6 +255,7 @@
   (org-mode . org-indent-mode)
   (org-mode . refill-mode)
   (org-mode . auto-fill-mode)
+  (org-mode . org-modern-mode)
   :custom
   (org-src-preserve-indentation nil)
   (org-edit-src-content-indentation 0)
@@ -281,8 +282,7 @@
 ;; org-modern
 (use-package org-modern
   :ensure t
-  :after org
-  :config (global-org-modern-mode))
+  :after org)
 
 ;; indent-bars
 (use-package indent-bars
