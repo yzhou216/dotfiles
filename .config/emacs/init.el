@@ -252,9 +252,9 @@
 ;; Org Mode
 (use-package org
   :hook
-  (org-mode . (org-indent-mode
-	       refill-mode
-	       auto-fill-mode))
+  (org-mode . org-indent-mode)
+  (org-mode . refill-mode)
+  (org-mode . auto-fill-mode)
   :custom
   (org-src-preserve-indentation nil)
   (org-edit-src-content-indentation 0)
