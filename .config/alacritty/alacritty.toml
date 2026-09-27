@@ -22,3 +22,8 @@ white = "#ffffff"
 [colors.primary]
 background = "#000000"
 foreground = "#ffffff"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
