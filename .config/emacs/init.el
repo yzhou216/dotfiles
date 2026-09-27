@@ -413,7 +413,10 @@
   :ensure t
   :hook (haskell-ts-mode . haskell-ts-setup-eglot))
 (use-package racket-mode :ensure t)
-(use-package nix-ts-mode :ensure t)
+(use-package nix-ts-mode
+  :ensure t
+  :custom (treesit-font-lock-level '((nix-ts-mode . 4) (t . 3)))
+  :mode "\\.nix\\'")
 
 ;; lilypond-mode (Major mode for editing GNU LilyPond files) GNU
 ;; LilyPond system package automatically adds its Elisp files into the
