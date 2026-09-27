@@ -230,7 +230,11 @@
   :hook
   (icomplete-minibuffer-setup . (lambda ()
                                   (setq-local completion-styles '(orderless))))
-  :config (fido-vertical-mode))
+  :config (fido-vertical-mode)
+  :custom
+  (icomplete-vertical-render-prefix-indicator t)
+  (icomplete-in-buffer t)
+  (icomplete-vertical-in-buffer-adjust-list t))
 
 ;; consult.el (Consulting completing-read)
 (use-package consult
