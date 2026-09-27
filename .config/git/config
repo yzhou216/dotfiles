@@ -77,3 +77,6 @@
 [rerere]
 	enabled = true
 	autoUpdate = true
+
+[include]
+	path = ~/.config/git/local
