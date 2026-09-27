@@ -260,7 +260,20 @@
   (org-edit-src-content-indentation 0)
   (org-confirm-babel-evaluate nil) ; Trust execution
   (org-latex-pdf-process '("tectonic %f")) ; Use Tectonic for PDF export
+  (org-preview-latex-default-process 'tectonic)
   :config
+  (add-to-list
+   'org-preview-latex-process-alist
+   '(tectonic :programs ("tectonic" "magick" "gs")
+	      :description "pdf > png"
+	      :message "you need tectonic, imagemagick, and ghostscript"
+	      :image-input-type "pdf"
+	      :image-output-type "png"
+	      :image-size-adjust (1.0 . 1.0)
+	      :latex-compiler
+	      ("tectonic -Z shell-escape-cwd=%o --outfmt pdf --outdir %o %f")
+	      :image-converter
+	      ("magick -density %D -antialias %f -trim -quality 300 %O")))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((haskell . t))))
