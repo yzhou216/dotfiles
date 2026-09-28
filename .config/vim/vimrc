@@ -63,6 +63,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " enhancement for netrw
+packadd! netrw		" load netrw package so netrw_gitignore#Hide is available
 let g:netrw_banner=0		" disable banner
 let g:netrw_liststyle=3		" enable tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
