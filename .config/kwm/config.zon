@@ -17,7 +17,8 @@
         // it in the session startup, e.g. launch river as:
         //   river -c "sh -c 'mkdir -p ${XDG_RUNTIME_DIR}; mkfifo ${XDG_RUNTIME_DIR}/kwm-status 2>/dev/null; exec kwm'"
         // The `mkfifo` below is kept as a best-effort fallback only.
-        .{ "sh", "-c", "while :; do date '+%H:%M:%S'; sleep 1; done > ${XDG_RUNTIME_DIR}/kwm-status" },
+        // Shows full ISO 8601 local time with offset, then UTC.
+        .{ "sh", "-c", "while :; do printf '%s | %s\\n' \"$(date -Iseconds)\" \"$(date -u '+%Y-%m-%dT%H:%M:%SZ')\"; sleep 1; done > ${XDG_RUNTIME_DIR}/kwm-status" },
     },
 
     // solid color background
